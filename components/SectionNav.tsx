@@ -16,7 +16,7 @@ export default function SectionNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 180;
+      const scrollPosition = window.scrollY + 190;
 
       sectionLinks.forEach((link) => {
         const element = document.getElementById(link.id);
@@ -36,10 +36,10 @@ export default function SectionNav() {
   }, []);
 
   return (
-    <div className="sticky top-[72px] z-40 bg-[#E8E1D3]/95 backdrop-blur-xs border-b border-[#C15F70]/20 shadow-2xs py-2.5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center sm:justify-start overflow-x-auto no-scrollbar">
+    <div className="sticky top-[72px] z-40 h-[56px] flex items-center bg-[#E8E1D3]/95 backdrop-blur-xs border-b border-[#C15F70]/20 shadow-2xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-center sm:justify-start overflow-x-auto no-scrollbar">
         <nav className="flex items-center space-x-6 sm:space-x-8 text-xs font-sans whitespace-nowrap">
-          <span className="text-[10px] font-serif uppercase tracking-widest text-[#B78D4A] font-semibold hidden sm:inline-block pr-2 border-r border-[#C15F70]/20">
+          <span className="text-[10px] font-serif uppercase tracking-widest text-[#B78D4A] font-semibold hidden sm:inline-block pr-3 border-r border-[#C15F70]/20">
             In-Page Nav
           </span>
           {sectionLinks.map((link) => {
@@ -48,10 +48,10 @@ export default function SectionNav() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`transition-colors font-medium tracking-wider uppercase text-[11px] py-1 relative ${
+                className={`transition-colors font-medium tracking-wider uppercase text-[11px] py-1.5 relative ${
                   isActive
                     ? "text-[#C15F70] font-semibold"
-                    : "text-[#241C20]/75 hover:text-[#C15F70]"
+                    : "text-[#241C20]/80 hover:text-[#C15F70]"
                 }`}
               >
                 {link.name}

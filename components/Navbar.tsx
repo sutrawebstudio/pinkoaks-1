@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import PinkOaksLogo from "./PinkOaksLogo";
 
 interface NavbarProps {
@@ -10,10 +12,11 @@ interface NavbarProps {
 export default function Navbar({ onOpenEnquire }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -25,37 +28,47 @@ export default function Navbar({ onOpenEnquire }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "Homepage", href: "#hero" },
-    { name: "About Us", href: "#about" },
-    { name: "Leadership", href: "#leadership" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Homepage", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Leadership", href: "/leadership" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-300 ${
         isScrolled
-          ? "py-3 bg-[#E8E1D3]/95 border-b border-[#C15F70]/20 shadow-xs"
-          : "py-4 bg-[#E8E1D3]/90 backdrop-blur-xs border-b border-transparent"
+          ? "bg-[#E8E1D3]/95 border-b border-[#C15F70]/20 shadow-xs"
+          : "bg-[#E8E1D3]/90 backdrop-blur-xs border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between">
         {/* Logo Left */}
-        <a href="#hero" className="flex items-center gap-2 focus:outline-none">
+        <Link href="/" className="flex items-center gap-2 focus:outline-none">
           <PinkOaksLogo size="sm" />
-        </a>
+        </Link>
 
-        {/* Links Center (Top-level Site Destinations) */}
+        {/* Real Dedicated Routes Center */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="font-sans text-xs tracking-widest uppercase font-medium text-[#241C20] hover:text-[#C15F70] transition-colors relative py-1"
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`font-sans text-xs tracking-widest uppercase font-medium transition-colors relative py-1 ${
+                  isActive
+                    ? "text-[#C15F70] font-semibold"
+                    : "text-[#241C20] hover:text-[#C15F70]"
+                }`}
+              >
+                {link.name}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C15F70] rounded-full" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Single CTA Button Right */}
@@ -96,16 +109,16 @@ export default function Navbar({ onOpenEnquire }: NavbarProps) {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#E8E1D3] border-b border-[#C15F70]/20 px-6 py-6 space-y-4">
+        <div className="md:hidden absolute top-[72px] left-0 right-0 bg-[#E8E1D3] border-b border-[#C15F70]/20 px-6 py-6 space-y-4 shadow-md">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className="block font-sans text-sm font-medium uppercase tracking-widest text-[#241C20] hover:text-[#C15F70]"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
       )}
