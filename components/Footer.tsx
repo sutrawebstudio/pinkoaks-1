@@ -10,25 +10,41 @@ interface FooterProps {
 
 export default function Footer({ onOpenEnquire }: FooterProps) {
   return (
-    <footer className="bg-[#33422F] text-[#E8E1D3] pt-16 pb-12 border-t border-[#B78D4A]/40 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#2E3D2A] text-[#E8E2D5] pt-16 pb-12 border-t border-[#B78D4A]/40 relative overflow-hidden">
+      
+      {/* 3. Secondary Texture: Jaali screen lattice pattern repeating background (opacity 0.05) */}
+      <div className="absolute inset-0 z-0 opacity-5 mix-blend-overlay pointer-events-none select-none">
+        <Image
+          src="/images/detail-jali.jpg"
+          alt="Jaali Screen Texture"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Blossom Sprig Motif Accent: Bottom-right corner (opacity 0.10) */}
+      <div className="absolute bottom-6 right-6 opacity-10 pointer-events-none select-none z-0 hidden md:block">
+        <PinkBlossomIcon size={240} className="text-[#C94F6D]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Top Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#E8E1D3]/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#E8E2D5]/15">
           
           {/* Brand Info Col */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="inline-block bg-[#E8E1D3] p-4 rounded-xl shadow-xs">
+            <div className="inline-block bg-[#E8E2D5] p-4 rounded-xl shadow-xs">
               <PinkOaksLogo size="sm" />
             </div>
 
-            <p className="font-sans text-xs text-[#E8E1D3]/85 font-light leading-relaxed max-w-sm">
+            <p className="font-sans text-xs text-[#E8E2D5]/85 font-light leading-relaxed max-w-sm">
               Established in 1990, Pink Oaks Properties is the first real estate company in Jaipur to have earned ISO certification. Crafting homes rooted in heritage, elegance, and peace.
             </p>
 
             {/* Supporting Blossom Detail Thumbnail */}
             <div className="flex items-center space-x-3 pt-1">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#9CAA8C]/50">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#A3B18A]/50">
                 <Image
                   src="/images/detail-blossom.jpg"
                   alt="Jaipur Blossom Detail"
@@ -36,8 +52,8 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
                   className="object-cover"
                 />
               </div>
-              <div className="text-[11px] font-sans text-[#E8E1D3]/80">
-                <span className="font-serif font-medium text-[#E8E1D3] block">Soft Pink Blossom Heritage</span>
+              <div className="text-[11px] font-sans text-[#E8E2D5]/80">
+                <span className="font-serif font-medium text-[#E8E2D5] block">Soft Pink Blossom Heritage</span>
                 <span>Crafted for real Indian families</span>
               </div>
             </div>
@@ -48,7 +64,7 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-[#E8E1D3]/30 hover:border-[#C15F70] text-[#E8E1D3] hover:text-[#C15F70] transition-colors"
+                className="p-2.5 rounded-full border border-[#E8E2D5]/30 hover:border-[#C94F6D] text-[#E8E2D5] hover:text-[#C94F6D] transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
@@ -59,7 +75,7 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-[#E8E1D3]/30 hover:border-[#C15F70] text-[#E8E1D3] hover:text-[#C15F70] transition-colors"
+                className="p-2.5 rounded-full border border-[#E8E2D5]/30 hover:border-[#C94F6D] text-[#E8E2D5] hover:text-[#C94F6D] transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
@@ -70,7 +86,7 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
                 href="https://wa.me/919772297772"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-[#E8E1D3]/30 hover:border-[#C15F70] text-[#E8E1D3] hover:text-[#C15F70] transition-colors"
+                className="p-2.5 rounded-full border border-[#E8E2D5]/30 hover:border-[#C94F6D] text-[#E8E2D5] hover:text-[#C94F6D] transition-colors"
                 aria-label="WhatsApp"
               >
                 <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
@@ -82,17 +98,17 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
 
           {/* Col 1: Work With Us */}
           <div className="space-y-4">
-            <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-[#9CAA8C]">
+            <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-[#A3B18A]">
               Work With Us
             </h4>
-            <ul className="space-y-2.5 font-sans text-xs font-light text-[#E8E1D3]/85">
+            <ul className="space-y-2.5 font-sans text-xs font-light text-[#E8E2D5]/85">
               <li>
-                <button onClick={() => onOpenEnquire("Footer Enquire")} className="hover:text-[#C15F70] transition-colors">
+                <button onClick={() => onOpenEnquire("Footer Enquire")} className="hover:text-[#C94F6D] transition-colors">
                   Enquire
                 </button>
               </li>
               <li>
-                <button onClick={() => onOpenEnquire("Footer Site Visit")} className="hover:text-[#C15F70] transition-colors">
+                <button onClick={() => onOpenEnquire("Footer Site Visit")} className="hover:text-[#C94F6D] transition-colors">
                   Schedule A Site Visit
                 </button>
               </li>
@@ -101,44 +117,41 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
 
           {/* Col 2: Know Us */}
           <div className="space-y-4">
-            <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-[#9CAA8C]">
+            <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-[#A3B18A]">
               Know Us
             </h4>
-            <ul className="space-y-2.5 font-sans text-xs font-light text-[#E8E1D3]/85">
-              <li><a href="#about" className="hover:text-[#C15F70] transition-colors">About Us</a></li>
-              <li><a href="#leadership" className="hover:text-[#C15F70] transition-colors">Leadership</a></li>
-              <li><a href="#about" className="hover:text-[#C15F70] transition-colors">Sustainability</a></li>
-              <li><a href="#plans" className="hover:text-[#C15F70] transition-colors">Architectural Design</a></li>
+            <ul className="space-y-2.5 font-sans text-xs font-light text-[#E8E2D5]/85">
+              <li><a href="/about" className="hover:text-[#C94F6D] transition-colors">About Us</a></li>
+              <li><a href="/leadership" className="hover:text-[#C94F6D] transition-colors">Leadership</a></li>
+              <li><a href="/about" className="hover:text-[#C94F6D] transition-colors">Sustainability</a></li>
+              <li><a href="#plans" className="hover:text-[#C94F6D] transition-colors">Architectural Design</a></li>
             </ul>
           </div>
 
           {/* Col 3: Projects & Media */}
           <div className="space-y-4">
-            <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-[#9CAA8C]">
+            <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-[#A3B18A]">
               Projects &amp; Media
             </h4>
-            <ul className="space-y-2.5 font-sans text-xs font-light text-[#E8E1D3]/85">
-              <li><a href="#overview" className="hover:text-[#C15F70] transition-colors">Residential</a></li>
-              <li><a href="#plans" className="hover:text-[#C15F70] transition-colors">Plotted &amp; Commercial</a></li>
-              <li><a href="#overview" className="hover:text-[#C15F70] transition-colors">In The News</a></li>
-              <li><a href="#overview" className="hover:text-[#C15F70] transition-colors">Press Release</a></li>
+            <ul className="space-y-2.5 font-sans text-xs font-light text-[#E8E2D5]/85">
+              <li><a href="#overview" className="hover:text-[#C94F6D] transition-colors">Residential</a></li>
+              <li><a href="#plans" className="hover:text-[#C94F6D] transition-colors">Plotted &amp; Commercial</a></li>
+              <li><a href="#overview" className="hover:text-[#C94F6D] transition-colors">In The News</a></li>
+              <li><a href="#overview" className="hover:text-[#C94F6D] transition-colors">Press Release</a></li>
             </ul>
           </div>
 
         </div>
 
-        {/* Brand Book Footer Sign-off (Leaf mark + Flower motif + Sign-off) */}
+        {/* Brand Book Footer Sign-off */}
         <div className="pt-8 text-center space-y-3">
           <div className="flex items-center justify-center space-x-2">
-            <svg className="w-5 h-6 text-[#C15F70]" viewBox="0 0 24 28" fill="currentColor">
-              <path d="M12 1C12 1 14.5 4.5 16.5 6C18.5 7.5 21 7 21.5 9.5C22 12 19.5 13.5 19.5 15.5C19.5 17.5 21 19.5 19.5 21.5C18 23.5 15.5 22.5 13.5 24.5C12.5 25.5 12 27 12 27C12 27 11.5 25.5 10.5 24.5C8.5 22.5 6 23.5 4.5 21.5C3 19.5 4.5 17.5 4.5 15.5C4.5 13.5 2 12 2.5 9.5C3 7 5.5 7.5 7.5 6C9.5 4.5 12 1 12 1Z" />
-            </svg>
-            <PinkBlossomIcon className="w-4 h-4 text-[#C15F70]" />
+            <PinkBlossomIcon className="w-4 h-4 text-[#C94F6D]" />
           </div>
-          <div className="font-serif text-sm text-[#E8E1D3]/90 tracking-widest">
-            Pink Oaks &nbsp;·&nbsp; Jaipur &nbsp;·&nbsp; <span className="font-script text-base text-[#C15F70]">Live Rooted</span>
+          <div className="font-serif text-sm text-[#E8E2D5]/90 tracking-widest">
+            Pink Oaks &nbsp;·&nbsp; Jaipur &nbsp;·&nbsp; <span className="font-script text-base text-[#C94F6D]">Live Rooted</span>
           </div>
-          <p className="font-sans text-[11px] text-[#E8E1D3]/60 font-light">
+          <p className="font-sans text-[11px] text-[#E8E2D5]/60 font-light">
             Copyright © 2026 Pink Oaks Properties &nbsp;·&nbsp; Disclaimer &nbsp;·&nbsp; Sitemap
           </p>
         </div>

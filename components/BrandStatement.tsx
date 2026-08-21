@@ -3,14 +3,21 @@
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
+import PinkBlossomIcon from "./PinkBlossomIcon";
 
 export default function BrandStatement() {
   return (
-    <section id="about" className="py-20 lg:py-32 bg-[#E8E1D3] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
+      
+      {/* Background Placement Pattern: Small blossom motif top-left corner */}
+      <div className="absolute top-6 left-6 opacity-10 pointer-events-none select-none z-0 hidden md:block">
+        <PinkBlossomIcon size={260} className="text-[#C94F6D]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Hand-set Section Number & Divider */}
-        <SectionDivider number="01" title="Philosophy & Craft Heritage" />
+        <SectionDivider number="01" title="Philosophy & Craft Heritage" icon="flower" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
           
@@ -27,10 +34,10 @@ export default function BrandStatement() {
             </p>
           </ScrollReveal>
 
-          {/* Vastu Harmony Box Right (5 cols, Forest Green & Sage accent) */}
-          <ScrollReveal delay={0.15} className="lg:col-span-5 bg-[#F5EEE6] border border-[#C15F70]/25 rounded-2xl p-8 space-y-4 shadow-xs">
+          {/* Vastu Harmony Box Right */}
+          <ScrollReveal delay={0.15} className="lg:col-span-5 bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-8 space-y-4 shadow-xs">
             <div className="flex items-center space-x-3" id="vastu">
-              <svg className="w-5 h-5 text-[#C15F70]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-[#C94F6D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18m9-9H3" />
               </svg>
               <h3 className="font-serif text-xl font-semibold text-[#241C20]">
@@ -40,16 +47,16 @@ export default function BrandStatement() {
             <p className="font-sans text-sm text-[#241C20]/80 font-light leading-relaxed">
               This property has been thoughtfully crafted and refined to ensure complete Vastu compliance, incorporating advanced measures such as Manjusha Installation, Bar Chart Balancing, Structural Balancing, and Energy Flow Optimisation. Every detail has been aligned to promote harmony, positivity, and prosperity.
             </p>
-            <div className="pt-2 flex items-center justify-between text-xs font-sans font-medium uppercase tracking-widest text-[#33422F]">
+            <div className="pt-2 flex items-center justify-between text-xs font-sans font-medium uppercase tracking-widest text-[#2E3D2A]">
               <span>Energy Flow Optimised</span>
-              <span className="text-[#9CAA8C]">Jaipur Heritage</span>
+              <span className="text-[#A3B18A]">Jaipur Heritage</span>
             </div>
           </ScrollReveal>
 
         </div>
 
-        {/* Emotional & Craft Beat: Hand-Carved Jaipur Jali & Sunlit Living Photography */}
-        <ScrollReveal delay={0.25} className="relative rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs bg-[#F5EEE6]">
+        {/* Emotional & Craft Beat */}
+        <ScrollReveal delay={0.25} className="relative rounded-2xl overflow-hidden border border-[#C94F6D]/20 shadow-xs bg-[#F5EEE6]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
             
             {/* Left: Sunlit Living Room Photo (7 cols) */}
@@ -66,12 +73,12 @@ export default function BrandStatement() {
             <div className="lg:col-span-5 p-8 sm:p-10 space-y-5 bg-[#F5EEE6] flex flex-col justify-between h-full">
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <span className="w-2 h-2 rounded-full bg-[#9CAA8C]" />
-                  <span className="font-sans text-[10px] uppercase tracking-widest text-[#33422F] font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-[#A3B18A]" />
+                  <span className="font-sans text-[10px] uppercase tracking-widest text-[#2E3D2A] font-semibold">
                     Jaipur Craft Heritage
                   </span>
                 </div>
-                <span className="font-script text-3xl text-[#C15F70] block">Live Rooted</span>
+                <span className="font-script text-3xl text-[#C94F6D] block">Live Rooted</span>
                 <h3 className="font-serif text-2xl font-semibold text-[#241C20] leading-snug">
                   Handcrafted Stone &amp; Sunlit Courtyards
                 </h3>
@@ -81,8 +88,8 @@ export default function BrandStatement() {
               </div>
 
               {/* Jali Detail Thumbnail */}
-              <div className="pt-3 border-t border-[#C15F70]/20 flex items-center gap-4">
-                <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-[#9CAA8C]/40">
+              <div className="pt-3 border-t border-[#C94F6D]/20 flex items-center gap-4">
+                <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-[#A3B18A]/40">
                   <Image
                     src="/images/detail-jali.jpg"
                     alt="Carved Stone Jali Lattice"
@@ -94,7 +101,7 @@ export default function BrandStatement() {
                   <span className="font-serif text-xs font-semibold text-[#241C20] block">
                     Carved Stone Jali Lattice
                   </span>
-                  <span className="font-sans text-[10px] text-[#A9C4D4] font-medium block">
+                  <span className="font-sans text-[10px] text-[#A9C4D8] font-medium block">
                     Natural Micro-Climate Cooling
                   </span>
                 </div>

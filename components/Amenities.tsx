@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
+import PinkBlossomIcon from "./PinkBlossomIcon";
 
 export default function Amenities() {
   const [activeTab, setActiveTab] = useState<string>("All");
@@ -63,8 +64,14 @@ export default function Amenities() {
   });
 
   return (
-    <section id="amenities" className="py-20 lg:py-32 bg-[#F5EEE6] border-y border-[#C15F70]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="amenities" className="py-20 lg:py-32 bg-[#F5EEE6] border-y border-[#C94F6D]/20 relative overflow-hidden">
+      
+      {/* Background Placement Pattern: Small blossom cluster top-right corner (opacity 0.12) */}
+      <div className="absolute top-6 right-6 opacity-12 pointer-events-none select-none z-0 hidden md:block">
+        <PinkBlossomIcon size={240} className="text-[#C94F6D]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Hand-set Section Number & Divider */}
         <SectionDivider number="04" title="Thoughtful Amenities & Landscaping" icon="flower" />
@@ -92,8 +99,8 @@ export default function Amenities() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-4 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap ${
                   activeTab === tab
-                    ? "bg-[#C15F70] text-[#E8E1D3] shadow-xs"
-                    : "bg-[#E8E1D3] text-[#241C20]/75 hover:bg-[#E8E1D3]/80 border border-[#C15F70]/20"
+                    ? "bg-[#C94F6D] text-[#E8E1D3] shadow-xs"
+                    : "bg-[#E8E1D3] text-[#241C20]/75 hover:bg-[#E8E1D3]/80 border border-[#C94F6D]/20"
                 }`}
               >
                 {tab}
@@ -109,31 +116,31 @@ export default function Amenities() {
               placeholder="Search amenity..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-[#E8E1D3] border border-[#C15F70]/25 rounded-full font-sans text-xs text-[#241C20] placeholder-[#241C20]/50 focus:outline-none focus:border-[#C15F70]"
+              className="w-full pl-9 pr-4 py-2 bg-[#E8E1D3] border border-[#C94F6D]/25 rounded-full font-sans text-xs text-[#241C20] placeholder-[#241C20]/50 focus:outline-none focus:border-[#C94F6D]"
             />
           </div>
         </div>
 
         {/* Architectural Spec Matrix List */}
         <ScrollReveal>
-          <div className="bg-[#E8E1D3] border border-[#C15F70]/25 rounded-2xl overflow-hidden shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 lg:divide-x divide-[#C15F70]/15">
+          <div className="bg-[#E8E1D3] border border-[#C94F6D]/25 rounded-2xl overflow-hidden shadow-xs">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 lg:divide-x divide-[#C94F6D]/15">
               {filteredAmenities.map((item) => {
                 const IconComponent = item.icon;
                 
                 const iconColor =
                   item.theme === "sage"
-                    ? "text-[#33422F] bg-[#9CAA8C]/20 border-[#9CAA8C]/40"
+                    ? "text-[#2E3D2A] bg-[#A3B18A]/20 border-[#A3B18A]/40"
                     : item.theme === "misty"
-                    ? "text-[#241C20] bg-[#A9C4D4]/30 border-[#A9C4D4]/50"
+                    ? "text-[#241C20] bg-[#A9C4D8]/30 border-[#A9C4D8]/50"
                     : item.theme === "forest"
-                    ? "text-[#33422F] bg-[#33422F]/10 border-[#33422F]/20"
-                    : "text-[#C15F70] bg-[#C15F70]/15 border-[#C15F70]/25";
+                    ? "text-[#2E3D2A] bg-[#2E3D2A]/10 border-[#2E3D2A]/20"
+                    : "text-[#C94F6D] bg-[#C94F6D]/15 border-[#C94F6D]/25";
 
                 return (
                   <div
                     key={item.name}
-                    className="p-4 sm:px-6 sm:py-4.5 flex items-center justify-between hover:bg-[#F5EEE6]/80 transition-colors border-b border-[#C15F70]/15"
+                    className="p-4 sm:px-6 sm:py-4.5 flex items-center justify-between hover:bg-[#F5EEE6]/80 transition-colors border-b border-[#C94F6D]/15"
                   >
                     <div className="flex items-center space-x-3.5">
                       <div className={`p-2.5 rounded-lg border ${iconColor} shrink-0`}>
@@ -148,7 +155,7 @@ export default function Amenities() {
                         </span>
                       </div>
                     </div>
-                    <span className="font-serif text-[10px] font-semibold text-[#C15F70] bg-[#F5EEE6] px-2.5 py-1 rounded-full uppercase tracking-wider border border-[#C15F70]/20">
+                    <span className="font-serif text-[10px] font-semibold text-[#C94F6D] bg-[#F5EEE6] px-2.5 py-1 rounded-full uppercase tracking-wider border border-[#C94F6D]/20">
                       Included
                     </span>
                   </div>
