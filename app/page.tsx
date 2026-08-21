@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import SectionNav from "@/components/SectionNav";
 import Hero from "@/components/Hero";
 import OverviewStats from "@/components/OverviewStats";
 import BrandStatement from "@/components/BrandStatement";
@@ -30,14 +31,17 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FBF8F4] text-[#241C20] relative">
-      {/* Primary Sticky Header */}
+    <main className="min-h-screen bg-[#E8E1D3] text-[#241C20] relative">
+      {/* 1. Primary Top Site Nav (Site-wide destinations: Homepage, About Us, Leadership, Contact Us) */}
       <Navbar onOpenEnquire={handleOpenEnquire} />
 
       {/* Hero Section */}
       <Hero onOpenEnquire={handleOpenEnquire} />
 
-      {/* Overview Stats (Equal 6-column grid) */}
+      {/* 2. Secondary In-Page Section Nav (Homepage anchor jumps: Overview, Location, Plans, Price, Amenities, Download) */}
+      <SectionNav />
+
+      {/* Overview Stats (Equal 6-column grid with count-up animation) */}
       <OverviewStats />
 
       {/* Philosophy & Vastu Harmony */}
@@ -74,7 +78,7 @@ export default function Home() {
       <Downloads onOpenEnquire={handleOpenEnquire} />
 
       {/* Direct Contact Form Section */}
-      <section className="py-20 lg:py-28 bg-[#FBF8F4]">
+      <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <EnquireForm title="Get in Touch with Pink Oaks" />
         </div>
