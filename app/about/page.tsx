@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 import EnquireModal from "@/components/EnquireModal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import PinkBlossomIcon from "@/components/PinkBlossomIcon";
-import { ShieldCheck, Heart, Sun, Landmark } from "lucide-react";
+import { Award, Heart, ShieldCheck, Trophy, Sparkles } from "lucide-react";
 
 export default function AboutPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,26 +21,49 @@ export default function AboutPage() {
     setModalOpen(true);
   };
 
-  const philosophyPillars = [
+  const corePrinciples = [
     {
-      title: "Generational Living",
-      description: "Designed for multi-generational Indian families who value private floor space, grand balconies, and acoustic tranquility.",
+      title: "Thoughtful Design",
+      description: "Crafting single-floor residential layouts with natural light, cross-ventilation, and private balcony space for every family.",
+      icon: Sparkles,
+    },
+    {
+      title: "Sustainability Leader",
+      description: "Ranked #1 real estate company globally on the Dow Jones Sustainability Index & Global Real Estate Sustainability Benchmark.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Thriving Communities",
+      description: "Creating vibrant, safe, and holistic urban neighborhoods that foster multi-generational family well-being.",
       icon: Heart,
     },
     {
-      title: "Complete Vastu Compliance",
-      description: "Incorporating Manjusha Installation, Bar Chart Balancing, and Energy Flow Optimisation for lasting positivity.",
-      icon: Landmark,
+      title: "Uncompromising Quality",
+      description: "Backed by a 129-year legacy of trust and ISO-certified engineering standards across 100,000+ happy homes.",
+      icon: Award,
+    },
+  ];
+
+  const awardsList = [
+    {
+      title: "Joint Winner – Outstanding Companies",
+      subtitle: "Real Estate Category",
+      organization: "Asia Money Outstanding Company Poll 2023",
     },
     {
-      title: "Jaipur Craft Heritage",
-      description: "Integrating hand-carved stone jali screens, natural sandstone textures, and climate-controlled courtyards.",
-      icon: Sun,
+      title: "Winner – DEI Champion",
+      subtitle: "LGBTQIA+, Non-Tech",
+      organization: "Aon NASSCOM DEI Champions Award 2023",
     },
     {
-      title: "ISO-Certified Engineering",
-      description: "Advanced anti-termite treatment, pressure pump plumbing, anti-skid tiles, and structural longevity standards.",
-      icon: ShieldCheck,
+      title: "Winner – CSR in Real Estate",
+      subtitle: "Excellence & Impact",
+      organization: "Golden Peacock Award 2022",
+    },
+    {
+      title: "Developer of the Year",
+      subtitle: "National Real Estate",
+      organization: "GRI India Awards & Porter Prize",
     },
   ];
 
@@ -57,50 +80,45 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal variant="fade-up" duration={0.8}>
-            <div className="flex items-center space-x-2.5 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#C15F70]" />
-              <span className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#B78D4A]">
-                About Pink Oaks Properties
-              </span>
-            </div>
+            <span className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#B78D4A] block mb-3">
+              Home &gt; Know Us &gt; About Us
+            </span>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#241C20] leading-tight max-w-4xl">
-              Crafting Enduring Sanctuaries in Jaipur Since 1990.
+              Driven by a Singular Purpose — Crafting Joy.
             </h1>
-            <p className="font-sans text-base sm:text-lg text-[#241C20]/80 font-light mt-6 max-w-2xl leading-relaxed">
-              We approach residential development as a sacred craft — combining Jaipur&apos;s rich architectural heritage, Vastu energy principles, and modern luxury finishes for families who seek peace and quality.
+            <p className="font-sans text-base sm:text-lg text-[#241C20]/80 font-light mt-6 max-w-3xl leading-relaxed">
+              Over 100,000 families have found a home with us. Combining a 129-year legacy of trust and excellence with a forward-looking vision to shape the future of urban India.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Brand History & Heritage Section */}
+      {/* About Pinkoaks Narrative */}
       <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <SectionDivider number="01" title="Our Architectural Heritage" icon="leaf" />
+          <SectionDivider number="01" title="About Pinkoaks" icon="leaf" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Content */}
-            <ScrollReveal variant="slide-left" duration={0.8} className="lg:col-span-6 space-y-6">
+            <ScrollReveal variant="slide-left" duration={0.8} className="lg:col-span-7 space-y-6">
               <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#241C20] leading-tight">
-                Jaipur&apos;s First ISO-Certified Real Estate Pioneer.
+                India&apos;s Most Trusted Real Estate Developer
               </h2>
-              <p className="font-sans text-base text-[#241C20]/80 font-light leading-relaxed">
-                Over thirty-five years ago, Pink Oaks Properties established a new benchmark for residential construction in Rajasthan. We were the first real estate firm in Jaipur to earn ISO certification, proving our commitment to zero-compromise engineering and transparent delivery.
+              <p className="font-sans text-base text-[#241C20]/85 font-light leading-relaxed">
+                At Pinkoaks, we are driven by a singular purpose: <strong className="font-medium text-[#C15F70]">Crafting Joy</strong>. Over 100,000 families have found a home with us, making GPL India&apos;s largest residential developer by both value and volume of homes sold.
               </p>
-              <p className="font-sans text-sm text-[#241C20]/75 font-light leading-relaxed">
-                Pink Oaks Bani Park represents the culmination of this legacy — single-floor private residences that offer the seclusion of a private bungalow paired with the convenience of a modern luxury enclave.
+              <p className="font-sans text-sm text-[#241C20]/80 font-light leading-relaxed">
+                Our approach is anchored in four core principles: thoughtful design, sustainability, thriving communities, and uncompromising quality. This commitment has earned us global recognition, including being ranked the No. 1 real estate company worldwide on both the Dow Jones Sustainability Index and the Global Real Estate Sustainability Benchmark as of December 2025.
               </p>
-              <div className="pt-2 flex items-center space-x-6 text-xs font-sans font-medium uppercase tracking-widest text-[#C15F70]">
-                <span>35+ Years Experience</span>
-                <span>·</span>
-                <span>ISO 9001 Certified</span>
-              </div>
+              <p className="font-sans text-sm text-[#241C20]/80 font-light leading-relaxed">
+                Established in 1990, Pink Oaks Properties is the first real estate company to have ISO certification. At the heart of our journey is our team — a diverse, driven collective united by purpose and ambition. Together, we are not just building homes, but shaping communities and skylines that will endure for generations.
+              </p>
             </ScrollReveal>
 
             {/* Right Photo Feature: Jaipur Jali Craft */}
-            <ScrollReveal variant="slide-right" duration={0.8} delay={0.2} className="lg:col-span-6">
+            <ScrollReveal variant="slide-right" duration={0.8} delay={0.2} className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-[#C15F70]/30 aspect-[4/3] shadow-xs">
                 <Image
                   src="/images/detail-jali.jpg"
@@ -110,10 +128,10 @@ export default function AboutPage() {
                 />
                 <div className="absolute bottom-4 left-4 right-4 bg-[#E8E1D3]/95 backdrop-blur-xs p-4 rounded-xl border border-[#C15F70]/25">
                   <span className="font-serif text-sm font-semibold text-[#241C20] block">
-                    Hand-Carved Jaipur Jali Screens
+                    Hand-Carved Jaipur Jali Architecture
                   </span>
                   <span className="font-sans text-xs text-[#241C20]/75 font-light block">
-                    Provides natural climate control &amp; timeless Rajasthani aesthetics
+                    Over 500 Awards &amp; Global Sustainability Recognition
                   </span>
                 </div>
               </div>
@@ -123,33 +141,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Philosophy Pillars Grid */}
+      {/* Our Purpose & Core Principles */}
       <section className="py-20 lg:py-28 bg-[#F5EEE6] border-y border-[#C15F70]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <SectionDivider number="02" title="Core Philosophy Pillars" icon="flower" />
+          <SectionDivider number="02" title="Our Purpose & Pillars" icon="flower" />
 
-          <div className="mb-12">
-            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#241C20]">
-              Built for How Families Truly Live
+          <div className="max-w-3xl mb-12">
+            <span className="font-sans text-xs font-semibold uppercase tracking-widest text-[#B78D4A]">
+              Our Guiding Purpose
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#241C20] mt-2">
+              “Crafting spaces that spark joy — one community, one family, one home at a time.”
             </h2>
+            <p className="font-sans text-sm text-[#241C20]/75 font-light mt-3">
+              The joy we bring to neighbourhoods, to families and our customers is what drives our purpose forward. It has always been at the forefront of everything we do.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {philosophyPillars.map((pillar, idx) => {
-              const IconComponent = pillar.icon;
+            {corePrinciples.map((principle, idx) => {
+              const IconComp = principle.icon;
               return (
-                <ScrollReveal key={pillar.title} delay={idx * 0.15}>
+                <ScrollReveal key={principle.title} delay={idx * 0.15}>
                   <div className="bg-[#E8E1D3] p-8 rounded-2xl border border-[#C15F70]/25 h-full flex flex-col justify-between space-y-4 shadow-xs">
                     <div className="p-3 bg-[#F5EEE6] border border-[#C15F70]/25 rounded-xl w-fit text-[#C15F70]">
-                      <IconComponent className="w-5 h-5 stroke-[1.5]" />
+                      <IconComp className="w-5 h-5 stroke-[1.5]" />
                     </div>
                     <div className="space-y-2">
                       <h3 className="font-serif text-lg font-semibold text-[#241C20]">
-                        {pillar.title}
+                        {principle.title}
                       </h3>
                       <p className="font-sans text-xs text-[#241C20]/75 font-light leading-relaxed">
-                        {pillar.description}
+                        {principle.description}
                       </p>
                     </div>
                   </div>
@@ -161,13 +185,54 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Awards & Recognition Section */}
+      <section className="py-20 lg:py-28 bg-[#E8E1D3]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <SectionDivider number="03" title="Recognitions & Awards" icon="leaf" />
+
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#241C20]">
+              Over 500 Awards &amp; Recognitions Worldwide
+            </h2>
+            <p className="font-sans text-sm text-[#241C20]/75 font-light mt-2">
+              Recognized as Developer of the Year, the Porter Prize, and India&apos;s Most Trusted Real Estate Brand.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {awardsList.map((award, idx) => (
+              <ScrollReveal key={award.title} delay={idx * 0.15}>
+                <div className="bg-[#F5EEE6] p-8 rounded-2xl border border-[#C15F70]/25 h-full flex flex-col justify-between space-y-4 shadow-xs">
+                  <div className="p-2.5 bg-[#E8E1D3] border border-[#C15F70]/25 rounded-xl w-fit text-[#C15F70]">
+                    <Trophy className="w-5 h-5 stroke-[1.5]" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-serif text-base font-semibold text-[#241C20]">
+                      {award.title}
+                    </h3>
+                    <p className="font-sans text-xs font-medium text-[#C15F70]">
+                      {award.subtitle}
+                    </p>
+                    <p className="font-sans text-[11px] text-[#241C20]/70 font-light pt-1">
+                      {award.organization}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* Monograph Pull-Quote Band */}
       <EditorialQuote />
 
       {/* Contact Form Section */}
       <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <EnquireForm title="Schedule a Personal Brand & Architecture Presentation" />
+          <EnquireForm title="Schedule a Personal Visit &amp; Experience Crafting Joy" />
         </div>
       </section>
 
