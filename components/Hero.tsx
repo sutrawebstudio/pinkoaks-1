@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import PinkOaksLogo from "./PinkOaksLogo";
+import PinkBlossomIcon from "./PinkBlossomIcon";
 
 interface HeroProps {
   onOpenEnquire: (title?: string) => void;
@@ -27,8 +28,13 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative pt-28 pb-16 lg:pt-36 lg:pb-28 bg-[#FBF8F4]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="relative pt-28 pb-16 lg:pt-36 lg:pb-28 bg-[#E8E1D3] overflow-hidden">
+      {/* Subtle Flower Watermark Background */}
+      <div className="absolute top-12 left-6 opacity-[0.06] pointer-events-none select-none">
+        <PinkBlossomIcon size={320} className="text-[#C15F70]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Editorial Content (6 cols) */}
@@ -38,12 +44,13 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             transition={{ duration: 0.6 }}
             className="lg:col-span-6 space-y-8"
           >
-            {/* Tagline moment */}
-            <div className="flex items-baseline space-x-2 border-b border-[#B78D4A]/25 pb-4 max-w-xs">
-              <span className="font-script text-3xl sm:text-4xl text-[#C74B66]">Live</span>
+            {/* Tagline moment with 5-petal flower motif accent */}
+            <div className="flex items-center space-x-2.5 border-b border-[#B78D4A]/25 pb-4 max-w-xs">
+              <span className="font-script text-3xl sm:text-4xl text-[#C15F70]">Live</span>
               <span className="font-serif text-xl sm:text-2xl font-semibold tracking-[0.2em] uppercase text-[#241C20]">
                 ROOTED.
               </span>
+              <PinkBlossomIcon className="w-4 h-4 text-[#C15F70] ml-1 opacity-80" />
             </div>
 
             {/* Headline */}
@@ -57,8 +64,8 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             </div>
 
             {/* Key Pricing & Specs Banner */}
-            <div className="bg-[#F8ECEF] border-l-2 border-[#C74B66] p-4 sm:p-5 rounded-r-md">
-              <div className="font-serif text-lg sm:text-xl font-semibold text-[#C74B66]">
+            <div className="bg-[#F5EEE6] border-l-2 border-[#C15F70] p-4 sm:p-5 rounded-r-md">
+              <div className="font-serif text-lg sm:text-xl font-semibold text-[#C15F70]">
                 INR 1.98 Cr. onwards
               </div>
               <div className="font-sans text-xs sm:text-sm font-medium text-[#241C20]/90 tracking-wide mt-1">
@@ -70,14 +77,14 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => onOpenEnquire("Schedule a Site Visit")}
-                className="px-6 py-3.5 bg-[#C74B66] hover:bg-[#8E2F47] text-[#FBF8F4] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors shadow-xs"
+                className="px-6 py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors shadow-xs"
               >
                 Schedule a Visit
               </button>
 
               <a
                 href="#emi-calculator"
-                className="px-5 py-3.5 border border-[#C74B66] text-[#C74B66] hover:bg-[#F8ECEF] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors"
+                className="px-5 py-3.5 border border-[#C15F70] text-[#C15F70] hover:bg-[#F5EEE6] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors"
               >
                 EMI Calculator
               </a>
@@ -87,7 +94,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
                   href="https://wa.me/919772297772"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 border border-[#E88CA4]/40 text-[#C74B66] hover:bg-[#F8ECEF] rounded-md transition-colors"
+                  className="p-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#F5EEE6] rounded-md transition-colors"
                   title="WhatsApp Us"
                 >
                   <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
@@ -97,7 +104,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
 
                 <a
                   href="tel:+919772297772"
-                  className="p-3.5 border border-[#E88CA4]/40 text-[#C74B66] hover:bg-[#F8ECEF] rounded-md transition-colors"
+                  className="p-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#F5EEE6] rounded-md transition-colors"
                   title="Call Us (+91 9772297772)"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,13 +114,33 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
 
                 <button
                   onClick={handleShare}
-                  className="p-3.5 border border-[#E88CA4]/40 text-[#C74B66] hover:bg-[#F8ECEF] rounded-md transition-colors"
+                  className="p-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#F5EEE6] rounded-md transition-colors"
                   title="Share Project"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 100-5.367 3 3 0 000 5.367zm0 8a3 3 0 100-5.367 3 3 0 000 5.367z" />
                   </svg>
                 </button>
+              </div>
+            </div>
+
+            {/* Supporting Family Lifestyle Preview Card */}
+            <div className="pt-2 flex items-center gap-3 border-t border-[#C15F70]/20">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/30">
+                <Image
+                  src="/images/family-living.jpg"
+                  alt="Multi-generational family living"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="text-xs">
+                <span className="font-serif font-semibold text-[#241C20] block">
+                  Built for Multi-Generational Families
+                </span>
+                <span className="font-sans font-light text-[#241C20]/70 text-[11px]">
+                  Private floors, sprawling balconies &amp; quiet sanctuaries
+                </span>
               </div>
             </div>
           </motion.div>
@@ -125,7 +152,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-xs border border-[#E88CA4]/30 aspect-[4/3] min-h-[380px] lg:min-h-[460px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-xs border border-[#C15F70]/30 aspect-[4/3] min-h-[380px] lg:min-h-[460px]">
               <Image
                 src="/images/hero.jpg"
                 alt="Pink Oaks Luxury Architecture"
@@ -140,7 +167,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               </div>
 
               {/* RERA Badge Bottom Right */}
-              <div className="absolute bottom-4 right-4 bg-[#FBF8F4]/95 backdrop-blur-xs px-3.5 py-1.5 rounded-md border border-[#B78D4A]/30 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20] shadow-xs">
+              <div className="absolute bottom-4 right-4 bg-[#E8E1D3]/95 backdrop-blur-xs px-3.5 py-1.5 rounded-md border border-[#B78D4A]/30 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20] shadow-xs">
                 RERA: RAJ/P/2025/3489
               </div>
             </div>
