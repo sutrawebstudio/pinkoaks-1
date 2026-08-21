@@ -3,16 +3,20 @@
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import PinkBlossomIcon from "./PinkBlossomIcon";
+import CherryBlossomBranch from "./CherryBlossomBranch";
 
 export default function BrandStatement() {
   return (
     <section id="about" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
       
-      {/* Background Placement Pattern: Small blossom motif top-left corner */}
-      <div className="absolute top-6 left-6 opacity-10 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomIcon size={260} className="text-[#C94F6D]" />
-      </div>
+      {/* Placement Rule 2: ABOUT/OVERVIEW section - branch top-right corner hanging down (opacity 0.85) */}
+      <CherryBlossomBranch
+        position="top-right"
+        size={300}
+        rotate={90}
+        opacity={0.85}
+        className="w-[180px] sm:w-[240px] lg:w-[300px]"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -35,7 +39,7 @@ export default function BrandStatement() {
           </ScrollReveal>
 
           {/* Vastu Harmony Box Right */}
-          <ScrollReveal delay={0.15} className="lg:col-span-5 bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-8 space-y-4 shadow-xs">
+          <ScrollReveal delay={0.15} className="lg:col-span-5 bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-8 space-y-4 shadow-xs relative z-10">
             <div className="flex items-center space-x-3" id="vastu">
               <svg className="w-5 h-5 text-[#C94F6D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18m9-9H3" />

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import PinkOaksLogo from "./PinkOaksLogo";
 import PinkBlossomIcon from "./PinkBlossomIcon";
+import CherryBlossomBranch from "./CherryBlossomBranch";
 
 interface FooterProps {
   onOpenEnquire: (title?: string) => void;
@@ -12,7 +13,24 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
   return (
     <footer className="bg-[#2E3D2A] text-[#E8E2D5] pt-16 pb-12 border-t border-[#B78D4A]/40 relative overflow-hidden">
       
-      {/* 3. Secondary Texture: Jaali screen lattice pattern repeating background (opacity 0.05) */}
+      {/* Placement Rule 7: DOWNLOAD/CONTACT/FOOTER - branch bottom-left + bottom-right pair framing footer (size 260, opacity 0.85) */}
+      <CherryBlossomBranch
+        position="bottom-left"
+        size={260}
+        rotate={-15}
+        opacity={0.85}
+        className="w-[140px] sm:w-[200px] lg:w-[260px]"
+      />
+      <CherryBlossomBranch
+        position="bottom-right"
+        size={260}
+        rotate={15}
+        flipX={true}
+        opacity={0.85}
+        className="w-[140px] sm:w-[200px] lg:w-[260px]"
+      />
+
+      {/* Jaali screen lattice pattern repeating background (opacity 0.05) */}
       <div className="absolute inset-0 z-0 opacity-5 mix-blend-overlay pointer-events-none select-none">
         <Image
           src="/images/detail-jali.jpg"
@@ -20,11 +38,6 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
           fill
           className="object-cover"
         />
-      </div>
-
-      {/* Blossom Sprig Motif Accent: Bottom-right corner (opacity 0.10) */}
-      <div className="absolute bottom-6 right-6 opacity-10 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomIcon size={240} className="text-[#C94F6D]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

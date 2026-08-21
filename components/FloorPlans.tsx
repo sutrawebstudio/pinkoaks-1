@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import PinkBlossomBranch from "./PinkBlossomBranch";
+import CherryBlossomBranch from "./CherryBlossomBranch";
 import { Maximize2, X, Download, Compass } from "lucide-react";
 
 interface FloorPlansProps {
@@ -48,10 +48,14 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
   return (
     <section id="plans" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
       
-      {/* Plans Section Placement Pattern: Thin vertical branch along left margin (opacity 0.10) */}
-      <div className="absolute top-16 -left-12 opacity-10 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomBranch variant="full-branch" size={280} className="text-[#C94F6D] -rotate-30" />
-      </div>
+      {/* Placement Rule 4: FLOOR PLANS section - small branch sprig top-right, scaled down 60% (size 200, opacity 0.85) */}
+      <CherryBlossomBranch
+        position="top-right"
+        size={200}
+        rotate={30}
+        opacity={0.85}
+        className="w-[140px] sm:w-[180px] lg:w-[200px]"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -88,7 +92,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
 
         {/* Tab Content Box */}
         <ScrollReveal variant="scale-up">
-          <div className="bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-6 sm:p-10 shadow-xs relative overflow-hidden">
+          <div className="bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-6 sm:p-10 shadow-xs relative overflow-hidden z-10">
             
             <AnimatePresence mode="wait">
               <motion.div

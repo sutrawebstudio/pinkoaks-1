@@ -5,6 +5,7 @@ import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
 import PinkBlossomIcon from "./PinkBlossomIcon";
+import CherryBlossomBranch from "./CherryBlossomBranch";
 import { MapPin, Navigation, ExternalLink } from "lucide-react";
 
 export default function Neighbourhood() {
@@ -35,10 +36,14 @@ export default function Neighbourhood() {
   return (
     <section id="location" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
       
-      {/* Background Placement Pattern: Blossom sprig bottom-right (opacity 0.10) */}
-      <div className="absolute bottom-6 right-6 opacity-10 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomIcon size={260} className="text-[#C94F6D] -rotate-12" />
-      </div>
+      {/* Placement Rule 6: LOCATION section - branch top-left, scaled down (size 240, opacity 0.85) */}
+      <CherryBlossomBranch
+        position="top-left"
+        size={240}
+        rotate={-15}
+        opacity={0.85}
+        className="w-[140px] sm:w-[190px] lg:w-[240px]"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -56,7 +61,7 @@ export default function Neighbourhood() {
           </ScrollReveal>
 
           {/* Landscaping / Park Family Lifestyle Preview Card */}
-          <ScrollReveal delay={0.1} className="lg:col-span-5 bg-[#F5EEE6] p-4 rounded-2xl border border-[#A3B18A]/40 flex items-center space-x-4 shadow-xs">
+          <ScrollReveal delay={0.1} className="lg:col-span-5 bg-[#F5EEE6] p-4 rounded-2xl border border-[#A3B18A]/40 flex items-center space-x-4 shadow-xs relative z-10">
             <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 border border-[#A3B18A]/50">
               <Image
                 src="/images/family-park.jpg"
@@ -80,7 +85,7 @@ export default function Neighbourhood() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left Distance Matrix */}
-          <ScrollReveal className="lg:col-span-6 bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-6 sm:p-8 space-y-5 flex flex-col justify-between shadow-xs">
+          <ScrollReveal className="lg:col-span-6 bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-6 sm:p-8 space-y-5 flex flex-col justify-between shadow-xs relative z-10">
             <div>
               <div className="flex items-center justify-between border-b border-[#C94F6D]/20 pb-4">
                 <div className="flex items-center space-x-2">
@@ -144,7 +149,7 @@ export default function Neighbourhood() {
           </ScrollReveal>
 
           {/* Right Google Maps Embed */}
-          <ScrollReveal delay={0.15} className="lg:col-span-6 rounded-2xl overflow-hidden border border-[#C94F6D]/30 bg-[#F5EEE6] relative min-h-[400px] h-[440px] lg:h-full flex flex-col shadow-xs">
+          <ScrollReveal delay={0.15} className="lg:col-span-6 rounded-2xl overflow-hidden border border-[#C94F6D]/30 bg-[#F5EEE6] relative min-h-[400px] h-[440px] lg:h-full flex flex-col shadow-xs z-10">
             <iframe
               title="Pink Oaks Location Map"
               src="https://maps.google.com/maps?q=D-169+Bhrigu+Marg,+Bani+Park,+Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed"

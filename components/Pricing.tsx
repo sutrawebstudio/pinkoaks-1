@@ -3,6 +3,7 @@
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
 import PinkBlossomIcon from "./PinkBlossomIcon";
+import CherryBlossomBranch from "./CherryBlossomBranch";
 import { Check, ArrowRight } from "lucide-react";
 
 interface PricingProps {
@@ -38,8 +39,18 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
   ];
 
   return (
-    <section id="price" className="py-20 lg:py-32 bg-[#E8E1D3]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="price" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
+      
+      {/* Placement Rule 5: PRICE section - branch bottom-right corner, subtle (size 280, opacity 0.80) */}
+      <CherryBlossomBranch
+        position="bottom-right"
+        size={280}
+        rotate={-15}
+        opacity={0.80}
+        className="w-[160px] sm:w-[220px] lg:w-[280px]"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Hand-set Section Number & Divider */}
         <SectionDivider number="07" title="Investment & Pricing" icon="flower" />
@@ -58,19 +69,19 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
           {priceTiers.map((tier, idx) => (
             <ScrollReveal key={tier.type} delay={idx * 0.15} className="h-full">
               <div
-                className={`relative rounded-2xl p-8 sm:p-10 border transition-all duration-300 flex flex-col justify-between h-full ${
+                className={`relative rounded-2xl p-8 sm:p-10 border transition-all duration-300 flex flex-col justify-between h-full z-10 ${
                   tier.featured
-                    ? "bg-[#F5EEE6] border-[#C15F70] shadow-md ring-1 ring-[#C15F70]/50"
-                    : "bg-[#E8E1D3] border-[#C15F70]/25 shadow-xs hover:border-[#C15F70]/40"
+                    ? "bg-[#F5EEE6] border-[#C94F6D] shadow-md ring-1 ring-[#C94F6D]/50"
+                    : "bg-[#E8E1D3] border-[#C94F6D]/25 shadow-xs hover:border-[#C94F6D]/40"
                 }`}
               >
                 {/* Signature Corner Flower Accent */}
-                <div className="absolute top-4 right-4 z-10 bg-[#E8E1D3]/90 backdrop-blur-xs p-1.5 rounded-full border border-[#C15F70]/30 shadow-xs">
-                  <PinkBlossomIcon className="w-3.5 h-3.5 text-[#C15F70]" />
+                <div className="absolute top-4 right-4 z-10 bg-[#E8E1D3]/90 backdrop-blur-xs p-1.5 rounded-full border border-[#C94F6D]/30 shadow-xs">
+                  <PinkBlossomIcon className="w-3.5 h-3.5 text-[#C94F6D]" />
                 </div>
 
                 {tier.featured && (
-                  <div className="absolute top-0 left-6 -translate-y-1/2 bg-[#C15F70] text-[#E8E1D3] text-[9px] font-sans font-semibold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-xs">
+                  <div className="absolute top-0 left-6 -translate-y-1/2 bg-[#C94F6D] text-[#E8E1D3] text-[9px] font-sans font-semibold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-xs">
                     Most Popular Choice
                   </div>
                 )}
@@ -81,7 +92,7 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
                       {tier.type}
                     </span>
                     <div className="flex items-baseline space-x-2 mt-2">
-                      <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C15F70]">
+                      <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C94F6D]">
                         {tier.price}
                       </span>
                       <span className="font-sans text-xs font-light text-[#241C20]/70">
@@ -93,12 +104,12 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
                     </span>
                   </div>
 
-                  <div className="h-px bg-[#C15F70]/20" />
+                  <div className="h-px bg-[#C94F6D]/20" />
 
                   <ul className="space-y-3">
                     {tier.highlights.map((item) => (
                       <li key={item} className="flex items-start space-x-3 font-sans text-xs text-[#241C20]/80 font-light">
-                        <div className="p-1 rounded-full bg-[#C15F70]/15 text-[#C15F70] shrink-0 mt-0.5">
+                        <div className="p-1 rounded-full bg-[#C94F6D]/15 text-[#C94F6D] shrink-0 mt-0.5">
                           <Check className="w-3 h-3 stroke-[2.5]" />
                         </div>
                         <span className="leading-snug">{item}</span>
@@ -111,8 +122,8 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
                   onClick={() => onOpenEnquire(`Pricing Enquiry - ${tier.type}`)}
                   className={`w-full py-3.5 font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors mt-8 flex items-center justify-center space-x-2 ${
                     tier.featured
-                      ? "bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] shadow-xs"
-                      : "border border-[#C15F70] text-[#C15F70] hover:bg-[#F5EEE6]"
+                      ? "bg-[#C94F6D] hover:bg-[#A34A5A] text-[#E8E1D3] shadow-xs"
+                      : "border border-[#C94F6D] text-[#C94F6D] hover:bg-[#F5EEE6]"
                   }`}
                 >
                   <span>Request Cost Sheet</span>

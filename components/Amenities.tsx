@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import PinkBlossomBranch from "./PinkBlossomBranch";
+import CherryBlossomBranch from "./CherryBlossomBranch";
 
 export default function Amenities() {
   const [activeTab, setActiveTab] = useState<string>("All");
@@ -66,10 +66,14 @@ export default function Amenities() {
   return (
     <section id="amenities" className="py-20 lg:py-32 bg-[#F5EEE6] border-y border-[#C94F6D]/20 relative overflow-hidden">
       
-      {/* Amenities Section Placement Pattern: Small sprig top-right corner (opacity 0.12) */}
-      <div className="absolute top-6 right-6 opacity-12 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomBranch variant="sprig-crop" size={200} className="text-[#C94F6D]" />
-      </div>
+      {/* Placement Rule 3: AMENITIES section - branch bottom-left corner (opacity 0.85) */}
+      <CherryBlossomBranch
+        position="bottom-left"
+        size={320}
+        rotate={-45}
+        opacity={0.85}
+        className="w-[180px] sm:w-[250px] lg:w-[320px]"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -123,7 +127,7 @@ export default function Amenities() {
 
         {/* Architectural Spec Matrix List */}
         <ScrollReveal>
-          <div className="bg-[#E8E1D3] border border-[#C94F6D]/25 rounded-2xl overflow-hidden shadow-xs">
+          <div className="bg-[#E8E1D3] border border-[#C94F6D]/25 rounded-2xl overflow-hidden shadow-xs relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 lg:divide-x divide-[#C94F6D]/15">
               {filteredAmenities.map((item) => {
                 const IconComponent = item.icon;
