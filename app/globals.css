@@ -2,21 +2,20 @@
 
 @layer base {
   :root {
-    /* Brand Book Official Color Palette */
-    --color-rose: #C74B66;        /* Heritage Rose (Primary - Logo, CTAs, Links) */
-    --color-petal: #E88CA4;       /* Petal Pink (Secondary Accents) */
-    --color-gold: #B78D4A;        /* Champagne Gold (Rare Accent - Dividers, Marks) */
-    --color-ink: #241C20;         /* Ink (Body Text, Deep Neutral) */
-    --color-blush: #F8ECEF;       /* Blush Surface */
-    --color-ivory: #FBF8F4;       /* Ivory Main Surface */
+    /* Brand Kit v2 Official Color Palette */
+    --color-taborosa: #C15F70;     /* Taborosa Pink (Primary - Logo, CTAs, Links) */
+    --color-misty: #A9C4D4;        /* Misty Sky (Soft Cool Blue Accent) */
+    --color-ivory-stone: #E8E1D3;  /* Ivory Stone (Main Surface / Primary Canvas) */
+    --color-sage: #9CAA8C;         /* Sage Green (Landscaping & Natural Accent) */
+    --color-forest: #33422F;       /* Forest Green (Deep Grounding Accent) */
+    --color-ink: #241C20;          /* Ink (Body Text, Deep Neutral) */
 
-    /* Extended Permissible Palette */
-    --color-jaipur: #D97A82;
-    --color-quartz: #F3C1CE;
-    --color-raspberry: #8E2F47;   /* Deepest Permissible Pink */
-    --color-bark: #3E2E23;        /* Oak Bark */
-    --color-heartwood: #5C4433;   /* Heartwood */
-    --color-sandstone: #E8DCC8;   /* Sandstone */
+    /* Heritage Legacy Swatches */
+    --color-rose: #C15F70;        /* Aliased to Taborosa Pink */
+    --color-petal: #E88CA4;       /* Soft Petal Pink */
+    --color-gold: #B78D4A;        /* Champagne Gold */
+    --color-blush: #F5EEE6;       /* Soft Sandstone / Ivory Stone Surface */
+    --color-ivory: #E8E1D3;       /* Primary Canvas */
 
     /* Fonts */
     --font-lora: var(--font-lora), Georgia, serif;
@@ -26,13 +25,13 @@
 
   html {
     scroll-behavior: smooth;
-    background-color: var(--color-ivory);
+    background-color: var(--color-ivory-stone);
     color: var(--color-ink);
     font-family: var(--font-poppins);
   }
 
   body {
-    background-color: var(--color-ivory);
+    background-color: var(--color-ivory-stone);
     color: var(--color-ink);
   }
 }
@@ -50,32 +49,31 @@
   font-family: var(--font-great-vibes);
 }
 
-/* Brand Palette Helpers */
-.bg-ivory { background-color: #FBF8F4; }
-.bg-blush { background-color: #F8ECEF; }
-.bg-rose { background-color: #C74B66; }
-.bg-petal { background-color: #E88CA4; }
+/* Brand Palette Helpers v2 */
+.bg-ivory { background-color: #E8E1D3; }
+.bg-blush { background-color: #F5EEE6; }
+.bg-taborosa { background-color: #C15F70; }
+.bg-misty { background-color: #A9C4D4; }
+.bg-sage { background-color: #9CAA8C; }
+.bg-forest { background-color: #33422F; }
 .bg-ink { background-color: #241C20; }
-.bg-sandstone { background-color: #E8DCC8; }
 
-.text-rose { color: #C74B66; }
-.text-petal { color: #E88CA4; }
+.text-taborosa { color: #C15F70; }
+.text-misty { color: #A9C4D4; }
+.text-sage { color: #9CAA8C; }
+.text-forest { color: #33422F; }
 .text-gold { color: #B78D4A; }
 .text-ink { color: #241C20; }
-.text-blush { color: #F8ECEF; }
-.text-ivory { color: #FBF8F4; }
-.text-raspberry { color: #8E2F47; }
-.text-heartwood { color: #5C4433; }
 
-.border-rose { border-color: rgba(199, 75, 102, 0.3); }
-.border-gold { border-color: rgba(183, 141, 74, 0.3); }
-.border-petal { border-color: rgba(232, 140, 164, 0.3); }
-.border-sandstone { border-color: rgba(232, 220, 200, 0.6); }
+.border-taborosa { border-color: rgba(193, 95, 112, 0.3); }
+.border-misty { border-color: rgba(169, 196, 212, 0.35); }
+.border-sage { border-color: rgba(156, 170, 140, 0.35); }
+.border-forest { border-color: rgba(51, 66, 47, 0.3); }
 
 /* Editorial Details */
 .holding-card {
-  background-color: #FBF8F4;
-  border: 1px solid rgba(232, 140, 164, 0.25);
+  background-color: #E8E1D3;
+  border: 1px solid rgba(193, 95, 112, 0.25);
   box-shadow: 0 4px 20px rgba(36, 28, 32, 0.04);
 }
 
@@ -85,27 +83,22 @@
   opacity: 0.4;
 }
 
-.fine-line {
-  border-top: 1px solid rgba(183, 141, 74, 0.25);
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FBF8F4;
+  background: #E8E1D3;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E88CA4;
+  background: #A9C4D4;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C74B66;
+  background: #C15F70;
 }
 
 /* Form Sliders */
 input[type="range"] {
-  accent-color: #C74B66;
+  accent-color: #C15F70;
 }
-

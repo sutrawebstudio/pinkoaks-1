@@ -24,10 +24,10 @@ export default function Gallery() {
       gridSpan: "lg:col-span-7",
     },
     {
-      title: "Drawing Room",
-      subtitle: "Elegance for every gathering",
-      src: "/images/gallery-drawing.jpg",
-      tag: "Interior Architecture",
+      title: "Tranquil Water Reflection Pool",
+      subtitle: "Soft misty light and sage green landscaping",
+      src: "/images/detail-water.jpg",
+      tag: "Outdoor Amenity",
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-5",
     },
@@ -74,26 +74,26 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-20 lg:py-32 bg-[#FBF8F4]">
+    <section id="gallery" className="py-20 lg:py-32 bg-[#E8E1D3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}
-        <SectionDivider number="03" title="Visual Gallery & Materiality" />
+        <SectionDivider number="03" title="Visual Gallery & Craft" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
           <ScrollReveal className="lg:col-span-7">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20] leading-tight">
-              Experience Luxury Living &amp; Craft.
+              Experience Luxury Living &amp; Materiality.
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1} className="lg:col-span-5">
             <p className="font-sans text-base text-[#241C20]/75 font-light leading-relaxed">
-              A visual monograph blending candid multi-generational moments, room geometry, and tactile material finishes.
+              A visual monograph blending candid multi-generational moments, water features, stone craft, and room geometry.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* Asymmetric Editorial Mosaic (Replaces Uniform 6-Box Grid) */}
+        {/* Asymmetric Editorial Mosaic (Brand Kit v2 Palette & Water Features) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {galleryItems.map((item, index) => (
             <ScrollReveal
@@ -103,9 +103,9 @@ export default function Gallery() {
             >
               <div
                 onClick={() => setSelectedImage(item)}
-                className="group cursor-pointer bg-[#F8ECEF] rounded-2xl overflow-hidden border border-[#E88CA4]/25 shadow-xs hover:border-[#C74B66]/40 transition-colors h-full flex flex-col justify-between"
+                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/40 transition-colors h-full flex flex-col justify-between"
               >
-                <div className={`relative ${item.aspect} w-full overflow-hidden bg-[#E8DCC8]/30 min-h-[260px]`}>
+                <div className={`relative ${item.aspect} w-full overflow-hidden bg-[#E8E1D3] min-h-[260px]`}>
                   <Image
                     src={item.src}
                     alt={item.title}
@@ -113,12 +113,12 @@ export default function Gallery() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 bg-[#FBF8F4]/90 backdrop-blur-xs px-3 py-1 rounded border border-[#E88CA4]/30 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20]">
+                  <div className="absolute top-4 left-4 bg-[#E8E1D3]/90 backdrop-blur-xs px-3 py-1 rounded border border-[#A9C4D4]/40 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20]">
                     {item.tag}
                   </div>
                 </div>
-                <div className="p-5 bg-[#FBF8F4] border-t border-[#E88CA4]/20">
-                  <h3 className="font-serif text-lg font-semibold text-[#241C20] group-hover:text-[#C74B66] transition-colors">
+                <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15">
+                  <h3 className="font-serif text-lg font-semibold text-[#241C20] group-hover:text-[#C15F70] transition-colors">
                     {item.title}
                   </h3>
                   <p className="font-sans text-xs text-[#241C20]/70 font-light mt-1">
@@ -140,11 +140,11 @@ export default function Gallery() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-4xl w-full bg-[#FBF8F4] rounded-xl overflow-hidden shadow-2xl border border-[#E88CA4]/30"
+              className="relative max-w-4xl w-full bg-[#E8E1D3] rounded-xl overflow-hidden shadow-2xl border border-[#C15F70]/30"
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-[#FBF8F4]/80 text-[#241C20] hover:text-[#C74B66] rounded-full focus:outline-none"
+                className="absolute top-4 right-4 z-10 p-2 bg-[#E8E1D3]/80 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none"
               >
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -160,7 +160,7 @@ export default function Gallery() {
                 />
               </div>
 
-              <div className="p-6 bg-[#FBF8F4]">
+              <div className="p-6 bg-[#E8E1D3]">
                 <span className="font-sans text-[10px] font-semibold uppercase tracking-widest text-[#B78D4A] block mb-1">
                   {selectedImage.tag}
                 </span>

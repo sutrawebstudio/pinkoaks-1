@@ -15,13 +15,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "px-6 py-3 font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors duration-150 focus:outline-none focus:ring-1 focus:ring-[#C74B66]";
+    "px-6 py-3.5 font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors duration-150 focus:outline-none focus:ring-1 focus:ring-[#C15F70]";
 
   const variantStyles = {
     primary:
-      "bg-[#C74B66] text-[#FBF8F4] hover:bg-[#8E2F47] shadow-xs active:bg-[#8E2F47]",
+      "bg-[#C15F70] text-[#E8E1D3] hover:bg-[#A34A5A] shadow-xs active:bg-[#A34A5A]",
     secondary:
-      "border border-[#C74B66] text-[#C74B66] hover:bg-[#F8ECEF] hover:text-[#8E2F47] active:bg-[#F8ECEF]",
+      "border border-[#C15F70] text-[#C15F70] hover:bg-[#F5EEE6] hover:text-[#A34A5A] active:bg-[#F5EEE6]",
   };
 
   return (
