@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import OverviewStats from "@/components/OverviewStats";
 import BrandStatement from "@/components/BrandStatement";
+import EditorialQuote from "@/components/EditorialQuote";
 import Leadership from "@/components/Leadership";
 import Gallery from "@/components/Gallery";
 import Amenities from "@/components/Amenities";
@@ -36,28 +37,31 @@ export default function Home() {
       {/* Hero Section */}
       <Hero onOpenEnquire={handleOpenEnquire} />
 
-      {/* Overview Stats (Plain set type) */}
+      {/* Overview Stats (Equal 6-column grid) */}
       <OverviewStats />
 
       {/* Philosophy & Vastu Harmony */}
       <BrandStatement />
 
+      {/* Bespoke Full-Width Monograph Pull-Quote Band */}
+      <EditorialQuote />
+
       {/* Leadership & Heritage since 1990 */}
       <Leadership />
 
-      {/* Real Visual Gallery */}
+      {/* Asymmetric Visual Monograph Gallery */}
       <Gallery />
 
-      {/* 20+ Amenities */}
+      {/* Architectural Spec Matrix Amenities */}
       <Amenities />
 
       {/* Architectural Floor Plans */}
       <FloorPlans onOpenEnquire={handleOpenEnquire} />
 
-      {/* Unit Configurations */}
+      {/* Photo-Forward Unit Configurations */}
       <UnitConfigurations onOpenEnquire={handleOpenEnquire} />
 
-      {/* Investment & Pricing */}
+      {/* Structured Comparison Pricing Strip */}
       <Pricing onOpenEnquire={handleOpenEnquire} />
 
       {/* Instant Live EMI Estimator */}

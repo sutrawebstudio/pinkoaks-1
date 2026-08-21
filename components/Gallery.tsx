@@ -11,6 +11,7 @@ export default function Gallery() {
     src: string;
     title: string;
     subtitle: string;
+    tag?: string;
   } | null>(null);
 
   const galleryItems = [
@@ -18,31 +19,57 @@ export default function Gallery() {
       title: "Games Lounge & Family Zone",
       subtitle: "Unwind and play together in style",
       src: "/images/family-games.jpg",
-    },
-    {
-      title: "Home Theater",
-      subtitle: "Private cinematic experiences",
-      src: "/images/gallery-theater.jpg",
-    },
-    {
-      title: "Modern Bedroom",
-      subtitle: "Your personal sanctuary",
-      src: "/images/gallery-bedroom.jpg",
+      tag: "Candid Lifestyle",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-7",
     },
     {
       title: "Drawing Room",
       subtitle: "Elegance for every gathering",
       src: "/images/gallery-drawing.jpg",
+      tag: "Interior Architecture",
+      aspect: "aspect-[4/3]",
+      gridSpan: "lg:col-span-5",
     },
     {
-      title: "Yoga Studio",
-      subtitle: "Find your inner peace",
+      title: "Modern Bedroom Sanctuary",
+      subtitle: "Your personal peaceful retreat",
+      src: "/images/gallery-bedroom.jpg",
+      tag: "Private Quarter",
+      aspect: "aspect-[4/3]",
+      gridSpan: "lg:col-span-5",
+    },
+    {
+      title: "Jaipur Sandstone & Brass Details",
+      subtitle: "Handcrafted materiality and finishes",
+      src: "/images/detail-sandstone.jpg",
+      tag: "Architectural Detail",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-7",
+    },
+    {
+      title: "Private Home Theater",
+      subtitle: "Cinematic immersion for family evenings",
+      src: "/images/gallery-theater.jpg",
+      tag: "Entertainment",
+      aspect: "aspect-[4/3]",
+      gridSpan: "lg:col-span-4",
+    },
+    {
+      title: "Holistic Yoga Studio",
+      subtitle: "Find your inner quiet and peace",
       src: "/images/gallery-yoga.jpg",
+      tag: "Wellness",
+      aspect: "aspect-[4/3]",
+      gridSpan: "lg:col-span-4",
     },
     {
-      title: "Library",
-      subtitle: "A quiet space for reflection",
+      title: "Curated Library Room",
+      subtitle: "A quiet space for reflection and focus",
       src: "/images/gallery-library.jpg",
+      tag: "Quiet Zone",
+      aspect: "aspect-[4/3]",
+      gridSpan: "lg:col-span-4",
     },
   ];
 
@@ -51,38 +78,46 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}
-        <SectionDivider number="03" title="Visual Gallery" />
+        <SectionDivider number="03" title="Visual Gallery & Materiality" />
 
-        <ScrollReveal className="mb-12">
-          <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#241C20]">
-            Experience Luxury Living
-          </h2>
-          <p className="font-sans text-base text-[#241C20]/70 font-light mt-2">
-            Curated spaces designed for elegance, quiet relaxation, and cherished family moments.
-          </p>
-        </ScrollReveal>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+          <ScrollReveal className="lg:col-span-7">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20] leading-tight">
+              Experience Luxury Living &amp; Craft.
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1} className="lg:col-span-5">
+            <p className="font-sans text-base text-[#241C20]/75 font-light leading-relaxed">
+              A visual monograph blending candid multi-generational moments, room geometry, and tactile material finishes.
+            </p>
+          </ScrollReveal>
+        </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Asymmetric Editorial Mosaic (Replaces Uniform 6-Box Grid) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {galleryItems.map((item, index) => (
             <ScrollReveal
               key={item.title}
-              delay={index * 0.06}
+              delay={index * 0.05}
+              className={`${item.gridSpan} h-full`}
             >
               <div
                 onClick={() => setSelectedImage(item)}
-                className="group cursor-pointer bg-[#F8ECEF] rounded-xl overflow-hidden border border-[#E88CA4]/20 shadow-xs hover:border-[#C74B66]/40 transition-colors"
+                className="group cursor-pointer bg-[#F8ECEF] rounded-2xl overflow-hidden border border-[#E88CA4]/25 shadow-xs hover:border-[#C74B66]/40 transition-colors h-full flex flex-col justify-between"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#E8DCC8]/30">
+                <div className={`relative ${item.aspect} w-full overflow-hidden bg-[#E8DCC8]/30 min-h-[260px]`}>
                   <Image
                     src={item.src}
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute top-4 left-4 bg-[#FBF8F4]/90 backdrop-blur-xs px-3 py-1 rounded border border-[#E88CA4]/30 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20]">
+                    {item.tag}
+                  </div>
                 </div>
-                <div className="p-5">
+                <div className="p-5 bg-[#FBF8F4] border-t border-[#E88CA4]/20">
                   <h3 className="font-serif text-lg font-semibold text-[#241C20] group-hover:text-[#C74B66] transition-colors">
                     {item.title}
                   </h3>
@@ -126,6 +161,9 @@ export default function Gallery() {
               </div>
 
               <div className="p-6 bg-[#FBF8F4]">
+                <span className="font-sans text-[10px] font-semibold uppercase tracking-widest text-[#B78D4A] block mb-1">
+                  {selectedImage.tag}
+                </span>
                 <h3 className="font-serif text-2xl font-semibold text-[#241C20]">
                   {selectedImage.title}
                 </h3>
