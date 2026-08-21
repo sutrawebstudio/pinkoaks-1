@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import PinkBlossomIcon from "./PinkBlossomIcon";
+import PinkBlossomBranch from "./PinkBlossomBranch";
 
 export default function Amenities() {
   const [activeTab, setActiveTab] = useState<string>("All");
@@ -66,9 +66,9 @@ export default function Amenities() {
   return (
     <section id="amenities" className="py-20 lg:py-32 bg-[#F5EEE6] border-y border-[#C94F6D]/20 relative overflow-hidden">
       
-      {/* Background Placement Pattern: Small blossom cluster top-right corner (opacity 0.12) */}
+      {/* Amenities Section Placement Pattern: Small sprig top-right corner (opacity 0.12) */}
       <div className="absolute top-6 right-6 opacity-12 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomIcon size={240} className="text-[#C94F6D]" />
+        <PinkBlossomBranch variant="sprig-crop" size={200} className="text-[#C94F6D]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

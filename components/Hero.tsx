@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import PinkOaksLogo from "./PinkOaksLogo";
 import PinkBlossomIcon from "./PinkBlossomIcon";
+import PinkBlossomBranch from "./PinkBlossomBranch";
 import { Sparkles, MapPin, Calendar, Home, ArrowRight, Share2, Phone } from "lucide-react";
 
 interface HeroProps {
@@ -65,14 +66,14 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
         />
       </div>
 
-      {/* Hero Placement Pattern: Blossom branch bottom-left, bleeding off-screen edge (opacity 0.12) */}
-      <div className="absolute -bottom-16 -left-16 opacity-12 pointer-events-none select-none z-3 hidden md:block">
-        <PinkBlossomIcon size={380} className="text-[#C94F6D] -rotate-45" />
+      {/* Hero Placement 1: Sweeping blossom branch bottom-left bleeding off-screen (opacity 0.15) */}
+      <div className="absolute -bottom-16 -left-16 opacity-15 pointer-events-none select-none z-3 hidden md:block">
+        <PinkBlossomBranch variant="full-branch" size={380} className="text-[#C94F6D] -rotate-45" />
       </div>
 
-      {/* Blossom Watermark Motif Accent: Top-right corner placement (opacity 0.10) */}
-      <div className="absolute top-8 right-8 opacity-10 pointer-events-none select-none z-3 hidden md:block">
-        <PinkBlossomIcon size={300} className="text-[#C94F6D]" />
+      {/* Hero Placement 2: Small blossom sprig top-right bleeding off-screen (opacity 0.12) */}
+      <div className="absolute top-6 right-6 opacity-12 pointer-events-none select-none z-3 hidden md:block">
+        <PinkBlossomBranch variant="sprig-crop" size={220} className="text-[#C94F6D]" />
       </div>
 
       {/* Layer 4: Dark Scrim Overlay for WCAG AA Text Contrast */}
@@ -111,7 +112,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               <PinkBlossomIcon className="w-3.5 h-3.5 text-[#C94F6D] ml-1" />
             </div>
 
-            {/* Heading Font-Size Clamp for 2 lines max */}
+            {/* Heading Font-Size Clamp */}
             <div className="mt-[24px]">
               <h1 className="font-serif text-[clamp(2.2rem,3.6vw,3.2rem)] font-semibold tracking-tight text-[#E8E1D3] leading-[1.12]">
                 A Private Floor Above The City.

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import PinkBlossomIcon from "./PinkBlossomIcon";
+import PinkBlossomBranch from "./PinkBlossomBranch";
 import { Maximize2, X, Download, Compass } from "lucide-react";
 
 interface FloorPlansProps {
@@ -48,9 +48,9 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
   return (
     <section id="plans" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
       
-      {/* Background Placement Pattern: Faint single branch along left margin (opacity 0.10) */}
+      {/* Plans Section Placement Pattern: Thin vertical branch along left margin (opacity 0.10) */}
       <div className="absolute top-16 -left-12 opacity-10 pointer-events-none select-none z-0 hidden md:block">
-        <PinkBlossomIcon size={300} className="text-[#C94F6D] -rotate-30" />
+        <PinkBlossomBranch variant="full-branch" size={280} className="text-[#C94F6D] -rotate-30" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
