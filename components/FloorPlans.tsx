@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import CherryBlossomBranch from "./CherryBlossomBranch";
 import { Maximize2, X, Download, Compass } from "lucide-react";
 
 interface FloorPlansProps {
@@ -46,18 +45,8 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
   const currentPlan = plans[activeTab];
 
   return (
-    <section id="plans" className="py-20 lg:py-32 bg-[#E8E1D3] relative overflow-hidden">
-      
-      {/* Placement Rule 4: FLOOR PLANS section - small branch sprig top-right, scaled down 60% (size 200, opacity 0.85) */}
-      <CherryBlossomBranch
-        position="top-right"
-        size={200}
-        rotate={30}
-        opacity={0.85}
-        className="w-[140px] sm:w-[180px] lg:w-[200px]"
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="plans" className="py-20 lg:py-32 bg-[#E8E1D3]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}
         <SectionDivider number="05" title="Architectural Floor Plans" icon="leaf" />
@@ -73,15 +62,15 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
           </ScrollReveal>
 
           {/* Luxury Tab Switcher */}
-          <div className="flex bg-[#F5EEE6] p-1.5 rounded-full border border-[#C94F6D]/25 self-start md:self-auto shadow-xs">
+          <div className="flex bg-[#F5EEE6] p-1.5 rounded-full border border-[#C15F70]/25 self-start md:self-auto shadow-xs">
             {(["typical", "stilt", "basement"] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-5 py-2 text-xs font-sans font-medium uppercase tracking-wider rounded-full transition-all whitespace-nowrap ${
                   activeTab === tab
-                    ? "bg-[#C94F6D] text-[#E8E1D3] shadow-xs font-semibold"
-                    : "text-[#241C20]/75 hover:text-[#C94F6D]"
+                    ? "bg-[#C15F70] text-[#E8E1D3] shadow-xs font-semibold"
+                    : "text-[#241C20]/75 hover:text-[#C15F70]"
                 }`}
               >
                 {tab === "typical" ? "Typical Floor" : tab === "stilt" ? "Stilt Floor" : "Basement"}
@@ -92,7 +81,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
 
         {/* Tab Content Box */}
         <ScrollReveal variant="scale-up">
-          <div className="bg-[#F5EEE6] border border-[#C94F6D]/25 rounded-2xl p-6 sm:p-10 shadow-xs relative overflow-hidden z-10">
+          <div className="bg-[#F5EEE6] border border-[#C15F70]/25 rounded-2xl p-6 sm:p-10 shadow-xs relative overflow-hidden">
             
             <AnimatePresence mode="wait">
               <motion.div
@@ -123,7 +112,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                     {currentPlan.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3.5 py-1.5 bg-[#E8E1D3] border border-[#C94F6D]/25 text-[#C94F6D] text-xs font-sans font-medium rounded-full"
+                        className="px-3.5 py-1.5 bg-[#E8E1D3] border border-[#C15F70]/25 text-[#C15F70] text-xs font-sans font-medium rounded-full"
                       >
                         {tag}
                       </span>
@@ -133,14 +122,14 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                   <div className="pt-4 flex flex-wrap items-center gap-3">
                     <button
                       onClick={() => onOpenEnquire(`Floor Plan Enquiry - ${currentPlan.title}`)}
-                      className="px-6 py-3.5 bg-[#C94F6D] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors shadow-xs"
+                      className="px-6 py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors shadow-xs"
                     >
                       Request Architectural Specs
                     </button>
                     
                     <button
                       onClick={() => setLightboxOpen(true)}
-                      className="px-4 py-3.5 border border-[#C94F6D]/30 text-[#C94F6D] hover:bg-[#E8E1D3] rounded-lg transition-colors flex items-center space-x-2 text-xs font-sans uppercase font-medium tracking-wider"
+                      className="px-4 py-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#E8E1D3] rounded-lg transition-colors flex items-center space-x-2 text-xs font-sans uppercase font-medium tracking-wider"
                     >
                       <Maximize2 className="w-4 h-4" />
                       <span>Expand View</span>
@@ -151,7 +140,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                 {/* Interactive High-Res Floorplan Image Right */}
                 <div
                   onClick={() => setLightboxOpen(true)}
-                  className="lg:col-span-7 relative aspect-[4/3] rounded-xl overflow-hidden bg-[#E8E1D3] border border-[#C94F6D]/25 cursor-pointer group shadow-xs"
+                  className="lg:col-span-7 relative aspect-[4/3] rounded-xl overflow-hidden bg-[#E8E1D3] border border-[#C15F70]/25 cursor-pointer group shadow-xs"
                 >
                   <Image
                     src={currentPlan.image}
@@ -160,7 +149,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                     className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute bottom-4 right-4 bg-[#241C20]/80 backdrop-blur-xs text-[#E8E1D3] px-3 py-1.5 rounded-md text-[11px] font-sans flex items-center space-x-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5 text-[#C94F6D]" />
+                    <Maximize2 className="w-3.5 h-3.5 text-[#C15F70]" />
                     <span>Click to Enlarge Layout</span>
                   </div>
                 </div>
@@ -180,11 +169,11 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-5xl w-full bg-[#E8E1D3] rounded-2xl overflow-hidden shadow-2xl border border-[#C94F6D]/30 p-6"
+              className="relative max-w-5xl w-full bg-[#E8E1D3] rounded-2xl overflow-hidden shadow-2xl border border-[#C15F70]/30 p-6"
             >
               <button
                 onClick={() => setLightboxOpen(false)}
-                className="absolute top-4 right-4 z-10 p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C94F6D] rounded-full focus:outline-none shadow-md"
+                className="absolute top-4 right-4 z-10 p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none shadow-md"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -199,7 +188,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                 </h3>
               </div>
 
-              <div className="relative aspect-[16/10] w-full bg-[#F5EEE6] rounded-xl overflow-hidden border border-[#C94F6D]/20 p-4">
+              <div className="relative aspect-[16/10] w-full bg-[#F5EEE6] rounded-xl overflow-hidden border border-[#C15F70]/20 p-4">
                 <Image
                   src={currentPlan.image}
                   alt={currentPlan.title}
@@ -214,7 +203,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                 </p>
                 <button
                   onClick={() => onOpenEnquire(`Floor Plan Download - ${currentPlan.title}`)}
-                  className="px-5 py-2.5 bg-[#C94F6D] text-[#E8E1D3] font-sans text-xs uppercase font-medium tracking-wider rounded-lg flex items-center space-x-2 shrink-0 ml-4"
+                  className="px-5 py-2.5 bg-[#C15F70] text-[#E8E1D3] font-sans text-xs uppercase font-medium tracking-wider rounded-lg flex items-center space-x-2 shrink-0 ml-4"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Blueprint</span>
