@@ -29,11 +29,9 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
   };
 
   return (
-    /* 1. Cap section height: min-h-screen lg:min-h-[100vh] lg:max-h-[920px] flex items-center */
-    /* 5. Watermark clip/contain: overflow-hidden */
     <section id="hero" className="relative pt-[92px] pb-[24px] lg:pt-[104px] lg:pb-[32px] bg-[#241C20] overflow-hidden min-h-screen lg:min-h-[100vh] lg:max-h-[920px] flex items-center">
       
-      {/* Cinematic Full-Bleed Background Video with Scrim Overlay */}
+      {/* 3. Layer 1: Base Video Background */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -41,23 +39,44 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
           muted
           playsInline
           poster="/images/hero.jpg"
-          className="w-full h-full object-cover opacity-50 scale-105 transform duration-1000"
+          className="w-full h-full object-cover opacity-45 scale-105 transform duration-1000"
         >
           <source src="/videos/hero-architecture.mp4" type="video/mp4" />
         </video>
-        {/* Dual Luxury Gradient Scrim Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241C20]/95 via-[#241C20]/75 to-[#241C20]/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#241C20] via-transparent to-[#241C20]/50" />
       </div>
 
-      {/* 5. Decorative Flower Watermark Background clipped to Hero bounds */}
-      <div className="absolute top-10 right-10 opacity-8 pointer-events-none select-none z-0 max-w-full overflow-hidden">
-        <PinkBlossomIcon size={300} className="text-[#C15F70]" />
+      {/* 3. Layer 2: Soft Blurred Cherry Blossom Texture (Taborosa Pink tint, blend-mode: soft-light, opacity 0.10) */}
+      <div className="absolute inset-0 z-1 opacity-10 mix-blend-soft-light pointer-events-none select-none overflow-hidden">
+        <Image
+          src="/images/detail-blossom.jpg"
+          alt="Cherry Blossom Texture"
+          fill
+          className="object-cover scale-110 blur-xs"
+        />
       </div>
 
-      {/* Max-Width Container (1440px centered), Outer Container Padding */}
+      {/* 3. Layer 3: Secondary Jaali (Crafted Lattice) Pattern Overlay (Ivory Stone / Sage Green tint, opacity 0.05) */}
+      <div className="absolute inset-0 z-2 opacity-5 mix-blend-overlay pointer-events-none select-none overflow-hidden">
+        <Image
+          src="/images/detail-jali.jpg"
+          alt="Jaali Screen Texture"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* 1. Blossom Watermark Motif Accent: Off-frame top-right corner placement (opacity 0.10) */}
+      <div className="absolute top-8 right-8 opacity-10 pointer-events-none select-none z-3 max-w-full overflow-hidden">
+        <PinkBlossomIcon size={320} className="text-[#C15F70]" />
+      </div>
+
+      {/* 3. Layer 4: Dark Scrim Overlay for WCAG AA Text Contrast */}
+      <div className="absolute inset-0 z-4 bg-gradient-to-r from-[#241C20]/95 via-[#241C20]/80 to-[#241C20]/45" />
+      <div className="absolute inset-0 z-4 bg-gradient-to-t from-[#241C20] via-transparent to-[#241C20]/50" />
+
+      {/* Layer 5: Foreground Content */}
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-[64px] relative z-10 w-full">
-        {/* 3. Column Gap: 48px–64px between left text & right image */}
+        {/* Column Gap: 48px–64px between left text & right image */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-[56px] items-center">
           
           {/* Left Editorial Content (7 cols) */}
@@ -88,21 +107,21 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               <PinkBlossomIcon className="w-3.5 h-3.5 text-[#C15F70] ml-1" />
             </div>
 
-            {/* 1 & 2. Reduced Gap (24px) & Heading Font-Size Clamp (2.2rem to 3.2rem) for 2 lines max */}
+            {/* Heading Font-Size Clamp (2.2rem to 3.2rem) for 2 lines max */}
             <div className="mt-[24px]">
               <h1 className="font-serif text-[clamp(2.2rem,3.6vw,3.2rem)] font-semibold tracking-tight text-[#E8E1D3] leading-[1.12]">
                 A Private Floor Above The City.
               </h1>
             </div>
 
-            {/* 1. Reduced Gap: Heading -> Subheading (16px) */}
+            {/* Subheading */}
             <div className="mt-[16px]">
               <p className="font-sans text-sm sm:text-base text-[#E8E1D3]/85 font-light leading-relaxed max-w-xl">
                 Where timeless Rajasthani architecture meets modern indulgence in the heart of Bani Park. Crafted for true sanctuary and lifelong family harmony.
               </p>
             </div>
 
-            {/* 1. Reduced Gap: Subheading -> Price Box (20px) */}
+            {/* Price Box */}
             <div className="mt-[20px] bg-[#241C20]/80 backdrop-blur-md border-l-4 border-[#C15F70] p-4 sm:p-5 rounded-r-xl border border-[#C15F70]/30 shadow-lg flex flex-wrap items-center justify-between gap-3">
               <div>
                 <span className="font-sans text-[10px] font-semibold uppercase tracking-widest text-[#B78D4A] block">
@@ -113,7 +132,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
                 </div>
               </div>
 
-              {/* Clear Vertical Divider */}
+              {/* Vertical Divider */}
               <div className="h-8 w-px bg-[#E8E1D3]/25 hidden sm:block mx-1" />
 
               <div className="space-y-1">
@@ -128,7 +147,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               </div>
             </div>
 
-            {/* 1. Reduced Gap: Price Box -> CTA Row (16px) */}
+            {/* CTA Row */}
             <div className="mt-[16px] flex flex-wrap items-center gap-3">
               <button
                 onClick={() => onOpenEnquire("Schedule a Site Visit")}
@@ -176,7 +195,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               </div>
             </div>
 
-            {/* 1. Reduced Gap: CTA Row -> Bottom Trust Strip (20px) */}
+            {/* Bottom Trust Strip */}
             <div className="mt-[20px] pt-3 flex items-center gap-3 border-t border-[#E8E1D3]/15">
               <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/40 shadow-xs">
                 <Image
@@ -197,14 +216,13 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* 4. Right Image Top & Bottom Insets (24px top & bottom inset) */}
+          {/* Right Property Image Column */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15 }}
             className="lg:col-span-5 relative my-[16px] lg:my-[24px]"
           >
-            {/* 7. Image Container with aspect-[4/3] & rounded-2xl */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C15F70]/40 aspect-[4/3] min-h-[340px] lg:min-h-[400px] max-h-[440px] group">
               <Image
                 src="/images/hero.jpg"
