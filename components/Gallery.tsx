@@ -5,14 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
+import { Maximize2, X } from "lucide-react";
 
 export default function Gallery() {
+  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [selectedImage, setSelectedImage] = useState<{
     src: string;
     title: string;
     subtitle: string;
     tag?: string;
+    category?: string;
   } | null>(null);
+
+  const categories = ["All", "Residences", "Leisure", "Craft Details"];
 
   const galleryItems = [
     {
@@ -20,6 +25,7 @@ export default function Gallery() {
       subtitle: "Unwind and play together in style",
       src: "/images/family-games.jpg",
       tag: "Candid Lifestyle",
+      category: "Leisure",
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-7",
     },
@@ -28,6 +34,7 @@ export default function Gallery() {
       subtitle: "Soft misty light and sage green landscaping",
       src: "/images/detail-water.jpg",
       tag: "Outdoor Amenity",
+      category: "Leisure",
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-5",
     },
@@ -36,6 +43,7 @@ export default function Gallery() {
       subtitle: "Your personal peaceful retreat",
       src: "/images/gallery-bedroom.jpg",
       tag: "Private Quarter",
+      category: "Residences",
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-5",
     },
@@ -44,6 +52,7 @@ export default function Gallery() {
       subtitle: "Handcrafted materiality and finishes",
       src: "/images/detail-sandstone.jpg",
       tag: "Architectural Detail",
+      category: "Craft Details",
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-7",
     },
@@ -52,6 +61,7 @@ export default function Gallery() {
       subtitle: "Cinematic immersion for family evenings",
       src: "/images/gallery-theater.jpg",
       tag: "Entertainment",
+      category: "Leisure",
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-4",
     },
@@ -60,6 +70,7 @@ export default function Gallery() {
       subtitle: "Find your inner quiet and peace",
       src: "/images/gallery-yoga.jpg",
       tag: "Wellness",
+      category: "Leisure",
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-4",
     },
@@ -68,19 +79,25 @@ export default function Gallery() {
       subtitle: "A quiet space for reflection and focus",
       src: "/images/gallery-library.jpg",
       tag: "Quiet Zone",
+      category: "Residences",
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-4",
     },
   ];
+
+  const filteredItems =
+    activeCategory === "All"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === activeCategory);
 
   return (
     <section id="gallery" className="py-20 lg:py-32 bg-[#E8E1D3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}
-        <SectionDivider number="03" title="Visual Gallery & Craft" />
+        <SectionDivider number="03" title="Visual Gallery & Craft" icon="flower" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
           <ScrollReveal className="lg:col-span-7">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20] leading-tight">
               Experience Luxury Living &amp; Materiality.
@@ -93,9 +110,26 @@ export default function Gallery() {
           </ScrollReveal>
         </div>
 
-        {/* Asymmetric Editorial Mosaic (Brand Kit v2 Palette & Water Features) */}
+        {/* Category Filter Tabs */}
+        <div className="flex items-center space-x-2 mb-10 overflow-x-auto no-scrollbar pb-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap ${
+                activeCategory === cat
+                  ? "bg-[#C15F70] text-[#E8E1D3] shadow-xs"
+                  : "bg-[#F5EEE6] text-[#241C20]/75 hover:bg-[#F5EEE6]/80 border border-[#C15F70]/20"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Asymmetric Editorial Mosaic Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {galleryItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <ScrollReveal
               key={item.title}
               delay={index * 0.05}
@@ -103,7 +137,7 @@ export default function Gallery() {
             >
               <div
                 onClick={() => setSelectedImage(item)}
-                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/40 transition-colors h-full flex flex-col justify-between"
+                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 transition-colors h-full flex flex-col justify-between"
               >
                 <div className={`relative ${item.aspect} w-full overflow-hidden bg-[#E8E1D3] min-h-[260px]`}>
                   <Image
@@ -113,8 +147,11 @@ export default function Gallery() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 bg-[#E8E1D3]/90 backdrop-blur-xs px-3 py-1 rounded border border-[#A9C4D4]/40 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20]">
+                  <div className="absolute top-4 left-4 bg-[#E8E1D3]/90 backdrop-blur-xs px-3 py-1 rounded-full border border-[#A9C4D4]/40 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20]">
                     {item.tag}
+                  </div>
+                  <div className="absolute top-4 right-4 bg-[#241C20]/70 backdrop-blur-xs p-2 rounded-full text-[#E8E1D3] opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 className="w-3.5 h-3.5" />
                   </div>
                 </div>
                 <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15">
@@ -135,20 +172,19 @@ export default function Gallery() {
       {/* Image Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
-          <div className="fixed inset-0 z-50 bg-[#241C20]/90 backdrop-blur-xs flex items-center justify-center p-4 sm:p-8">
+          <div className="fixed inset-0 z-50 bg-[#241C20]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-4xl w-full bg-[#E8E1D3] rounded-xl overflow-hidden shadow-2xl border border-[#C15F70]/30"
+              className="relative max-w-4xl w-full bg-[#E8E1D3] rounded-2xl overflow-hidden shadow-2xl border border-[#C15F70]/30"
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-[#E8E1D3]/80 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none"
+                className="absolute top-4 right-4 z-10 p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none shadow-md"
+                aria-label="Close modal"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="w-5 h-5" />
               </button>
 
               <div className="relative aspect-[16/10] w-full bg-[#241C20]">
