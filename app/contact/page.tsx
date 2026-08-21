@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import SectionDivider from "@/components/ui/SectionDivider";
+import Neighbourhood from "@/components/Neighbourhood";
+import EnquireForm from "@/components/EnquireForm";
 import Footer from "@/components/Footer";
 import EnquireModal from "@/components/EnquireModal";
-import EnquireForm from "@/components/EnquireForm";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import PinkBlossomIcon from "@/components/PinkBlossomIcon";
+import { MapPin, Phone, Mail, Clock, Building, MessageSquare } from "lucide-react";
 
 export default function ContactPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,52 +25,45 @@ export default function ContactPage() {
       {/* Primary Top Site Nav ONLY */}
       <Navbar onOpenEnquire={handleOpenEnquire} />
 
-      {/* Hero Banner Section */}
-      <section className="relative h-[35vh] sm:h-[45vh] min-h-[260px] flex items-center justify-center border-b border-[#C15F70]/20 overflow-hidden">
-        <Image
-          src="/images/hero.jpg"
-          alt="Contact Us Banner"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-[#241C20]/45" />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="font-serif text-4xl sm:text-6xl font-semibold text-[#E8E1D3] drop-shadow-md">
-            Contact Us
-          </h1>
+      {/* Page Hero Header */}
+      <section className="py-20 lg:py-28 bg-[#F5EEE6] border-b border-[#C15F70]/20 relative overflow-hidden">
+        <div className="absolute top-8 right-12 opacity-[0.06] pointer-events-none select-none">
+          <PinkBlossomIcon size={320} className="text-[#C15F70]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <ScrollReveal variant="fade-up" duration={0.8}>
+            <div className="text-[11px] font-sans font-medium uppercase tracking-widest text-[#B78D4A] mb-3">
+              Home &nbsp;&gt;&nbsp; Contact Us
+            </div>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#241C20]">
+              Get in Touch
+            </h1>
+            <p className="font-sans text-base sm:text-lg text-[#241C20]/80 font-light mt-4 max-w-2xl mx-auto leading-relaxed">
+              Reach out to our dedicated advisory team for project details, site walkthroughs, and customized cost sheets.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <p className="font-sans text-xs text-[#241C20]/60 font-light uppercase tracking-wider">
-          Home &gt; Contact Us
-        </p>
-      </div>
-
-      {/* Contact Content Section (Verbatim Live Site Copy) */}
-      <section className="py-12 sm:py-20 bg-[#E8E1D3]">
+      {/* Main Contact Grid Section (Verbatim Content) */}
+      <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <SectionDivider number="01" title="Get in Touch" icon="flower" className="justify-center mb-6" />
+          <SectionDivider number="01" title="Contact & Office Locations" icon="leaf" />
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-semibold text-[#241C20] text-center mb-16">
-            Get in Touch
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Contact Info Left (Verbatim Live Site Copy) */}
+            {/* Contact Details Left Column */}
             <ScrollReveal variant="slide-left" duration={0.8} className="lg:col-span-5 space-y-8">
               
               {/* Corporate Office */}
-              <div className="bg-[#F5EEE6] p-6 rounded-2xl border border-[#C15F70]/25 space-y-2 shadow-xs">
-                <div className="flex items-center space-x-3 text-[#C15F70] mb-2">
-                  <MapPin className="w-5 h-5 stroke-[1.5]" />
+              <div className="bg-[#F5EEE6] p-8 rounded-2xl border border-[#C15F70]/25 shadow-xs space-y-3">
+                <div className="flex items-center space-x-3 text-[#C15F70]">
+                  <Building className="w-5 h-5 stroke-[1.5]" />
                   <h4 className="font-serif text-lg font-semibold text-[#241C20]">Corporate Office</h4>
                 </div>
-                <p className="font-sans text-xs sm:text-sm text-[#241C20]/80 font-light leading-relaxed">
+                <p className="font-sans text-xs text-[#241C20]/80 font-light leading-relaxed">
                   Pink Oaks Properties Limited<br />
                   Pinkoaks One, 5th Floor,<br />
                   Pirojshanagar, Eastern Express Highway,<br />
@@ -77,44 +71,68 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Contact Details */}
-              <div className="bg-[#F5EEE6] p-6 rounded-2xl border border-[#C15F70]/25 space-y-2 shadow-xs">
-                <div className="flex items-center space-x-3 text-[#C15F70] mb-2">
-                  <Phone className="w-5 h-5 stroke-[1.5]" />
-                  <h4 className="font-serif text-lg font-semibold text-[#241C20]">Contact Details</h4>
+              {/* Site & Sales Office */}
+              <div className="bg-[#F5EEE6] p-8 rounded-2xl border border-[#C15F70]/25 shadow-xs space-y-3">
+                <div className="flex items-center space-x-3 text-[#C15F70]">
+                  <MapPin className="w-5 h-5 stroke-[1.5]" />
+                  <h4 className="font-serif text-lg font-semibold text-[#241C20]">Site &amp; Sales Office</h4>
                 </div>
-                <p className="font-sans text-xs sm:text-sm text-[#241C20]/80 font-light leading-relaxed space-y-1">
-                  <span className="block"><strong>Phone:</strong> +91 97722 97772</span>
-                  <span className="block"><strong>Email:</strong> info@pinkoaks.com</span>
+                <p className="font-sans text-xs text-[#241C20]/80 font-light leading-relaxed">
+                  Pink Oaks, D-169, Bhrigu Marg,<br />
+                  Bani Park, Jaipur, Rajasthan 302016
                 </p>
               </div>
 
+              {/* Contact Information */}
+              <div className="bg-[#F5EEE6] p-8 rounded-2xl border border-[#C15F70]/25 shadow-xs space-y-4">
+                <div className="flex items-center space-x-3 text-[#C15F70]">
+                  <Phone className="w-5 h-5 stroke-[1.5]" />
+                  <h4 className="font-serif text-lg font-semibold text-[#241C20]">Contact Details</h4>
+                </div>
+                <div className="space-y-2 font-sans text-xs text-[#241C20]/85">
+                  <div className="flex items-center justify-between">
+                    <span className="font-light">Phone:</span>
+                    <a href="tel:+919772297772" className="font-medium text-[#C15F70] hover:underline">
+                      +91 97722 97772
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-light">Email:</span>
+                    <a href="mailto:info@pinkoaks.com" className="font-medium text-[#C15F70] hover:underline">
+                      info@pinkoaks.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               {/* Working Hours */}
-              <div className="bg-[#F5EEE6] p-6 rounded-2xl border border-[#C15F70]/25 space-y-2 shadow-xs">
-                <div className="flex items-center space-x-3 text-[#C15F70] mb-2">
+              <div className="bg-[#F5EEE6] p-8 rounded-2xl border border-[#C15F70]/25 shadow-xs space-y-3">
+                <div className="flex items-center space-x-3 text-[#C15F70]">
                   <Clock className="w-5 h-5 stroke-[1.5]" />
                   <h4 className="font-serif text-lg font-semibold text-[#241C20]">Working Hours</h4>
                 </div>
-                <p className="font-sans text-xs sm:text-sm text-[#241C20]/80 font-light leading-relaxed">
+                <p className="font-sans text-xs text-[#241C20]/80 font-light leading-relaxed">
                   Monday - Friday: 9:30 AM - 6:30 PM<br />
-                  Saturday - Sunday: Closed
+                  Saturday - Sunday: Site Visit Appointments Available
                 </p>
               </div>
 
             </ScrollReveal>
 
-            {/* Contact Form Right (Verbatim Live Site Copy) */}
-            <ScrollReveal variant="slide-right" duration={0.8} delay={0.2} className="lg:col-span-7 bg-[#F5EEE6] p-8 sm:p-10 rounded-2xl border border-[#C15F70]/25 shadow-xs">
-              <h3 className="font-serif text-2xl font-semibold text-[#241C20] text-center mb-6">
-                Send us a message
-              </h3>
-              <EnquireForm title="Send us a message" />
+            {/* Direct Form Right Column */}
+            <ScrollReveal variant="slide-right" duration={0.8} delay={0.2} className="lg:col-span-7">
+              <div className="bg-[#F5EEE6] p-8 sm:p-10 rounded-2xl border border-[#C15F70]/30 shadow-xs">
+                <EnquireForm title="Send us a message" />
+              </div>
             </ScrollReveal>
 
           </div>
 
         </div>
       </section>
+
+      {/* Interactive Google Map Section */}
+      <Neighbourhood />
 
       {/* Footer */}
       <Footer onOpenEnquire={handleOpenEnquire} />
