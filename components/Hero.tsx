@@ -28,47 +28,65 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative pt-28 pb-16 lg:pt-36 lg:pb-28 bg-[#E8E1D3] overflow-hidden">
-      {/* Subtle Flower Watermark Background */}
-      <div className="absolute top-12 left-6 opacity-[0.06] pointer-events-none select-none">
-        <PinkBlossomIcon size={320} className="text-[#C15F70]" />
+    <section id="hero" className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 bg-[#241C20] overflow-hidden min-h-[90vh] flex items-center">
+      
+      {/* Cinematic Full-Bleed Background Video with Poster Fallback (Round 4) */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/hero.jpg"
+          className="w-full h-full object-cover opacity-60 scale-105 transform duration-1000"
+        >
+          <source src="/videos/hero-architecture.mp4" type="video/mp4" />
+        </video>
+        {/* Dark Scrim Overlay for Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241C20]/90 via-[#241C20]/70 to-[#241C20]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#241C20] via-transparent to-[#241C20]/40" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Subtle Flower Watermark Background */}
+      <div className="absolute top-12 right-12 opacity-10 pointer-events-none select-none z-1">
+        <PinkBlossomIcon size={360} className="text-[#C15F70]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Editorial Content (6 cols) */}
+          {/* Left Editorial Content (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6 space-y-8"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 space-y-8 text-[#E8E1D3]"
           >
             {/* Tagline moment with 5-petal flower motif accent */}
-            <div className="flex items-center space-x-2.5 border-b border-[#B78D4A]/25 pb-4 max-w-xs">
+            <div className="flex items-center space-x-2.5 border-b border-[#B78D4A]/40 pb-4 max-w-xs">
               <span className="font-script text-3xl sm:text-4xl text-[#C15F70]">Live</span>
-              <span className="font-serif text-xl sm:text-2xl font-semibold tracking-[0.2em] uppercase text-[#241C20]">
+              <span className="font-serif text-xl sm:text-2xl font-semibold tracking-[0.2em] uppercase text-[#E8E1D3]">
                 ROOTED.
               </span>
-              <PinkBlossomIcon className="w-4 h-4 text-[#C15F70] ml-1 opacity-80" />
+              <PinkBlossomIcon className="w-4 h-4 text-[#C15F70] ml-1" />
             </div>
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#241C20] leading-[1.15]">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#E8E1D3] leading-[1.12]">
                 A Private Floor Above The City.
               </h1>
-              <p className="font-sans text-base sm:text-lg text-[#241C20]/80 font-light leading-relaxed max-w-xl">
+              <p className="font-sans text-base sm:text-lg text-[#E8E1D3]/85 font-light leading-relaxed max-w-xl">
                 Where timeless architecture meets modern indulgence in Bani Park, Jaipur. Designed for true sanctuary and lifelong family harmony.
               </p>
             </div>
 
             {/* Key Pricing & Specs Banner */}
-            <div className="bg-[#F5EEE6] border-l-2 border-[#C15F70] p-4 sm:p-5 rounded-r-md">
-              <div className="font-serif text-lg sm:text-xl font-semibold text-[#C15F70]">
+            <div className="bg-[#241C20]/80 backdrop-blur-sm border-l-2 border-[#C15F70] p-4 sm:p-5 rounded-r-md border border-[#C15F70]/20">
+              <div className="font-serif text-xl sm:text-2xl font-semibold text-[#C15F70]">
                 INR 1.98 Cr. onwards
               </div>
-              <div className="font-sans text-xs sm:text-sm font-medium text-[#241C20]/90 tracking-wide mt-1">
+              <div className="font-sans text-xs sm:text-sm font-medium text-[#E8E1D3]/90 tracking-wide mt-1">
                 Possession June 2026 &nbsp;·&nbsp; 3, 3+ Utility &amp; 4 BHK
               </div>
             </div>
@@ -77,14 +95,14 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => onOpenEnquire("Schedule a Site Visit")}
-                className="px-6 py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors shadow-xs"
+                className="px-7 py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors shadow-sm"
               >
                 Schedule a Visit
               </button>
 
               <a
                 href="#emi-calculator"
-                className="px-5 py-3.5 border border-[#C15F70] text-[#C15F70] hover:bg-[#F5EEE6] font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors"
+                className="px-6 py-3.5 border border-[#E8E1D3]/40 text-[#E8E1D3] hover:bg-[#E8E1D3]/10 font-sans text-xs font-medium uppercase tracking-widest rounded-md transition-colors"
               >
                 EMI Calculator
               </a>
@@ -94,7 +112,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
                   href="https://wa.me/919772297772"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#F5EEE6] rounded-md transition-colors"
+                  className="p-3.5 border border-[#E8E1D3]/30 text-[#C15F70] hover:bg-[#E8E1D3]/10 rounded-md transition-colors"
                   title="WhatsApp Us"
                 >
                   <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
@@ -104,7 +122,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
 
                 <a
                   href="tel:+919772297772"
-                  className="p-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#F5EEE6] rounded-md transition-colors"
+                  className="p-3.5 border border-[#E8E1D3]/30 text-[#C15F70] hover:bg-[#E8E1D3]/10 rounded-md transition-colors"
                   title="Call Us (+91 9772297772)"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,7 +132,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
 
                 <button
                   onClick={handleShare}
-                  className="p-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#F5EEE6] rounded-md transition-colors"
+                  className="p-3.5 border border-[#E8E1D3]/30 text-[#C15F70] hover:bg-[#E8E1D3]/10 rounded-md transition-colors"
                   title="Share Project"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,8 +143,8 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             </div>
 
             {/* Supporting Family Lifestyle Preview Card */}
-            <div className="pt-2 flex items-center gap-3 border-t border-[#C15F70]/20">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/30">
+            <div className="pt-3 flex items-center gap-3.5 border-t border-[#E8E1D3]/15">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/40">
                 <Image
                   src="/images/family-living.jpg"
                   alt="Multi-generational family living"
@@ -135,24 +153,24 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
                 />
               </div>
               <div className="text-xs">
-                <span className="font-serif font-semibold text-[#241C20] block">
+                <span className="font-serif font-semibold text-[#E8E1D3] block">
                   Built for Multi-Generational Families
                 </span>
-                <span className="font-sans font-light text-[#241C20]/70 text-[11px]">
+                <span className="font-sans font-light text-[#E8E1D3]/75 text-[11px]">
                   Private floors, sprawling balconies &amp; quiet sanctuaries
                 </span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Prominent Hero Photograph (6 cols = 50% width desktop grid) */}
+          {/* Right Prominent Hero Card Lockup (5 cols) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-6 relative"
+            className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-xs border border-[#C15F70]/30 aspect-[4/3] min-h-[380px] lg:min-h-[460px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C15F70]/30 aspect-[4/3] min-h-[380px] lg:min-h-[440px]">
               <Image
                 src="/images/hero.jpg"
                 alt="Pink Oaks Luxury Architecture"
@@ -167,7 +185,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               </div>
 
               {/* RERA Badge Bottom Right */}
-              <div className="absolute bottom-4 right-4 bg-[#E8E1D3]/95 backdrop-blur-xs px-3.5 py-1.5 rounded-md border border-[#B78D4A]/30 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20] shadow-xs">
+              <div className="absolute bottom-4 right-4 bg-[#241C20]/90 backdrop-blur-xs px-3.5 py-1.5 rounded-md border border-[#B78D4A]/40 text-[10px] font-sans font-medium uppercase tracking-widest text-[#E8E1D3] shadow-xs">
                 RERA: RAJ/P/2025/3489
               </div>
             </div>
