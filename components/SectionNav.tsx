@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function SectionNav() {
   const [activeSection, setActiveSection] = useState<string>("overview");
 
-  // In-Page links horizontally centered as a group per Round 6 specs
+  // In-Page links ordered in exact top-to-bottom homepage section sequence
   const sectionLinks = [
     { name: "Overview", href: "#overview", id: "overview" },
     { name: "Location", href: "#location", id: "location" },
@@ -39,6 +39,7 @@ export default function SectionNav() {
   return (
     <div className="sticky top-[72px] z-40 h-[56px] flex items-center bg-[#E8E1D3]/95 backdrop-blur-md border-b border-[#C15F70]/20 shadow-2xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-center overflow-x-auto no-scrollbar">
+        {/* Centered In-Page Nav Group (Round 6 Specification) */}
         <nav className="flex items-center justify-center space-x-6 sm:space-x-10 text-xs font-sans whitespace-nowrap">
           {sectionLinks.map((link) => {
             const isActive = activeSection === link.id;

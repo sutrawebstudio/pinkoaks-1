@@ -29,9 +29,9 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative pt-36 pb-20 lg:pt-44 lg:pb-32 bg-[#241C20] overflow-hidden min-h-[92vh] flex items-center justify-center">
+    <section id="hero" className="relative pt-32 pb-24 lg:pt-40 lg:pb-36 bg-[#241C20] overflow-hidden min-h-[92vh] flex items-center justify-center">
       
-      {/* Cinematic Full-Bleed Background Video & Photo Frame */}
+      {/* Cinematic Full-Bleed Background Video & High-Res Photo Fallback */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -43,32 +43,31 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
         >
           <source src="/videos/hero-architecture.mp4" type="video/mp4" />
         </video>
-        {/* Dual Luxury Centered Scrim Overlay */}
+        {/* Dark Scrim Overlay for Centered Text Legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#241C20]/90 via-[#241C20]/75 to-[#241C20]/95" />
-        <div className="absolute inset-0 bg-radial from-transparent via-[#241C20]/60 to-[#241C20]" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#241C20]/50 to-[#241C20]/90" />
       </div>
 
-      {/* Decorative Blossom Watermark Background */}
+      {/* Decorative Flower Watermark Background (Centered) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.07] pointer-events-none select-none z-1">
-        <PinkBlossomIcon size={520} className="text-[#C15F70]" />
+        <PinkBlossomIcon size={560} className="text-[#C15F70]" />
       </div>
 
-      {/* Unified Centered Frame Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+      {/* Single Unified Centered Frame (Round 6) */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center flex flex-col items-center">
         
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8 text-[#E8E1D3] flex flex-col items-center"
+          className="space-y-8 text-[#E8E1D3] flex flex-col items-center w-full"
         >
-
-          {/* Logo Holding Card (Centered per Brand Book rules) */}
-          <div className="shadow-2xl">
+          {/* Logo Holding Card Centered (Brand Book Specification) */}
+          <div className="shadow-2xl shadow-black/50">
             <PinkOaksLogo variant="holding-card" size="md" />
           </div>
 
-          {/* Location & Feature Pills (Centered) */}
+          {/* Location & Tagline Pill Bar (Centered) */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center space-x-2 bg-[#E8E1D3]/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#C15F70]/40 text-xs font-sans font-medium text-[#E8E1D3]">
               <MapPin className="w-3.5 h-3.5 text-[#C15F70]" />
@@ -78,13 +77,10 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Low Density Enclave</span>
             </div>
-            <div className="inline-flex items-center space-x-2 bg-[#241C20]/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#B78D4A]/40 text-[11px] font-sans font-medium text-[#E8E1D3]">
-              <span>RERA: RAJ/P/2025/3489</span>
-            </div>
           </div>
 
-          {/* Tagline moment centered */}
-          <div className="flex items-center justify-center space-x-3 border-b border-[#B78D4A]/40 pb-4 px-6">
+          {/* Tagline Moment Centered ("Live ROOTED.") */}
+          <div className="flex items-center justify-center space-x-3 border-b border-[#B78D4A]/40 pb-4 w-full max-w-sm">
             <span className="font-script text-3xl sm:text-4xl text-[#C15F70]">Live</span>
             <span className="font-serif text-xl sm:text-2xl font-semibold tracking-[0.25em] uppercase text-[#E8E1D3]">
               ROOTED.
@@ -92,8 +88,8 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             <PinkBlossomIcon className="w-4 h-4 text-[#C15F70] ml-1" />
           </div>
 
-          {/* Centered Headline */}
-          <div className="space-y-4 max-w-3xl mx-auto">
+          {/* Main Headline Centered */}
+          <div className="space-y-4 max-w-3xl">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#E8E1D3] leading-[1.12]">
               A Private Floor Above The City.
             </h1>
@@ -102,9 +98,9 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             </p>
           </div>
 
-          {/* Centered Key Pricing & Floating Specs Pill Bar */}
-          <div className="bg-[#241C20]/85 backdrop-blur-md border border-[#C15F70]/30 p-5 rounded-2xl shadow-2xl flex flex-wrap items-center justify-center gap-6 text-center max-w-2xl mx-auto">
-            <div>
+          {/* Key Pricing & Specs Banner Centered */}
+          <div className="bg-[#241C20]/80 backdrop-blur-md border border-[#C15F70]/30 p-5 rounded-2xl shadow-xl flex flex-wrap items-center justify-center gap-6 max-w-2xl w-full border-t-2 border-t-[#C15F70]">
+            <div className="text-center sm:text-left">
               <span className="font-sans text-[10px] font-semibold uppercase tracking-widest text-[#B78D4A] block">
                 Starting Investment
               </span>
@@ -112,20 +108,20 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
                 INR 1.98 Cr. <span className="text-xs font-sans font-light text-[#E8E1D3]/70">onwards*</span>
               </div>
             </div>
-            <div className="h-8 w-px bg-[#E8E1D3]/20 hidden sm:block" />
-            <div className="space-y-1 text-left">
-              <div className="flex items-center space-x-2 text-xs font-sans text-[#E8E1D3]/90">
+            <div className="h-10 w-px bg-[#E8E1D3]/20 hidden sm:block" />
+            <div className="space-y-1 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start space-x-2 text-xs font-sans text-[#E8E1D3]/90">
                 <Calendar className="w-3.5 h-3.5 text-[#9CAA8C]" />
                 <span>Possession June 2026</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs font-sans text-[#E8E1D3]/90">
+              <div className="flex items-center justify-center sm:justify-start space-x-2 text-xs font-sans text-[#E8E1D3]/90">
                 <Home className="w-3.5 h-3.5 text-[#A9C4D4]" />
                 <span>3, 3+ Utility &amp; 4 BHK Floor Residences</span>
               </div>
             </div>
           </div>
 
-          {/* Centered Quick Actions Bar */}
+          {/* Quick Actions Bar Centered */}
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => onOpenEnquire("Schedule a Site Visit")}
@@ -173,23 +169,24 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
             </div>
           </div>
 
-          {/* Centered Family Lifestyle Preview Strip */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-3.5 border-t border-[#E8E1D3]/15 max-w-lg mx-auto">
-            <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/40 shadow-xs">
-              <Image
-                src="/images/family-living.jpg"
-                alt="Multi-generational family living"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-xs text-left">
-              <span className="font-serif font-semibold text-[#E8E1D3] block">
+          {/* RERA Badge & Family Lifestyle Preview Pill Centered */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 border-t border-[#E8E1D3]/15 w-full max-w-xl">
+            <div className="flex items-center space-x-3">
+              <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/40 shadow-xs">
+                <Image
+                  src="/images/family-living.jpg"
+                  alt="Multi-generational family living"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="font-sans font-light text-[#E8E1D3]/80 text-xs">
                 Built for Multi-Generational Indian Families
               </span>
-              <span className="font-sans font-light text-[#E8E1D3]/75 text-[11px]">
-                Single-floor privacy, grand sunlit balconies &amp; quiet sanctuaries
-              </span>
+            </div>
+            <span className="text-[#E8E1D3]/30 hidden sm:inline">·</span>
+            <div className="bg-[#241C20]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#B78D4A]/50 text-[10px] font-sans font-medium uppercase tracking-widest text-[#E8E1D3]">
+              RERA: RAJ/P/2025/3489
             </div>
           </div>
 
