@@ -24,14 +24,14 @@ export default function PageLoader() {
     // Set aria-busy on body while loader is active
     document.body.setAttribute("aria-busy", "true");
 
-    const MIN_LOADER_TIME = 1500;
-    const start = Date.now();
+    const MIN_LOADER_TIME = 2000;
+    const startTime = Date.now();
 
     let timer: NodeJS.Timeout;
 
     const handleComplete = () => {
-      const elapsed = Date.now() - start;
-      const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(MIN_LOADER_TIME - elapsed, 0);
 
       timer = setTimeout(() => {
         setIsLoading(false);
