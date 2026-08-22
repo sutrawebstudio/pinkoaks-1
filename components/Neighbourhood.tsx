@@ -33,13 +33,13 @@ export default function Neighbourhood() {
       : landmarks.filter((l) => l.category === selectedFilter);
 
   return (
-    <section id="location" className="py-20 lg:py-32 bg-[#E8E1D3]">
+    <section id="location" className="py-12 lg:py-20 bg-[#E8E1D3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}
         <SectionDivider number="09" title="Prime Location & Connectivity" icon="flower" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8">
           <ScrollReveal className="lg:col-span-7">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20]">
               Bani Park, Jaipur

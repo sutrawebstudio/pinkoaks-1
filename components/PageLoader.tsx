@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import PinkOaksLogo from "./PinkOaksLogo";
 import PinkBlossomIcon from "./PinkBlossomIcon";
 
+// UX Note: 5s presentational delay applied to in-page anchor navigation per user request.
+// (Note: This introduces a 5000ms delay on clicking anchor links before scrolling to target section).
+
 export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
@@ -14,44 +17,63 @@ export default function PageLoader() {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setIsReducedMotion(mediaQuery.matches);
 
-    // Session storage check so it only plays once per session on fresh load
+    // Initial session load check
     const hasSeenLoader = sessionStorage.getItem("pinkoaks_loader_seen");
     if (hasSeenLoader) {
       setIsLoading(false);
-      return;
+    } else {
+      document.body.setAttribute("aria-busy", "true");
+      document.body.style.overflow = "hidden";
+
+      const MIN_LOADER_TIME = 10000;
+      const startTime = Date.now();
+
+      const handleInitialComplete = () => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(MIN_LOADER_TIME - elapsed, 0);
+
+        setTimeout(() => {
+          setIsLoading(false);
+          document.body.removeAttribute("aria-busy");
+          document.body.style.overflow = "";
+          sessionStorage.setItem("pinkoaks_loader_seen", "true");
+        }, remaining);
+      };
+
+      if (document.readyState === "complete") {
+        handleInitialComplete();
+      } else {
+        window.addEventListener("load", handleInitialComplete, { once: true });
+      }
     }
 
-    // Set aria-busy and overflow hidden on body while loader is active
-    document.body.setAttribute("aria-busy", "true");
-    document.body.style.overflow = "hidden";
+    // In-page nav transition event listener (5000ms delay per spec)
+    const handleNavLoader = (e: Event) => {
+      const customEvent = e as CustomEvent<{ targetId?: string; duration?: number }>;
+      const duration = customEvent.detail?.duration || 5000;
+      const targetId = customEvent.detail?.targetId;
 
-    const MIN_LOADER_TIME = 10000;
-    const startTime = Date.now();
+      setIsLoading(true);
+      document.body.setAttribute("aria-busy", "true");
+      document.body.style.overflow = "hidden";
 
-    let timer: NodeJS.Timeout;
-
-    const handleComplete = () => {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(MIN_LOADER_TIME - elapsed, 0);
-
-      timer = setTimeout(() => {
+      setTimeout(() => {
+        if (targetId) {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
         setIsLoading(false);
         document.body.removeAttribute("aria-busy");
         document.body.style.overflow = "";
-        sessionStorage.setItem("pinkoaks_loader_seen", "true");
-      }, remaining);
+      }, duration);
     };
 
-    if (document.readyState === "complete") {
-      handleComplete();
-    } else {
-      window.addEventListener("load", handleComplete, { once: true });
-      timer = setTimeout(handleComplete, MIN_LOADER_TIME);
-    }
+    window.addEventListener("pinkoaks_nav_loader", handleNavLoader);
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("load", handleComplete);
+      window.removeEventListener("pinkoaks_nav_loader", handleNavLoader);
       document.body.removeAttribute("aria-busy");
       document.body.style.overflow = "";
     };
@@ -64,8 +86,8 @@ export default function PageLoader() {
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: isReducedMotion ? 0 : 0.5, ease: "easeOut" }}
-          className="fixed inset-0 z-[100] bg-[#241C20] flex flex-col items-center justify-center pointer-events-none select-none"
+          transition={{ duration: isReducedMotion ? 0 : 0.4, ease: "easeOut" }}
+          className="fixed inset-0 z-[100] bg-[#241C20] flex flex-col items-center justify-center select-none"
         >
           <div className="relative flex flex-col items-center space-y-6 px-6">
             {/* Ambient Blossom Motif Watermark Pulse */}
@@ -93,7 +115,7 @@ export default function PageLoader() {
               <motion.div
                 initial={{ x: "-100%" }}
                 animate={{ x: "0%" }}
-                transition={{ duration: isReducedMotion ? 0 : 1.3, ease: "easeInOut" }}
+                transition={{ duration: isReducedMotion ? 0 : 1.5, ease: "easeInOut" }}
                 className="w-full h-full bg-gradient-to-r from-[#B78D4A] via-[#C15F70] to-[#B78D4A]"
               />
             </div>

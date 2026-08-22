@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from "react";
 
+// UX Note: 5s presentational delay applied to in-page anchor navigation per user request.
+// (Note: This introduces a 5000ms delay on clicking anchor links before scrolling to target section).
+
 export default function SectionNav() {
   const [activeSection, setActiveSection] = useState<string>("overview");
+  const [isNavLoading, setIsNavLoading] = useState<boolean>(false);
 
   // In-Page links ordered per user journey: Overview -> Amenities -> Plans -> Price -> Location -> Download
   const sectionLinks = [
@@ -36,8 +40,25 @@ export default function SectionNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    if (isNavLoading) return; // Disable further nav clicks while loader is active
+
+    setIsNavLoading(true);
+
+    // Dispatch custom event to show branded 5s page loader overlay
+    window.dispatchEvent(
+      new CustomEvent("pinkoaks_nav_loader", {
+        detail: { targetId, duration: 5000 },
+      })
+    );
+
+    setTimeout(() => {
+      setIsNavLoading(false);
+    }, 5400);
+  };
+
   return (
-    /* 6. Sticky bottom nav: pt-4, centered link row per Round 6/7 spec */
     <div className="sticky top-[72px] z-40 h-[64px] pt-4 flex items-center bg-[#E8E1D3]/95 backdrop-blur-md border-b border-[#C15F70]/20 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-center overflow-x-auto no-scrollbar">
         <nav className="flex items-center space-x-6 sm:space-x-8 text-xs font-sans whitespace-nowrap">
@@ -50,7 +71,11 @@ export default function SectionNav() {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.id)}
+                aria-disabled={isNavLoading}
                 className={`transition-colors font-medium tracking-wider uppercase text-[11px] py-1.5 relative ${
+                  isNavLoading ? "pointer-events-none opacity-60" : "cursor-pointer"
+                } ${
                   isActive
                     ? "text-[#C15F70] font-semibold"
                     : "text-[#241C20]/80 hover:text-[#C15F70]"
