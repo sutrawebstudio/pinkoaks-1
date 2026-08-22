@@ -129,12 +129,10 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
           >
             {/* Location & Tagline Pill Badges Bar */}
             <div className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center space-x-2 bg-[#E8E1D3]/10 backdrop-blur-md px-3 py-1 rounded-full border border-[#C15F70]/40 text-[11px] font-sans font-medium text-[#E8E1D3]">
-                <MapPin className="w-3 h-3 text-[#C15F70]" />
+              <div className="inline-flex items-center bg-[#E8E1D3]/10 backdrop-blur-md px-3.5 py-1 rounded-full border border-[#C15F70]/40 text-[11px] font-sans font-medium text-[#E8E1D3]">
                 <span>Bani Park, Jaipur</span>
               </div>
-              <div className="inline-flex items-center space-x-2 bg-[#C15F70]/20 backdrop-blur-md px-3 py-1 rounded-full border border-[#C15F70]/50 text-[11px] font-sans font-medium text-[#C15F70]">
-                <Sparkles className="w-3 h-3" />
+              <div className="inline-flex items-center bg-[#C15F70]/20 backdrop-blur-md px-3.5 py-1 rounded-full border border-[#C15F70]/50 text-[11px] font-sans font-medium text-[#C15F70]">
                 <span>Low Density Enclave</span>
               </div>
             </div>
@@ -178,60 +176,61 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
 
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 text-xs font-sans text-[#E8E1D3]/90">
-                  <Calendar className="w-3.5 h-3.5 text-[#9CAA8C] shrink-0" />
-                  <span>Possession June 2026</span>
+                  <span>RERA:</span>
+                  <span className="font-semibold text-[#C15F70]">RAJ/P/2025/3489</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs font-sans text-[#E8E1D3]/90">
-                  <Home className="w-3.5 h-3.5 text-[#A9C4D4] shrink-0" />
-                  <span>3, 3+ Utility &amp; 4 BHK Floor Residences</span>
+                <div className="text-[10px] font-sans text-[#E8E1D3]/70 font-light">
+                  Possession: June 2026
                 </div>
               </div>
             </div>
 
-            {/* CTA Row */}
-            <div className="mt-[16px] flex flex-wrap items-center gap-3">
+            {/* Main Action Bar */}
+            <div className="mt-[24px] flex flex-wrap items-center gap-3 sm:gap-4">
               <button
-                onClick={() => onOpenEnquire("Schedule a Site Visit")}
-                className="px-6 py-3 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-all shadow-md hover:shadow-lg flex items-center space-x-2 group"
+                onClick={() => onOpenEnquire("Hero Sales Spec Sheet")}
+                className="px-7 py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs sm:text-sm font-semibold uppercase tracking-widest rounded-lg shadow-sm transition-all duration-300 flex items-center space-x-2"
               >
-                <span>Schedule a Visit</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                <span>Request Brochure</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
 
-              <a
-                href="#emi-calculator"
-                className="px-5 py-3 border border-[#E8E1D3]/40 text-[#E8E1D3] hover:bg-[#E8E1D3]/10 font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors"
+              <button
+                onClick={() => onOpenEnquire("Hero Site Visit")}
+                className="px-6 py-3.5 border border-[#C15F70]/40 text-[#E8E1D3] hover:bg-[#C15F70]/15 rounded-lg transition-colors font-sans text-xs sm:text-sm font-medium uppercase tracking-wider flex items-center space-x-2"
               >
-                EMI Calculator
-              </a>
+                <Calendar className="w-4 h-4 text-[#C15F70]" />
+                <span>Schedule Visit</span>
+              </button>
 
-              <div className="flex items-center space-x-2">
+              {/* Contact Icons Row: Unified to brand pink (#C15F70) in circular outline containers */}
+              <div className="flex items-center space-x-2 ml-1">
                 <a
                   href="https://wa.me/919772297772"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 border border-[#E8E1D3]/30 text-[#C15F70] hover:bg-[#E8E1D3]/10 rounded-lg transition-colors"
+                  className="p-3 border border-[#C15F70]/40 text-[#C15F70] hover:bg-[#C15F70]/15 rounded-full transition-colors"
                   aria-label="WhatsApp Us"
                 >
-                  <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-[#C15F70]" viewBox="0 0 24 24">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                   </svg>
                 </a>
 
                 <a
                   href="tel:+919772297772"
-                  className="p-3 border border-[#E8E1D3]/30 text-[#C15F70] hover:bg-[#E8E1D3]/10 rounded-lg transition-colors"
+                  className="p-3 border border-[#C15F70]/40 text-[#C15F70] hover:bg-[#C15F70]/15 rounded-full transition-colors"
                   aria-label="Call Sales"
                 >
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-4 h-4 text-[#C15F70]" />
                 </a>
 
                 <button
                   onClick={handleShare}
-                  className="p-3 border border-[#E8E1D3]/30 text-[#C15F70] hover:bg-[#E8E1D3]/10 rounded-lg transition-colors"
+                  className="p-3 border border-[#C15F70]/40 text-[#C15F70] hover:bg-[#C15F70]/15 rounded-full transition-colors"
                   aria-label="Share Project"
                 >
-                  <Share2 className="w-4 h-4" />
+                  <Share2 className="w-4 h-4 text-[#C15F70]" />
                 </button>
               </div>
             </div>
