@@ -21,6 +21,8 @@ import Footer from "@/components/Footer";
 import FloatingMobileCTA from "@/components/FloatingMobileCTA";
 import EnquireModal from "@/components/EnquireModal";
 
+import PageLoader from "@/components/PageLoader";
+
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("Enquire Now");
@@ -32,6 +34,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#E8E1D3] text-[#241C20] relative">
+      {/* Branded Loading Curtain Sequence */}
+      <PageLoader />
+
       {/* 1. Primary Top Site Nav (Site-wide destinations: Homepage, About Us, Leadership, Contact Us) */}
       <Navbar onOpenEnquire={handleOpenEnquire} />
 

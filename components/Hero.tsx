@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import PinkOaksLogo from "./PinkOaksLogo";
@@ -11,6 +12,21 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenEnquire }: HeroProps) {
+  const [currentScene, setCurrentScene] = useState<number>(0);
+
+  const heroScenes = [
+    { type: "video", src: "/videos/hero-architecture.mp4", poster: "/images/hero.jpg", alt: "Pink Oaks Exterior" },
+    { type: "image", src: "/images/family-living.jpg", alt: "Family Living Room Sanctuary" },
+    { type: "image", src: "/images/gallery-drawing.jpg", alt: "Sunlit Drawing Room" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentScene((prev: number) => (prev + 1) % heroScenes.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroScenes.length]);
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -31,21 +47,46 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
   return (
     <section id="hero" className="relative pt-[92px] pb-[24px] lg:pt-[104px] lg:pb-[32px] bg-[#241C20] overflow-hidden min-h-screen lg:min-h-[100vh] lg:max-h-[920px] flex items-center">
       
-      {/* 3. Layer 1: Base Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/images/hero.jpg"
-          className="w-full h-full object-cover opacity-45 scale-105 transform duration-1000"
-        >
-          <source src="/videos/hero-architecture.mp4" type="video/mp4" />
-        </video>
+      {/* Round 11: Crossfading Scene Carousel with Slow Continuous Ambient Zoom (100% -> 106%) */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {heroScenes.map((scene, idx) => (
+          <motion.div
+            key={scene.src}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{
+              opacity: currentScene === idx ? 0.45 : 0,
+              scale: currentScene === idx ? 1.06 : 1,
+            }}
+            transition={{
+              opacity: { duration: 1, ease: "easeInOut" },
+              scale: { duration: 6, ease: "linear" },
+            }}
+            className="absolute inset-0 w-full h-full"
+          >
+            {scene.type === "video" ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={scene.poster}
+                className="w-full h-full object-cover"
+              >
+                <source src={scene.src} type="video/mp4" />
+              </video>
+            ) : (
+              <Image
+                src={scene.src}
+                alt={scene.alt}
+                fill
+                className="object-cover"
+              />
+            )}
+          </motion.div>
+        ))}
       </div>
 
-      {/* 3. Layer 2: Soft Blurred Cherry Blossom Texture (Taborosa Pink tint, blend-mode: soft-light, opacity 0.10) */}
+      {/* Layer 2: Soft Blurred Cherry Blossom Texture */}
       <div className="absolute inset-0 z-1 opacity-10 mix-blend-soft-light pointer-events-none select-none overflow-hidden">
         <Image
           src="/images/detail-blossom.jpg"
@@ -55,7 +96,7 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
         />
       </div>
 
-      {/* 3. Layer 3: Secondary Jaali (Crafted Lattice) Pattern Overlay (Ivory Stone / Sage Green tint, opacity 0.05) */}
+      {/* Layer 3: Secondary Jaali (Crafted Lattice) Pattern Overlay */}
       <div className="absolute inset-0 z-2 opacity-5 mix-blend-overlay pointer-events-none select-none overflow-hidden">
         <Image
           src="/images/detail-jali.jpg"
@@ -65,12 +106,12 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
         />
       </div>
 
-      {/* 1. Blossom Watermark Motif Accent: Off-frame top-right corner placement (opacity 0.10) */}
+      {/* Blossom Watermark Motif Accent */}
       <div className="absolute top-8 right-8 opacity-10 pointer-events-none select-none z-3 max-w-full overflow-hidden">
         <PinkBlossomIcon size={320} className="text-[#C15F70]" />
       </div>
 
-      {/* 3. Layer 4: Dark Scrim Overlay for WCAG AA Text Contrast */}
+      {/* Layer 4: Dark Scrim Overlay for WCAG AA Text Contrast */}
       <div className="absolute inset-0 z-4 bg-gradient-to-r from-[#241C20]/95 via-[#241C20]/80 to-[#241C20]/45" />
       <div className="absolute inset-0 z-4 bg-gradient-to-t from-[#241C20] via-transparent to-[#241C20]/50" />
 

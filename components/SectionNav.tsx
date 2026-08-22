@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 export default function SectionNav() {
   const [activeSection, setActiveSection] = useState<string>("overview");
 
-  // In-Page links ordered in exact top-to-bottom homepage section sequence
+  // In-Page links ordered per spec: Overview | Location | Plans | Price | Amenities | Download
   const sectionLinks = [
     { name: "Overview", href: "#overview", id: "overview" },
-    { name: "Amenities", href: "#amenities", id: "amenities" },
+    { name: "Location", href: "#location", id: "location" },
     { name: "Plans", href: "#plans", id: "plans" },
     { name: "Price", href: "#price", id: "price" },
-    { name: "Location", href: "#location", id: "location" },
+    { name: "Amenities", href: "#amenities", id: "amenities" },
     { name: "Download", href: "#download", id: "download" },
   ];
 
@@ -37,9 +37,9 @@ export default function SectionNav() {
   }, []);
 
   return (
-    /* 6. Sticky bottom nav: add padding-top 16px (pt-4) so hero content above doesn't touch it directly */
+    /* 6. Sticky bottom nav: pt-4, centered link row per Round 6/7 spec */
     <div className="sticky top-[72px] z-40 h-[64px] pt-4 flex items-center bg-[#E8E1D3]/95 backdrop-blur-md border-b border-[#C15F70]/20 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between sm:justify-start overflow-x-auto no-scrollbar">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-center overflow-x-auto no-scrollbar">
         <nav className="flex items-center space-x-6 sm:space-x-8 text-xs font-sans whitespace-nowrap">
           <span className="text-[10px] font-serif uppercase tracking-widest text-[#B78D4A] font-semibold hidden sm:inline-block pr-3 border-r border-[#C15F70]/20">
             In-Page Nav

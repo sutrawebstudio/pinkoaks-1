@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   ShieldCheck,
   Sun,
@@ -36,19 +37,19 @@ export default function Amenities() {
   const amenitiesList = [
     { name: "Anti-Termite Treatment", category: "Infrastructure & Tech", icon: ShieldCheck, theme: "forest" },
     { name: "Well Ventilated & Lighted", category: "Wellness & Leisure", icon: Sun, theme: "sage" },
-    { name: "Big Balconies", category: "Wellness & Leisure", icon: Maximize2, theme: "taborosa" },
-    { name: "Yoga Studio", category: "Wellness & Leisure", icon: Heart, theme: "taborosa" },
-    { name: "Home Theatre", category: "Wellness & Leisure", icon: Film, theme: "misty" },
-    { name: "Billiards Table", category: "Wellness & Leisure", icon: CircleDot, theme: "misty" },
-    { name: "Library", category: "Wellness & Leisure", icon: BookOpen, theme: "forest" },
-    { name: "Kid's Play Area", category: "Wellness & Leisure", icon: Smile, theme: "sage" },
+    { name: "Big Balconies", category: "Wellness & Leisure", icon: Maximize2, theme: "taborosa", photo: "/images/family-park.jpg" },
+    { name: "Yoga Studio", category: "Wellness & Leisure", icon: Heart, theme: "taborosa", photo: "/images/gallery-yoga.jpg" },
+    { name: "Home Theatre", category: "Wellness & Leisure", icon: Film, theme: "misty", photo: "/images/gallery-theater.jpg" },
+    { name: "Billiards Table", category: "Wellness & Leisure", icon: CircleDot, theme: "misty", photo: "/images/family-games.jpg" },
+    { name: "Library", category: "Wellness & Leisure", icon: BookOpen, theme: "forest", photo: "/images/gallery-library.jpg" },
+    { name: "Kid's Play Area", category: "Wellness & Leisure", icon: Smile, theme: "sage", photo: "/images/family-living.jpg" },
     { name: "Music Room", category: "Wellness & Leisure", icon: Music, theme: "taborosa" },
-    { name: "Temple Space", category: "Wellness & Leisure", icon: Landmark, theme: "sage" },
+    { name: "Temple Space", category: "Wellness & Leisure", icon: Landmark, theme: "sage", photo: "/images/detail-jali.jpg" },
     { name: "Indoor Games", category: "Wellness & Leisure", icon: Gamepad2, theme: "misty" },
     { name: "Storage for Flats", category: "Safety & Finishes", icon: Archive, theme: "forest" },
-    { name: "Anti-Skid Tiles", category: "Safety & Finishes", icon: Grid, theme: "forest" },
+    { name: "Anti-Skid Tiles", category: "Safety & Finishes", icon: Grid, theme: "forest", photo: "/images/detail-sandstone.jpg" },
     { name: "Pressure Pump System", category: "Infrastructure & Tech", icon: Activity, theme: "misty" },
-    { name: "Water Softener Plant", category: "Infrastructure & Tech", icon: Droplets, theme: "misty" },
+    { name: "Water Softener Plant", category: "Infrastructure & Tech", icon: Droplets, theme: "misty", photo: "/images/detail-water.jpg" },
     { name: "Pipeline Piped Gas", category: "Infrastructure & Tech", icon: Flame, theme: "taborosa" },
     { name: "EV Charging Provision", category: "Infrastructure & Tech", icon: BatteryCharging, theme: "sage" },
     { name: "Smart Washroom Lights", category: "Infrastructure & Tech", icon: Lightbulb, theme: "misty" },
@@ -136,9 +137,15 @@ export default function Amenities() {
                     className="p-4 sm:px-6 sm:py-4.5 flex items-center justify-between hover:bg-[#F5EEE6]/80 transition-colors border-b border-[#C15F70]/15"
                   >
                     <div className="flex items-center space-x-3.5">
-                      <div className={`p-2.5 rounded-lg border ${iconColor} shrink-0`}>
-                        <IconComponent className="w-4 h-4 stroke-[1.5]" />
-                      </div>
+                      {item.photo ? (
+                        <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-[#C15F70]/30 shrink-0 shadow-xs">
+                          <Image src={item.photo} alt={item.name} fill className="object-cover" />
+                        </div>
+                      ) : (
+                        <div className={`p-2.5 rounded-lg border ${iconColor} shrink-0`}>
+                          <IconComponent className="w-4 h-4 stroke-[1.5]" />
+                        </div>
+                      )}
                       <div>
                         <span className="font-sans text-xs font-semibold text-[#241C20] block">
                           {item.name}
