@@ -23,7 +23,7 @@ export default function LeadershipPage() {
   const boardMembers = [
     {
       name: "Dinesh Sanghavi",
-      title: "Chairperson Designate, Pinkoaks Industries Group",
+      title: "Chairperson Designate, Pink Oaks Industries Group",
       image: "/images/family-living.jpg",
       bio: "Over three decades of visionary leadership steering large-scale infrastructure and residential excellence across India.",
     },
@@ -31,7 +31,7 @@ export default function LeadershipPage() {
       name: "Sparsh Agarwal",
       title: "Managing Director & Chief Executive Officer",
       image: "/images/family-brand-statement.jpg",
-      bio: "Leading execution, customer joy initiatives, and sustainable architecture across Pinkoaks Properties developments.",
+      bio: "Leading execution, customer joy initiatives, and sustainable architecture across Pink Oaks Properties developments.",
     },
     {
       name: "Sutapa Banerjee",
@@ -168,7 +168,7 @@ export default function LeadershipPage() {
       {/* Direct Contact Form */}
       <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <EnquireForm title="Connect Directly with Pinkoaks Leadership" />
+          <EnquireForm title="Connect Directly with Pink Oaks Leadership" />
         </div>
       </section>
 

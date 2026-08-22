@@ -63,10 +63,10 @@ export default function AboutPage() {
               Home &nbsp;&gt;&nbsp; Know Us &nbsp;&gt;&nbsp; About Us
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#241C20] leading-tight">
-              About Pinkoaks
+              About Pink Oaks
             </h1>
             <p className="font-serif text-xl sm:text-2xl text-[#C15F70] italic font-normal mt-4">
-              “At Pinkoaks, we are driven by a singular purpose — Crafting Joy.”
+              “At Pink Oaks, we are driven by a singular purpose — Crafting Joy.”
             </p>
           </ScrollReveal>
         </div>
@@ -76,7 +76,7 @@ export default function AboutPage() {
       <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <SectionDivider number="01" title="About Pinkoaks" icon="leaf" />
+          <SectionDivider number="01" title="About Pink Oaks" icon="leaf" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -88,7 +88,7 @@ export default function AboutPage() {
               
               <div className="space-y-4 font-sans text-base text-[#241C20]/80 font-light leading-relaxed">
                 <p>
-                  Over 100,000 families have found a home with us, making GPL India&apos;s largest residential developer by both value and volume of homes sold. As part of the Pinkoaks Industries Group, we combine a 129-year legacy of trust and excellence with a forward-looking vision to shape the future of urban India.
+                  Over 100,000 families have found a home with us, making GPL India&apos;s largest residential developer by both value and volume of homes sold. As part of the Pink Oaks Industries Group, we combine a 129-year legacy of trust and excellence with a forward-looking vision to shape the future of urban India.
                 </p>
                 <p>
                   Our approach is anchored in four core principles: thoughtful design, sustainability, thriving communities, and uncompromising quality. This commitment has earned us global recognition, including being ranked the No. 1 real estate company worldwide on both the Dow Jones Sustainability Index and the Global Real Estate Sustainability Benchmark as of December 2025.
@@ -97,7 +97,7 @@ export default function AboutPage() {
                   At the heart of our journey is our team — a diverse, driven collective united by purpose and ambition. Together, we are not just building homes, but shaping communities and skylines that will endure for generations.
                 </p>
                 <p className="font-medium text-[#241C20]">
-                  Pinkoaks has received over 500 awards and recognitions, including Developer of the Year at the GRI India Awards, the Porter Prize, and recognition as India&apos;s Most Trusted Real Estate Brand.
+                  Pink Oaks has received over 500 awards and recognitions, including Developer of the Year at the GRI India Awards, the Porter Prize, and recognition as India&apos;s Most Trusted Real Estate Brand.
                 </p>
               </div>
             </ScrollReveal>
@@ -107,7 +107,7 @@ export default function AboutPage() {
               <div className="relative rounded-2xl overflow-hidden border border-[#C15F70]/30 aspect-[4/5] shadow-xs">
                 <Image
                   src="/images/family-brand-statement.jpg"
-                  alt="Family joy at Pinkoaks"
+                  alt="Family joy at Pink Oaks"
                   fill
                   className="object-cover"
                 />
@@ -140,7 +140,7 @@ export default function AboutPage() {
               <div className="relative rounded-2xl overflow-hidden border border-[#C15F70]/30 aspect-square shadow-xs">
                 <Image
                   src="/images/family-living.jpg"
-                  alt="Family Living at Pinkoaks"
+                  alt="Family Living at Pink Oaks"
                   fill
                   className="object-cover"
                 />
@@ -194,7 +194,7 @@ export default function AboutPage() {
 
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#241C20] leading-tight">
-              “Pinkoaks has received over 400 awards and recognitions in recent years.”
+              “Pink Oaks has received over 400 awards and recognitions in recent years.”
             </h2>
           </div>
 
@@ -230,7 +230,7 @@ export default function AboutPage() {
       {/* Contact Form Section */}
       <section className="py-20 lg:py-28 bg-[#E8E1D3]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <EnquireForm title="Get in Touch with Pinkoaks" />
+          <EnquireForm title="Get in Touch with Pink Oaks" />
         </div>
       </section>
 

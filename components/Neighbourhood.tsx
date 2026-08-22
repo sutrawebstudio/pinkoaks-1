@@ -50,8 +50,8 @@ export default function Neighbourhood() {
           </ScrollReveal>
 
           {/* Landscaping / Park Family Lifestyle Preview Card */}
-          <ScrollReveal delay={0.1} className="lg:col-span-5 bg-[#F5EEE6] p-4 rounded-2xl border border-[#9CAA8C]/40 flex items-center space-x-4 shadow-xs">
-            <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 border border-[#9CAA8C]/50">
+          <ScrollReveal delay={0.1} className="lg:col-span-5 bg-[#F5EEE6] p-4 rounded-xl border border-[#9CAA8C]/40 flex items-center space-x-4 shadow-xs">
+            <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 border border-[#9CAA8C]/50">
               <Image
                 src="/images/family-park.jpg"
                 alt="Family walking in Madho Singh Park"
@@ -74,7 +74,7 @@ export default function Neighbourhood() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left Distance Matrix */}
-          <ScrollReveal className="lg:col-span-6 bg-[#F5EEE6] border border-[#C15F70]/25 rounded-2xl p-6 sm:p-8 space-y-5 flex flex-col justify-between shadow-xs">
+          <ScrollReveal className="lg:col-span-6 bg-[#F5EEE6] border border-[#C15F70]/25 rounded-xl p-6 sm:p-8 space-y-5 flex flex-col justify-between shadow-xs">
             <div>
               <div className="flex items-center justify-between border-b border-[#C15F70]/20 pb-4">
                 <div className="flex items-center space-x-2">
@@ -107,7 +107,7 @@ export default function Neighbourhood() {
                 {filteredLandmarks.map((item) => (
                   <div
                     key={item.name}
-                    className="bg-[#E8E1D3] p-3 rounded-xl border border-[#C15F70]/15 flex justify-between items-center text-xs hover:border-[#C15F70]/30 transition-colors"
+                    className="bg-[#E8E1D3] p-3 rounded-lg border border-[#C15F70]/15 flex justify-between items-center text-xs hover:border-[#C15F70]/30 transition-colors"
                   >
                     <div className="flex items-start space-x-2">
                       <PinkBlossomIcon className="w-3 h-3 text-[#C15F70] mt-1 shrink-0" />
@@ -120,7 +120,7 @@ export default function Neighbourhood() {
                         </span>
                       </div>
                     </div>
-                    <span className="font-serif text-xs font-semibold text-[#C15F70] bg-[#F5EEE6] px-2.5 py-1 rounded-full shrink-0 ml-2 border border-[#C15F70]/20">
+                    <span className="font-serif text-xs font-semibold text-[#C15F70] bg-[#F5EEE6] px-2.5 py-1 rounded-md shrink-0 ml-2 border border-[#C15F70]/20">
                       {item.distance}
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export default function Neighbourhood() {
           </ScrollReveal>
 
           {/* Right Google Maps Embed */}
-          <ScrollReveal delay={0.15} className="lg:col-span-6 rounded-2xl overflow-hidden border border-[#C15F70]/30 bg-[#F5EEE6] relative min-h-[400px] h-[440px] lg:h-full flex flex-col shadow-xs">
+          <ScrollReveal delay={0.15} className="lg:col-span-6 rounded-xl overflow-hidden border border-[#C15F70]/30 bg-[#F5EEE6] relative min-h-[400px] h-[440px] lg:h-full flex flex-col shadow-xs">
             <iframe
               title="Pink Oaks Location Map"
               src="https://maps.google.com/maps?q=D-169+Bhrigu+Marg,+Bani+Park,+Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed"

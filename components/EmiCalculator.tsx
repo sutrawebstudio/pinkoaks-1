@@ -64,7 +64,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
 
         {/* Calculator Grid */}
         <ScrollReveal variant="scale-up" duration={0.8}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-[#E8E1D3] border border-[#C15F70]/25 rounded-2xl p-6 sm:p-10 shadow-xs">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-[#E8E1D3] border border-[#C15F70]/30 rounded-xl p-6 sm:p-10 shadow-xs">
             
             {/* Inputs Column */}
             <div className="lg:col-span-7 space-y-6">
@@ -73,7 +73,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
               <div className="space-y-2.5">
                 <div className="flex justify-between items-center font-sans text-xs sm:text-sm">
                   <label htmlFor={propertyValueId} className="font-semibold text-[#241C20]">Property Value</label>
-                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-full border border-[#C15F70]/20">
+                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-md border border-[#C15F70]/25">
                     {formatCurrency(propertyValue)}
                   </span>
                 </div>
@@ -85,7 +85,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={1000000}
                   value={propertyValue}
                   onChange={(e) => setPropertyValue(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-lg"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md"
                 />
                 <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
                   <span>₹1.00 Cr</span>
@@ -97,7 +97,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
               <div className="space-y-2.5">
                 <div className="flex justify-between items-center font-sans text-xs sm:text-sm">
                   <label htmlFor={advancePercentId} className="font-semibold text-[#241C20]">Advance Down Payment</label>
-                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-full border border-[#C15F70]/20">
+                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-md border border-[#C15F70]/25">
                     {advancePercent}% ({formatCurrency(advanceAmount)})
                   </span>
                 </div>
@@ -109,7 +109,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={5}
                   value={advancePercent}
                   onChange={(e) => setAdvancePercent(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-lg"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md"
                 />
                 <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
                   <span>10%</span>
@@ -121,7 +121,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
               <div className="space-y-2.5">
                 <div className="flex justify-between items-center font-sans text-xs sm:text-sm">
                   <label htmlFor={durationYearsId} className="font-semibold text-[#241C20]">Loan Tenure</label>
-                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-full border border-[#C15F70]/20">
+                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-md border border-[#C15F70]/25">
                     {durationYears} Years
                   </span>
                 </div>
@@ -133,7 +133,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={1}
                   value={durationYears}
                   onChange={(e) => setDurationYears(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-lg"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md"
                 />
                 <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
                   <span>5 Yrs</span>
@@ -145,7 +145,7 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
               <div className="space-y-2.5">
                 <div className="flex justify-between items-center font-sans text-xs sm:text-sm">
                   <label htmlFor={interestRateId} className="font-semibold text-[#241C20]">Annual Interest Rate</label>
-                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-full border border-[#C15F70]/20">
+                  <span className="font-serif text-base font-semibold text-[#C15F70] bg-[#F5EEE6] px-3 py-1 rounded-md border border-[#C15F70]/25">
                     {interestRate}%
                   </span>
                 </div>

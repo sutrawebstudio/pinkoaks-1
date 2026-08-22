@@ -40,7 +40,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
       title: "Basement Floor Plan",
       subtitle: "Sub-Level Utilities & Parking",
       description:
-        "Our meticulously designed basement floor provides state-of-the-art utility spaces and additional parking facilities, ensuring every practical need is seamlessly met.",
+        "Our meticulously designed basement floor provides state-of-the-art utility spaces and additional parking facilities, ensuring every practical need is fully accommodated.",
       tags: ["Secure Storage Areas", "Advanced Maintenance Systems", "Extra Guest Parking"],
       image: "/images/plan-basement.jpg",
     },

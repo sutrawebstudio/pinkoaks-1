@@ -116,7 +116,7 @@ export default function FloorPlans3D({ onOpenEnquire }: FloorPlans3DProps) {
       id: "basement",
       title: "Basement Floor Plan",
       quote:
-        "Our meticulously designed basement floor provides state-of-the-art utility spaces and additional parking facilities, ensuring every practical need is seamlessly met.",
+        "Our meticulously designed basement floor provides state-of-the-art utility spaces and additional parking facilities, ensuring every practical need is fully accommodated.",
       tags: [
         "Secure Storage Areas",
         "Advanced Maintenance Systems",

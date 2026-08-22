@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Compass } from "lucide-react";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
 
@@ -23,16 +24,14 @@ export default function BrandStatement() {
               Where timeless architecture meets modern indulgence in the heart of Jaipur. Every detail, from the grand façade to the finest finishes, is crafted to reflect elegance, exclusivity, and sophistication.
             </p>
             <p className="font-sans text-base text-[#241C20]/75 font-light leading-relaxed">
-              20+ World-Class Amenities — from tranquil rooftop lounges to private leisure zones and holistic wellness spaces — designed to elevate your every day into an experience of pure luxury.
+              20+ World-Class Amenities — from rooftop gardens and private home theaters to yoga studios and dedicated storage facilities — designed specifically for multi-generational family comfort in Bani Park.
             </p>
           </ScrollReveal>
 
           {/* Vastu Harmony Box Right (5 cols, Forest Green & Sage accent) */}
-          <ScrollReveal delay={0.15} className="lg:col-span-5 bg-[#F5EEE6] border border-[#C15F70]/25 rounded-2xl p-8 space-y-4 shadow-xs">
+          <ScrollReveal delay={0.15} className="lg:col-span-5 bg-[#F5EEE6] border border-[#C15F70]/25 rounded-xl p-8 space-y-4 shadow-xs">
             <div className="flex items-center space-x-3" id="vastu">
-              <svg className="w-5 h-5 text-[#C15F70]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18m9-9H3" />
-              </svg>
+              <Compass className="w-5 h-5 text-[#C15F70] stroke-[1.5]" />
               <h3 className="font-serif text-xl font-semibold text-[#241C20]">
                 Vastu Compliant Architecture
               </h3>

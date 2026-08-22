@@ -65,7 +65,7 @@ export default function ContactPage() {
                 </div>
                 <p className="font-sans text-xs text-[#241C20]/80 font-light leading-relaxed">
                   Pink Oaks Properties Limited<br />
-                  Pinkoaks One, 5th Floor,<br />
+                  Pink Oaks One, 5th Floor,<br />
                   Pirojshanagar, Eastern Express Highway,<br />
                   Vikhroli (East), Mumbai - 400 079
                 </p>
