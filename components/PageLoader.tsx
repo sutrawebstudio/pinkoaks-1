@@ -24,14 +24,14 @@ export default function PageLoader() {
     // Set aria-busy on body while loader is active
     document.body.setAttribute("aria-busy", "true");
 
-    const startTime = Date.now();
-    const MIN_DURATION = 1500; // 1.5s minimum presentational display
+    const MIN_LOADER_TIME = 1500;
+    const start = Date.now();
 
     let timer: NodeJS.Timeout;
 
     const handleComplete = () => {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(0, MIN_DURATION - elapsed);
+      const elapsed = Date.now() - start;
+      const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
 
       timer = setTimeout(() => {
         setIsLoading(false);
@@ -44,7 +44,7 @@ export default function PageLoader() {
       handleComplete();
     } else {
       window.addEventListener("load", handleComplete, { once: true });
-      timer = setTimeout(handleComplete, MIN_DURATION);
+      timer = setTimeout(handleComplete, MIN_LOADER_TIME);
     }
 
     return () => {
@@ -61,7 +61,7 @@ export default function PageLoader() {
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: isReducedMotion ? 0 : 0.4, ease: "easeOut" }}
+          transition={{ duration: isReducedMotion ? 0 : 0.3, ease: "easeOut" }}
           className="fixed inset-0 z-[100] bg-[#241C20] flex flex-col items-center justify-center pointer-events-none select-none"
         >
           <div className="relative flex flex-col items-center space-y-6 px-6">
