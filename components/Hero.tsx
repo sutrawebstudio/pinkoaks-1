@@ -234,26 +234,6 @@ export default function Hero({ onOpenEnquire }: HeroProps) {
                 </button>
               </div>
             </div>
-
-            {/* Bottom Trust Strip */}
-            <div className="mt-[20px] pt-3 flex items-center gap-3 border-t border-[#E8E1D3]/15">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#C15F70]/40 shadow-xs">
-                <Image
-                  src="/images/family-living.jpg"
-                  alt="Multi-generational family living"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="text-xs">
-                <span className="font-serif font-semibold text-[#E8E1D3] block text-[13px]">
-                  Built for Multi-Generational Indian Families
-                </span>
-                <span className="font-sans font-light text-[#E8E1D3]/75 text-[11px]">
-                  Single-floor privacy, grand sunlit balconies &amp; quiet sanctuaries
-                </span>
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Property Image Column */}

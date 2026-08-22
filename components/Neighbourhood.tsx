@@ -33,7 +33,7 @@ export default function Neighbourhood() {
       : landmarks.filter((l) => l.category === selectedFilter);
 
   return (
-    <section id="location" className="py-12 lg:py-20 bg-[#E8E1D3]">
+    <section id="location" className="pt-6 pb-20 lg:pt-10 lg:pb-32 bg-[#E8E1D3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}

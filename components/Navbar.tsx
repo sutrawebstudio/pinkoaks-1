@@ -36,10 +36,10 @@ export default function Navbar({ onOpenEnquire }: NavbarProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-300 bg-[#E8E1D3] ${
         isScrolled
-          ? "bg-[#E8E1D3]/95 border-b border-[#C15F70]/20 shadow-xs"
-          : "bg-[#E8E1D3]/90 backdrop-blur-xs border-b border-transparent"
+          ? "border-b border-[#C15F70]/25 shadow-xs"
+          : "border-b border-[#C15F70]/10"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between">

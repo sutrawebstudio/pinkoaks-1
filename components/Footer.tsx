@@ -26,22 +26,6 @@ export default function Footer({ onOpenEnquire }: FooterProps) {
               Established in 1990, Pink Oaks Properties is the first real estate company in Jaipur to have earned ISO certification. Crafting homes rooted in heritage, elegance, and peace.
             </p>
 
-            {/* Supporting Blossom Detail Thumbnail */}
-            <div className="flex items-center space-x-3 pt-1">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#9CAA8C]/50">
-                <Image
-                  src="/images/detail-blossom.jpg"
-                  alt="Jaipur Blossom Detail"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="text-[11px] font-sans text-[#E8E1D3]/80">
-                <span className="font-serif font-medium text-[#E8E1D3] block">Soft Pink Blossom Heritage</span>
-                <span>Crafted for real Indian families</span>
-              </div>
-            </div>
-
             {/* Social Links */}
             <div className="flex items-center space-x-4 pt-2">
               <a

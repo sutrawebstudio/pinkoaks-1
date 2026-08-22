@@ -13,7 +13,18 @@ export default function Gallery() {
 
   const categories = ["All", "Family Living", "Architecture", "Craft Details", "Amenities"];
 
+  // Gallery items organized into explicit rhythmically aligned row tiers (50/50 pairs, 33/33/33 triplets, and panorama feature banners)
   const galleryItems = [
+    // ROW GROUP 1: Landscape Pair 1 (Dusk Facade + Terrace)
+    {
+      title: "Dusk Exterior Facade",
+      subtitle: "Stately 11-floor residence lit in warm evening twilight",
+      src: "/images/PLACEHOLDER_building_dusk.jpg",
+      tag: "Jaipur Landmark",
+      category: "Architecture",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-6",
+    },
     {
       title: "Grandparents & Grandchildren Terrace",
       subtitle: "Quiet morning breeze on the private single-floor terrace",
@@ -21,25 +32,18 @@ export default function Gallery() {
       tag: "Multi-Gen Sanctuary",
       category: "Family Living",
       aspect: "aspect-[16/10]",
-      gridSpan: "lg:col-span-8",
+      gridSpan: "lg:col-span-6",
     },
+
+    // ROW GROUP 2: Landscape Pair 2 (Courtyard + Living Room)
     {
-      title: "Dusk Exterior Facade",
-      subtitle: "Stately 11-floor residence lit in warm evening twilight",
-      src: "/images/PLACEHOLDER_building_dusk.jpg",
-      tag: "Jaipur Landmark",
-      category: "Architecture",
-      aspect: "aspect-[3/4]",
-      gridSpan: "lg:col-span-4",
-    },
-    {
-      title: "Carved Stone Jaali Screens",
-      subtitle: "Hand-pierced lattice screens providing natural climate control",
-      src: "/images/PLACEHOLDER_craft_jaali_screen.jpg",
-      tag: "Rajasthani Heritage",
-      category: "Craft Details",
-      aspect: "aspect-[4/3]",
-      gridSpan: "lg:col-span-4",
+      title: "Kids Playing in Courtyard",
+      subtitle: "Secure green courtyard with child-safe landscaped play zones",
+      src: "/images/PLACEHOLDER_kids_garden.jpg",
+      tag: "Outdoor Recreation",
+      category: "Family Living",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-6",
     },
     {
       title: "Family Evening Living Room",
@@ -48,7 +52,18 @@ export default function Gallery() {
       tag: "Drawing Room",
       category: "Family Living",
       aspect: "aspect-[16/10]",
-      gridSpan: "lg:col-span-8",
+      gridSpan: "lg:col-span-6",
+    },
+
+    // ROW GROUP 3: Landscape Pair 3 (Jaali Screens + Private Arrival Lobby)
+    {
+      title: "Carved Stone Jaali Screens",
+      subtitle: "Hand-pierced lattice screens providing natural climate control",
+      src: "/images/PLACEHOLDER_craft_jaali_screen.jpg",
+      tag: "Rajasthani Heritage",
+      category: "Craft Details",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-6",
     },
     {
       title: "Private Arrival Lobby",
@@ -56,18 +71,11 @@ export default function Gallery() {
       src: "/images/PLACEHOLDER_private_lobby.jpg",
       tag: "Single-Floor Privacy",
       category: "Architecture",
-      aspect: "aspect-[4/3]",
-      gridSpan: "lg:col-span-5",
-    },
-    {
-      title: "Kids Playing in Courtyard",
-      subtitle: "Secure green courtyard with child-safe landscaped play zones",
-      src: "/images/PLACEHOLDER_kids_garden.jpg",
-      tag: "Outdoor Recreation",
-      category: "Family Living",
       aspect: "aspect-[16/10]",
-      gridSpan: "lg:col-span-7",
+      gridSpan: "lg:col-span-6",
     },
+
+    // ROW GROUP 4: 3 Equal Small Cards (Materiality + Water + Brass, 4+4+4 split)
     {
       title: "Natural Stone Flooring Texture",
       subtitle: "Honed Jaipur sandstone with hand-set brass inlay details",
@@ -95,24 +103,19 @@ export default function Gallery() {
       aspect: "aspect-[4/3]",
       gridSpan: "lg:col-span-4",
     },
+
+    // ROW GROUP 5: Large Feature Banner (Dining Pavilion)
     {
       title: "Extended Family Dining Pavilion",
       subtitle: "Expansive dining space accommodating three generations comfortably",
       src: "/images/PLACEHOLDER_family_dining.jpg",
       tag: "Family Celebrations",
       category: "Family Living",
-      aspect: "aspect-[16/10]",
-      gridSpan: "lg:col-span-7",
+      aspect: "aspect-[21/9]",
+      gridSpan: "lg:col-span-12",
     },
-    {
-      title: "Rooftop Yoga & Wellness Deck",
-      subtitle: "Open-air zen lounge overlooking the Bani Park skyline",
-      src: "/images/PLACEHOLDER_rooftop_terrace.jpg",
-      tag: "Holistic Health",
-      category: "Amenities",
-      aspect: "aspect-[4/3]",
-      gridSpan: "lg:col-span-5",
-    },
+
+    // ROW GROUP 6: Landscape Pair 4 (Master Bedroom + Teak Doors)
     {
       title: "Master Bedroom Suite",
       subtitle: "Walk-in wardrobe, wooden flooring, and sunlit private balcony",
@@ -131,23 +134,36 @@ export default function Gallery() {
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-6",
     },
+
+    // ROW GROUP 7: Landscape Pair 5 (Rooftop Yoga + Sanctuary Retreat)
+    {
+      title: "Rooftop Yoga & Wellness Deck",
+      subtitle: "Open-air zen lounge overlooking the Bani Park skyline",
+      src: "/images/PLACEHOLDER_rooftop_terrace.jpg",
+      tag: "Holistic Health",
+      category: "Amenities",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-6",
+    },
     {
       title: "Elderly Couple Sanctuary Retreat",
       subtitle: "Quiet corner nook with ergonomic seating and warm morning sunlight",
       src: "/images/PLACEHOLDER_elderly_sanctuary.jpg",
       tag: "Peaceful Living",
       category: "Family Living",
-      aspect: "aspect-[4/3]",
-      gridSpan: "lg:col-span-5",
+      aspect: "aspect-[16/10]",
+      gridSpan: "lg:col-span-6",
     },
+
+    // ROW GROUP 8: Full Skyline Banner (Balcony Vistas)
     {
       title: "Balcony Panoramic Skyline View",
       subtitle: "Unobstructed views over Bani Park's low-density greenery",
       src: "/images/PLACEHOLDER_balcony_view.jpg",
       tag: "Bani Park Vistas",
       category: "Architecture",
-      aspect: "aspect-[16/10]",
-      gridSpan: "lg:col-span-7",
+      aspect: "aspect-[21/9]",
+      gridSpan: "lg:col-span-12",
     },
   ];
 
@@ -224,26 +240,27 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Asymmetric Mixed-Grid Gallery Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Asymmetric Mixed-Grid Gallery Layout with 20px (gap-5/gap-6) row and column spacing */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
           {filteredItems.map((item, index) => (
             <ScrollReveal
               key={item.title}
               delay={index * 0.04}
-              className={`${item.gridSpan} h-full`}
+              className={`${item.gridSpan}`}
             >
               <div
                 onClick={() => setSelectedIndex(index)}
-                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between"
+                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 hover:shadow-md transition-all duration-300 flex flex-col"
               >
-                <div className={`relative ${item.aspect} w-full overflow-hidden bg-[#E8E1D3] min-h-[260px]`}>
+                {/* Image Container: Matched per-image aspect ratio, edge-to-edge fill */}
+                <div className={`relative w-full ${item.aspect} overflow-hidden bg-[#E8E1D3] shrink-0`}>
                   <Image
                     src={item.src}
                     alt={item.title}
                     fill
                     loading="lazy"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-700 block"
                   />
                   <div className="absolute top-4 left-4 bg-[#E8E1D3]/90 backdrop-blur-xs px-3 py-1 rounded-full border border-[#A9C4D4]/40 text-[10px] font-sans font-medium uppercase tracking-widest text-[#241C20]">
                     {item.tag}
@@ -252,7 +269,9 @@ export default function Gallery() {
                     <Maximize2 className="w-3.5 h-3.5" />
                   </div>
                 </div>
-                <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15">
+
+                {/* Caption Block: Flush against image bottom border */}
+                <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15 space-y-2">
                   <div className="flex items-center justify-between">
                     <h3 className="font-serif text-lg font-semibold text-[#241C20] group-hover:text-[#C15F70] transition-colors">
                       {item.title}
@@ -261,7 +280,7 @@ export default function Gallery() {
                       {item.category}
                     </span>
                   </div>
-                  <p className="font-sans text-xs text-[#241C20]/70 font-light mt-1">
+                  <p className="font-sans text-xs text-[#241C20]/70 font-light leading-relaxed">
                     {item.subtitle}
                   </p>
                 </div>
@@ -297,10 +316,10 @@ export default function Gallery() {
 
       </div>
 
-      {/* Lightbox Modal with Prev/Next Navigation */}
+      {/* Lightbox Modal with Prev/Next Navigation (z-[100] above fixed site header) */}
       <AnimatePresence>
         {activeItem && (
-          <div className="fixed inset-0 z-50 bg-[#241C20]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
+          <div className="fixed inset-0 z-[100] bg-[#241C20]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

@@ -62,7 +62,7 @@ export default function BrandStatement() {
             </div>
 
             {/* Right: Jaipur Jali Craft & Text (5 cols) */}
-            <div className="lg:col-span-5 p-8 sm:p-10 space-y-5 bg-[#F5EEE6] flex flex-col justify-between h-full">
+            <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 bg-[#F5EEE6] flex flex-col justify-center space-y-6 h-full">
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <span className="w-2 h-2 rounded-full bg-[#9CAA8C]" />
@@ -71,31 +71,27 @@ export default function BrandStatement() {
                   </span>
                 </div>
                 <span className="font-script text-3xl text-[#C15F70] block">Live Rooted</span>
-                <h3 className="font-serif text-2xl font-semibold text-[#241C20] leading-snug">
+                <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#241C20] leading-snug">
                   Handcrafted Stone &amp; Sunlit Courtyards
                 </h3>
-                <p className="font-sans text-xs sm:text-sm text-[#241C20]/75 font-light leading-relaxed">
-                  Inspired by Rajasthani jali lattice work and natural stone masonry, creating breathable spaces for multi-generational families.
+                <p className="font-sans text-xs sm:text-sm text-[#241C20]/80 font-light leading-relaxed">
+                  Inspired by Rajasthani jali lattice work and natural stone masonry, creating breathable spaces designed for true sanctuary and family harmony.
                 </p>
               </div>
 
-              {/* Jali Detail Thumbnail */}
-              <div className="pt-3 border-t border-[#C15F70]/20 flex items-center gap-4">
-                <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-[#9CAA8C]/40">
-                  <Image
-                    src="/images/detail-jali.jpg"
-                    alt="Carved Stone Jali Lattice"
-                    fill
-                    className="object-cover"
-                  />
+              {/* Craft Highlights List */}
+              <div className="pt-4 border-t border-[#C15F70]/20 space-y-3 font-sans text-xs text-[#241C20]/85">
+                <div className="flex items-center space-x-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C15F70] shrink-0" />
+                  <span className="font-medium">Carved Stone Jali Lattice &amp; Natural Airflow</span>
                 </div>
-                <div>
-                  <span className="font-serif text-xs font-semibold text-[#241C20] block">
-                    Carved Stone Jali Lattice
-                  </span>
-                  <span className="font-sans text-[10px] text-[#A9C4D4] font-medium block">
-                    Natural Micro-Climate Cooling
-                  </span>
+                <div className="flex items-center space-x-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#B78D4A] shrink-0" />
+                  <span className="font-medium">Honed Jaipur Sandstone &amp; Thermal Balance</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#33422F] shrink-0" />
+                  <span className="font-medium">Expansive Sunlit Balconies for Multi-Gen Living</span>
                 </div>
               </div>
 
