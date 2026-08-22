@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 export default function SectionNav() {
   const [activeSection, setActiveSection] = useState<string>("overview");
 
-  // In-Page links ordered per spec: Overview | Location | Plans | Price | Amenities | Download
+  // In-Page links ordered per user journey: Overview -> Amenities -> Plans -> Price -> Location -> Download
   const sectionLinks = [
     { name: "Overview", href: "#overview", id: "overview" },
-    { name: "Location", href: "#location", id: "location" },
+    { name: "Amenities", href: "#amenities", id: "amenities" },
     { name: "Plans", href: "#plans", id: "plans" },
     { name: "Price", href: "#price", id: "price" },
-    { name: "Amenities", href: "#amenities", id: "amenities" },
+    { name: "Location", href: "#location", id: "location" },
     { name: "Download", href: "#download", id: "download" },
   ];
 

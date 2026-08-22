@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
@@ -14,6 +14,10 @@ interface FloorPlansProps {
 export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
   const [activeTab, setActiveTab] = useState<"typical" | "stilt" | "basement">("typical");
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  const tabKeys: ("typical" | "stilt" | "basement")[] = ["typical", "stilt", "basement"];
 
   const plans = {
     typical: {
@@ -42,10 +46,50 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
     },
   };
 
+  // Check prefers-reduced-motion OS setting
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setIsReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsReducedMotion(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  // Auto-rotate active tab every 4000ms unless paused, reduced motion, or lightbox open
+  useEffect(() => {
+    if (isPaused || isReducedMotion || lightboxOpen) return;
+
+    const timer = setInterval(() => {
+      setActiveTab((prev) => {
+        const currentIndex = tabKeys.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % tabKeys.length;
+        return tabKeys[nextIndex];
+      });
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [isPaused, isReducedMotion, lightboxOpen, activeTab]);
+
+  const handleTabClick = (tab: "typical" | "stilt" | "basement") => {
+    setActiveTab(tab);
+    // Restart 4s timer from this click point
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 100);
+  };
+
   const currentPlan = plans[activeTab];
 
   return (
     <section id="plans" className="py-20 lg:py-32 bg-[#E8E1D3]">
+      {/* Screen Reader Live Region for Accessibility */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Active floor plan updated to {currentPlan.title}. {currentPlan.subtitle}.
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hand-set Section Number & Divider */}
@@ -61,27 +105,55 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
             </p>
           </ScrollReveal>
 
-          {/* Luxury Tab Switcher */}
-          <div className="flex bg-[#F5EEE6] p-1.5 rounded-full border border-[#C15F70]/25 self-start md:self-auto shadow-xs">
-            {(["typical", "stilt", "basement"] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-5 py-2 text-xs font-sans font-medium uppercase tracking-wider rounded-full transition-all whitespace-nowrap ${
-                  activeTab === tab
-                    ? "bg-[#C15F70] text-[#E8E1D3] shadow-xs font-semibold"
-                    : "text-[#241C20]/75 hover:text-[#C15F70]"
-                }`}
-              >
-                {tab === "typical" ? "Typical Floor" : tab === "stilt" ? "Stilt Floor" : "Basement"}
-              </button>
-            ))}
+          {/* Luxury Tab Switcher with Framer Motion Sliding Pill & Pause-on-Interaction */}
+          <div
+            role="tablist"
+            aria-label="Floor plan options"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onFocus={() => setIsPaused(true)}
+            onBlur={() => setIsPaused(false)}
+            className="flex bg-[#F5EEE6] p-1.5 rounded-full border border-[#C15F70]/25 self-start md:self-auto shadow-xs relative"
+          >
+            {tabKeys.map((tab) => {
+              const isActive = activeTab === tab;
+              const label = tab === "typical" ? "Typical Floor" : tab === "stilt" ? "Stilt Floor" : "Basement";
+
+              return (
+                <button
+                  key={tab}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`floorplan-panel-${tab}`}
+                  onClick={() => handleTabClick(tab)}
+                  className={`relative px-5 py-2 text-xs font-sans font-medium uppercase tracking-wider rounded-full transition-colors whitespace-nowrap z-10 ${
+                    isActive
+                      ? "text-[#E8E1D3] font-semibold"
+                      : "text-[#241C20]/75 hover:text-[#C15F70]"
+                  }`}
+                >
+                  {/* Sliding Pink Active Pill Background */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFloorTab"
+                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                      className="absolute inset-0 bg-[#C15F70] rounded-full shadow-xs -z-10"
+                    />
+                  )}
+                  {label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Tab Content Box */}
+        {/* Tab Content Box with Crossfade Transition */}
         <ScrollReveal variant="scale-up">
-          <div className="bg-[#F5EEE6] border border-[#C15F70]/25 rounded-2xl p-6 sm:p-10 shadow-xs relative overflow-hidden">
+          <div
+            id={`floorplan-panel-${activeTab}`}
+            role="tabpanel"
+            className="bg-[#F5EEE6] border border-[#C15F70]/25 rounded-2xl p-6 sm:p-10 shadow-xs relative overflow-hidden"
+          >
             
             <AnimatePresence mode="wait">
               <motion.div
@@ -89,7 +161,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
                 className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
               >
                 {/* Details Left */}
