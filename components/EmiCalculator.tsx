@@ -3,14 +3,14 @@
 import React, { useState, useId } from "react";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
-import { Calculator, ArrowRight, DollarSign } from "lucide-react";
+import Button from "./ui/Button";
+import { Calculator, ArrowRight } from "lucide-react";
 
 interface EmiCalculatorProps {
   onOpenEnquire?: (title?: string) => void;
 }
 
 export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
-  // Input states with exact defaults specified in brief
   const [propertyValue, setPropertyValue] = useState<number>(30000000); // 3 Cr
   const [advancePercent, setAdvancePercent] = useState<number>(20);     // 20%
   const [durationYears, setDurationYears] = useState<number>(25);        // 25 yrs
@@ -21,7 +21,6 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
   const durationYearsId = useId();
   const interestRateId = useId();
 
-  // Calculations
   const advanceAmount = (propertyValue * advancePercent) / 100;
   const principal = propertyValue - advanceAmount;
 
@@ -37,7 +36,6 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
   const totalPayment = monthlyEmi * totalMonths;
   const totalInterest = Math.max(0, totalPayment - principal);
 
-  // Currency Formatter (Indian format)
   const formatCurrency = (val: number) => {
     return new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -50,20 +48,18 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
     <section id="emi-calculator" className="py-20 lg:py-32 bg-[#F5EEE6] border-y border-[#C15F70]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hand-set Section Number */}
         <SectionDivider number="08" title="Financial Planning & EMI" icon="flower" />
 
         <ScrollReveal className="mb-12">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20]">
             Home Loan &amp; EMI Estimator
           </h2>
-          <p className="font-sans text-base text-[#241C20]/75 font-light mt-2 max-w-xl">
+          <p className="font-sans text-base text-[#241C20]/80 font-light mt-2 max-w-xl">
             Calculate your estimated monthly installment with live parameters.
           </p>
         </ScrollReveal>
 
-        {/* Calculator Grid */}
-        <ScrollReveal variant="scale-up" duration={0.8}>
+        <ScrollReveal variant="scale-up" duration={0.35}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-[#E8E1D3] border border-[#C15F70]/30 rounded-xl p-6 sm:p-10 shadow-xs">
             
             {/* Inputs Column */}
@@ -85,9 +81,9 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={1000000}
                   value={propertyValue}
                   onChange={(e) => setPropertyValue(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70]"
                 />
-                <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
+                <div className="flex justify-between text-[10px] text-[#241C20]/70 font-sans font-medium">
                   <span>₹1.00 Cr</span>
                   <span>₹6.00 Cr</span>
                 </div>
@@ -109,9 +105,9 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={5}
                   value={advancePercent}
                   onChange={(e) => setAdvancePercent(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70]"
                 />
-                <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
+                <div className="flex justify-between text-[10px] text-[#241C20]/70 font-sans font-medium">
                   <span>10%</span>
                   <span>80%</span>
                 </div>
@@ -133,9 +129,9 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={1}
                   value={durationYears}
                   onChange={(e) => setDurationYears(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70]"
                 />
-                <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
+                <div className="flex justify-between text-[10px] text-[#241C20]/70 font-sans font-medium">
                   <span>5 Yrs</span>
                   <span>30 Yrs</span>
                 </div>
@@ -157,9 +153,9 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
                   step={0.25}
                   value={interestRate}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-lg"
+                  className="w-full accent-[#C15F70] cursor-pointer h-2 bg-[#F5EEE6] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70]"
                 />
-                <div className="flex justify-between text-[10px] text-[#241C20]/60 font-sans font-medium">
+                <div className="flex justify-between text-[10px] text-[#241C20]/70 font-sans font-medium">
                   <span>5.0%</span>
                   <span>15.0%</span>
                 </div>
@@ -173,24 +169,24 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
               <div className="space-y-6">
                 <div className="border-b border-[#C15F70]/20 pb-5">
                   <span className="font-sans text-xs font-semibold uppercase tracking-widest text-[#B78D4A] flex items-center space-x-1.5">
-                    <Calculator className="w-3.5 h-3.5" />
+                    <Calculator className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>Estimated Monthly EMI</span>
                   </span>
                   <div className="font-serif text-3xl sm:text-4xl font-semibold text-[#C15F70] mt-2">
                     {formatCurrency(monthlyEmi)}
                   </div>
-                  <span className="font-sans text-[11px] text-[#241C20]/70 font-light block mt-1">
+                  <span className="font-sans text-[11px] text-[#241C20]/80 font-light block mt-1">
                     per month for {durationYears} years tenure
                   </span>
                 </div>
 
                 <div className="space-y-3.5 font-sans text-xs sm:text-sm">
                   <div className="flex justify-between items-center bg-[#E8E1D3]/50 p-2.5 rounded-lg border border-[#C15F70]/15">
-                    <span className="text-[#241C20]/75 font-light">Principal Loan Amount</span>
+                    <span className="text-[#241C20]/80 font-light">Principal Loan Amount</span>
                     <span className="font-semibold text-[#241C20]">{formatCurrency(principal)}</span>
                   </div>
                   <div className="flex justify-between items-center bg-[#E8E1D3]/50 p-2.5 rounded-lg border border-[#C15F70]/15">
-                    <span className="text-[#241C20]/75 font-light">Total Interest Payable</span>
+                    <span className="text-[#241C20]/80 font-light">Total Interest Payable</span>
                     <span className="font-semibold text-[#241C20]">{formatCurrency(totalInterest)}</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-[#C15F70]/20 pt-3 font-medium">
@@ -201,13 +197,14 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
               </div>
 
               {onOpenEnquire && (
-                <button
+                <Button
+                  variant="primary"
                   onClick={() => onOpenEnquire("EMI Calculator Enquiry")}
-                  className="w-full py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors shadow-xs flex items-center justify-center space-x-2"
+                  className="w-full"
                 >
                   <span>Discuss Banking &amp; Home Loan</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                  <ArrowRight className="w-3.5 h-3.5 ml-2 inline-block" aria-hidden="true" />
+                </Button>
               )}
 
             </div>
@@ -219,3 +216,4 @@ export default function EmiCalculator({ onOpenEnquire }: EmiCalculatorProps) {
     </section>
   );
 }
+

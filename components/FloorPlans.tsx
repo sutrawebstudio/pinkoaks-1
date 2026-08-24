@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
+import Button from "./ui/Button";
 import { Maximize2, X, Download, Compass } from "lucide-react";
 
 interface FloorPlansProps {
@@ -46,7 +47,6 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
     },
   };
 
-  // Check prefers-reduced-motion OS setting
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setIsReducedMotion(mediaQuery.matches);
@@ -59,7 +59,6 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  // Auto-rotate active tab every 4000ms unless paused, reduced motion, or lightbox open
   useEffect(() => {
     if (isPaused || isReducedMotion || lightboxOpen) return;
 
@@ -72,11 +71,10 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, [isPaused, isReducedMotion, lightboxOpen, activeTab]);
+  }, [isPaused, isReducedMotion, lightboxOpen]);
 
   const handleTabClick = (tab: "typical" | "stilt" | "basement") => {
     setActiveTab(tab);
-    // Restart 4s timer from this click point
     setIsPaused(true);
     setTimeout(() => setIsPaused(false), 100);
   };
@@ -85,14 +83,12 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
 
   return (
     <section id="plans" className="py-20 lg:py-32 bg-[#E8E1D3]">
-      {/* Screen Reader Live Region for Accessibility */}
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         Active floor plan updated to {currentPlan.title}. {currentPlan.subtitle}.
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hand-set Section Number & Divider */}
         <SectionDivider number="05" title="Architectural Floor Plans" icon="leaf" />
 
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
@@ -100,12 +96,12 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20]">
               Masterfully Planned Layouts
             </h2>
-            <p className="font-sans text-base text-[#241C20]/75 font-light mt-2 max-w-xl">
+            <p className="font-sans text-base text-[#241C20]/80 font-light mt-2 max-w-xl">
               Designed for optimal Vastu energy flow, natural illumination, and structural privacy.
             </p>
           </ScrollReveal>
 
-          {/* Luxury Tab Switcher with Framer Motion Sliding Pill & Pause-on-Interaction */}
+          {/* Luxury Tab Switcher */}
           <div
             role="tablist"
             aria-label="Floor plan options"
@@ -126,13 +122,12 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                   aria-selected={isActive}
                   aria-controls={`floorplan-panel-${tab}`}
                   onClick={() => handleTabClick(tab)}
-                  className={`relative px-5 py-2 text-xs font-sans font-medium uppercase tracking-wider rounded-full transition-colors whitespace-nowrap z-10 ${
+                  className={`relative px-5 py-2 text-xs font-sans font-medium uppercase tracking-wider rounded-full transition-colors whitespace-nowrap z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] ${
                     isActive
                       ? "text-[#E8E1D3] font-semibold"
-                      : "text-[#241C20]/75 hover:text-[#C15F70]"
+                      : "text-[#241C20]/80 hover:text-[#C15F70]"
                   }`}
                 >
-                  {/* Sliding Pink Active Pill Background */}
                   {isActive && (
                     <motion.div
                       layoutId="activeFloorTab"
@@ -147,8 +142,8 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
           </div>
         </div>
 
-        {/* Tab Content Box with Crossfade Transition */}
-        <ScrollReveal variant="scale-up">
+        {/* Tab Content Box */}
+        <ScrollReveal variant="scale-up" duration={0.35}>
           <div
             id={`floorplan-panel-${activeTab}`}
             role="tabpanel"
@@ -161,14 +156,14 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
               >
                 {/* Details Left */}
                 <div className="lg:col-span-5 space-y-6">
                   <div className="space-y-1">
                     <span className="font-sans text-xs font-semibold uppercase tracking-widest text-[#B78D4A] flex items-center space-x-1.5">
-                      <Compass className="w-3.5 h-3.5" />
+                      <Compass className="w-3.5 h-3.5" aria-hidden="true" />
                       <span>{currentPlan.subtitle}</span>
                     </span>
                     <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#241C20]">
@@ -176,7 +171,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                     </h3>
                   </div>
 
-                  <p className="font-sans text-sm sm:text-base text-[#241C20]/80 font-light leading-relaxed">
+                  <p className="font-sans text-sm sm:text-base text-[#241C20]/85 font-light leading-relaxed">
                     {currentPlan.description}
                   </p>
 
@@ -192,27 +187,30 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                   </div>
 
                   <div className="pt-4 flex flex-wrap items-center gap-3">
-                    <button
+                    <Button
+                      variant="primary"
                       onClick={() => onOpenEnquire(`Floor Plan Enquiry - ${currentPlan.title}`)}
-                      className="px-6 py-3.5 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors shadow-xs"
                     >
                       Request Architectural Specs
-                    </button>
+                    </Button>
                     
-                    <button
+                    <Button
+                      variant="outline"
                       onClick={() => setLightboxOpen(true)}
-                      className="px-4 py-3.5 border border-[#C15F70]/30 text-[#C15F70] hover:bg-[#E8E1D3] rounded-lg transition-colors flex items-center space-x-2 text-xs font-sans uppercase font-medium tracking-wider"
                     >
-                      <Maximize2 className="w-4 h-4" />
+                      <Maximize2 className="w-4 h-4 mr-2 inline-block" aria-hidden="true" />
                       <span>Expand View</span>
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
-                {/* Interactive High-Res Floorplan Image Right */}
+                {/* Interactive Image Right */}
                 <div
                   onClick={() => setLightboxOpen(true)}
-                  className="lg:col-span-7 relative aspect-[4/3] rounded-xl overflow-hidden bg-[#E8E1D3] border border-[#C15F70]/25 cursor-pointer group shadow-xs"
+                  className="lg:col-span-7 relative aspect-[4/3] rounded-xl overflow-hidden bg-[#E8E1D3] border border-[#C15F70]/25 cursor-pointer group shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70]"
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Enlarge ${currentPlan.title}`}
                 >
                   <Image
                     src={currentPlan.image}
@@ -221,7 +219,7 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
                     className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute bottom-4 right-4 bg-[#241C20]/80 backdrop-blur-xs text-[#E8E1D3] px-3 py-1.5 rounded-md text-[11px] font-sans flex items-center space-x-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5 text-[#C15F70]" />
+                    <Maximize2 className="w-3.5 h-3.5 text-[#C15F70]" aria-hidden="true" />
                     <span>Click to Enlarge Layout</span>
                   </div>
                 </div>
@@ -236,19 +234,25 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
       {/* Lightbox Modal */}
       <AnimatePresence>
         {lightboxOpen && (
-          <div className="fixed inset-0 z-50 bg-[#241C20]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
+          <div
+            className="fixed inset-0 z-50 bg-[#241C20]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label={currentPlan.title}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               className="relative max-w-5xl w-full bg-[#E8E1D3] rounded-2xl overflow-hidden shadow-2xl border border-[#C15F70]/30 p-6"
             >
               <button
                 onClick={() => setLightboxOpen(false)}
-                className="absolute top-4 right-4 z-10 p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none shadow-md"
+                className="absolute top-4 right-4 z-10 min-h-[44px] min-w-[44px] p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] shadow-md cursor-pointer"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
 
               <div className="text-center mb-4">
@@ -270,16 +274,17 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
               </div>
 
               <div className="mt-4 flex justify-between items-center">
-                <p className="font-sans text-xs text-[#241C20]/75 font-light">
+                <p className="font-sans text-xs text-[#241C20]/80 font-light">
                   {currentPlan.description}
                 </p>
-                <button
+                <Button
+                  variant="primary"
                   onClick={() => onOpenEnquire(`Floor Plan Download - ${currentPlan.title}`)}
-                  className="px-5 py-2.5 bg-[#C15F70] text-[#E8E1D3] font-sans text-xs uppercase font-medium tracking-wider rounded-lg flex items-center space-x-2 shrink-0 ml-4"
+                  className="shrink-0 ml-4"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="w-4 h-4 mr-2 inline-block" aria-hidden="true" />
                   <span>Download Blueprint</span>
-                </button>
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -288,3 +293,4 @@ export default function FloorPlans({ onOpenEnquire }: FloorPlansProps) {
     </section>
   );
 }
+

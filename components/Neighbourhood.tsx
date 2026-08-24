@@ -36,7 +36,6 @@ export default function Neighbourhood() {
     <section id="location" className="pt-6 pb-20 lg:pt-10 lg:pb-32 bg-[#E8E1D3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hand-set Section Number & Divider */}
         <SectionDivider number="09" title="Prime Location & Connectivity" icon="flower" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8">
@@ -44,12 +43,11 @@ export default function Neighbourhood() {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20]">
               Bani Park, Jaipur
             </h2>
-            <p className="font-sans text-base text-[#241C20]/75 font-light mt-2 max-w-xl">
-              Address: D-169, Bhrigu Marg, Bani Park, Jaipur — connected to heritage, culture, and modern infrastructure.
+            <p className="font-sans text-base text-[#241C20]/80 font-light mt-2 max-w-xl">
+              Address: D-169, Bhrigu Marg, Bani Park, Jaipur, connected to heritage, culture, and modern infrastructure.
             </p>
           </ScrollReveal>
 
-          {/* Landscaping / Park Family Lifestyle Preview Card */}
           <ScrollReveal delay={0.1} className="lg:col-span-5 bg-[#F5EEE6] p-4 rounded-xl border border-[#9CAA8C]/40 flex items-center space-x-4 shadow-xs">
             <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 border border-[#9CAA8C]/50">
               <Image
@@ -78,7 +76,7 @@ export default function Neighbourhood() {
             <div>
               <div className="flex items-center justify-between border-b border-[#C15F70]/20 pb-4">
                 <div className="flex items-center space-x-2">
-                  <Navigation className="w-5 h-5 text-[#C15F70]" />
+                  <Navigation className="w-5 h-5 text-[#C15F70]" aria-hidden="true" />
                   <h3 className="font-serif text-xl font-semibold text-[#241C20]">
                     Proximity Matrix
                   </h3>
@@ -87,15 +85,17 @@ export default function Neighbourhood() {
               </div>
 
               {/* Filter Pills */}
-              <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar py-4">
+              <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar py-4" role="tablist" aria-label="Landmark filters">
                 {categories.map((filter) => (
                   <button
                     key={filter}
+                    role="tab"
+                    aria-selected={selectedFilter === filter}
                     onClick={() => setSelectedFilter(filter)}
-                    className={`px-3 py-1 rounded-full text-[10px] font-sans font-medium uppercase tracking-wider transition-all whitespace-nowrap ${
+                    className={`min-h-[36px] px-3 py-1 rounded-full text-[10px] font-sans font-medium uppercase tracking-wider transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] cursor-pointer ${
                       selectedFilter === filter
                         ? "bg-[#C15F70] text-[#E8E1D3]"
-                        : "bg-[#E8E1D3] text-[#241C20]/75 hover:bg-[#E8E1D3]/80 border border-[#C15F70]/20"
+                        : "bg-[#E8E1D3] text-[#241C20]/80 hover:bg-[#E8E1D3]/80 border border-[#C15F70]/20"
                     }`}
                   >
                     {filter}
@@ -128,9 +128,9 @@ export default function Neighbourhood() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-[#C15F70]/20 flex items-center justify-between text-xs font-sans text-[#241C20]/70">
+            <div className="pt-4 border-t border-[#C15F70]/20 flex items-center justify-between text-xs font-sans text-[#241C20]/80">
               <span className="flex items-center space-x-1">
-                <MapPin className="w-3.5 h-3.5 text-[#C15F70]" />
+                <MapPin className="w-3.5 h-3.5 text-[#C15F70]" aria-hidden="true" />
                 <span>Bhrigu Marg, Bani Park</span>
               </span>
               <span className="font-semibold text-[#C15F70]">Jaipur, Rajasthan 302016</span>
@@ -147,20 +147,19 @@ export default function Neighbourhood() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            {/* Overlay Location Badge */}
             <div className="absolute top-4 left-4 z-10 bg-[#E8E1D3]/95 backdrop-blur-md px-4 py-2 rounded-xl border border-[#C15F70]/30 shadow-xs flex items-center justify-between w-[calc(100%-2rem)]">
               <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4 text-[#C15F70]" />
+                <MapPin className="w-4 h-4 text-[#C15F70]" aria-hidden="true" />
                 <span className="font-sans text-xs font-semibold text-[#241C20]">Pink Oaks · Bani Park</span>
               </div>
               <a
                 href="https://maps.google.com/?q=D-169+Bhrigu+Marg+Bani+Park+Jaipur"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[10px] font-sans text-[#C15F70] hover:underline flex items-center space-x-1 font-medium"
+                className="text-[10px] font-sans text-[#C15F70] hover:underline flex items-center space-x-1 font-medium focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C15F70] rounded"
               >
                 <span>Open in Maps</span>
-                <ExternalLink className="w-3 h-3" />
+                <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
             </div>
           </ScrollReveal>
@@ -171,3 +170,4 @@ export default function Neighbourhood() {
     </section>
   );
 }
+

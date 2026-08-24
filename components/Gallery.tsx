@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
+import Button from "./ui/Button";
 import { Maximize2, X, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 export default function Gallery() {
@@ -13,9 +14,7 @@ export default function Gallery() {
 
   const categories = ["All", "Family Living", "Architecture", "Craft Details", "Amenities"];
 
-  // Strictly grouped by size tier & row pairings for architectural rhythm
   const galleryItems = [
-    // ROW TYPE A1: 2 Landscape Cards (6/6 split)
     {
       title: "Dusk Exterior Facade",
       subtitle: "Stately 11-floor residence lit in warm evening twilight",
@@ -34,8 +33,6 @@ export default function Gallery() {
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-6",
     },
-
-    // ROW TYPE A2: 2 Landscape Cards (6/6 split)
     {
       title: "Kids Playing in Courtyard",
       subtitle: "Secure green courtyard with child-safe landscaped play zones",
@@ -54,8 +51,6 @@ export default function Gallery() {
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-6",
     },
-
-    // ROW TYPE D1: Landscape Pair (6/6 split, Jaali cropped to 16/10 landscape)
     {
       title: "Carved Stone Jaali Screens",
       subtitle: "Hand-pierced lattice screens providing natural climate control",
@@ -74,8 +69,6 @@ export default function Gallery() {
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-6",
     },
-
-    // ROW TYPE C: 3 Equal Square Cards (4/4/4 split)
     {
       title: "Natural Stone Flooring Texture",
       subtitle: "Honed Jaipur sandstone with hand-set brass inlay details",
@@ -103,8 +96,6 @@ export default function Gallery() {
       aspect: "aspect-square",
       gridSpan: "lg:col-span-4",
     },
-
-    // ROW TYPE B: 1 Large Feature Card (Full 12-col width)
     {
       title: "Extended Family Dining Pavilion",
       subtitle: "Expansive dining space accommodating three generations comfortably",
@@ -114,8 +105,6 @@ export default function Gallery() {
       aspect: "aspect-[21/9]",
       gridSpan: "lg:col-span-12",
     },
-
-    // ROW TYPE A3: 2 Landscape Cards (6/6 split)
     {
       title: "Master Bedroom Suite",
       subtitle: "Walk-in wardrobe, wooden flooring, and sunlit private balcony",
@@ -134,8 +123,6 @@ export default function Gallery() {
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-6",
     },
-
-    // ROW TYPE A4: 2 Landscape Cards (6/6 split)
     {
       title: "Rooftop Yoga & Wellness Deck",
       subtitle: "Open-air zen lounge overlooking the Bani Park skyline",
@@ -154,8 +141,6 @@ export default function Gallery() {
       aspect: "aspect-[16/10]",
       gridSpan: "lg:col-span-6",
     },
-
-    // ROW TYPE B2: Full Width Landmark Panoramic Feature (12-col width)
     {
       title: "Balcony Panoramic Skyline View",
       subtitle: "Unobstructed views over Bani Park's low-density greenery",
@@ -204,7 +189,6 @@ export default function Gallery() {
     <section id="gallery" className="py-20 lg:py-32 bg-[#E8E1D3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hand-set Section Number & Divider */}
         <SectionDivider number="03" title="Visual Gallery & Craft" icon="flower" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
@@ -214,25 +198,27 @@ export default function Gallery() {
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1} className="lg:col-span-5">
-            <p className="font-sans text-base text-[#241C20]/75 font-light leading-relaxed">
+            <p className="font-sans text-base text-[#241C20]/80 font-light leading-relaxed">
               A curated visual monograph blending multi-generational family moments, architectural geometry, and Jaipur stone &amp; jaali craft details.
             </p>
           </ScrollReveal>
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex items-center space-x-2.5 mb-10 overflow-x-auto no-scrollbar pb-2">
+        <div className="flex items-center space-x-2.5 mb-10 overflow-x-auto no-scrollbar pb-2" role="tablist" aria-label="Gallery categories">
           {categories.map((cat) => (
             <button
               key={cat}
+              role="tab"
+              aria-selected={activeCategory === cat}
               onClick={() => {
                 setActiveCategory(cat);
                 setSelectedIndex(null);
               }}
-              className={`px-5 py-2.5 rounded-full font-sans text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap ${
+              className={`min-h-[44px] px-5 py-2.5 rounded-full font-sans text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] cursor-pointer ${
                 activeCategory === cat
                   ? "bg-[#C15F70] text-[#E8E1D3] shadow-xs"
-                  : "bg-[#F5EEE6] text-[#241C20]/75 hover:bg-[#F5EEE6]/80 border border-[#C15F70]/20"
+                  : "bg-[#F5EEE6] text-[#241C20]/80 hover:bg-[#F5EEE6]/80 border border-[#C15F70]/20"
               }`}
             >
               {cat}
@@ -250,9 +236,17 @@ export default function Gallery() {
             >
               <div
                 onClick={() => setSelectedIndex(index)}
-                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between"
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${item.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedIndex(index);
+                  }
+                }}
+                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70]"
               >
-                {/* Image Container: Paired aspect ratio per row tier, edge-to-edge fill */}
                 <div className={`relative w-full ${item.aspect} overflow-hidden bg-[#E8E1D3] shrink-0`}>
                   <Image
                     src={item.src}
@@ -266,11 +260,10 @@ export default function Gallery() {
                     {item.tag}
                   </div>
                   <div className="absolute top-4 right-4 bg-[#241C20]/70 backdrop-blur-xs p-2 rounded-full text-[#E8E1D3] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5" />
+                    <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
                   </div>
                 </div>
 
-                {/* Caption Block: Directly flush underneath image */}
                 <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15 space-y-2 flex-1 flex flex-col justify-between">
                   <div className="flex items-center justify-between">
                     <h3 className="font-serif text-lg font-semibold text-[#241C20] group-hover:text-[#C15F70] transition-colors">
@@ -280,7 +273,7 @@ export default function Gallery() {
                       {item.category}
                     </span>
                   </div>
-                  <p className="font-sans text-xs text-[#241C20]/70 font-light leading-relaxed">
+                  <p className="font-sans text-xs text-[#241C20]/80 font-light leading-relaxed">
                     {item.subtitle}
                   </p>
                 </div>
@@ -293,67 +286,69 @@ export default function Gallery() {
         <div className="mt-16 bg-[#F5EEE6] rounded-2xl p-8 lg:p-10 border border-[#C15F70]/25 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-3">
             <div className="inline-flex items-center space-x-2 text-xs font-sans font-medium uppercase tracking-widest text-[#B78D4A]">
-              <Sparkles className="w-3.5 h-3.5 text-[#C15F70]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#C15F70]" aria-hidden="true" />
               <span>Jaipur Materiality &amp; Architectural Craft</span>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#241C20]">
               Crafted Details: Pierced Jaali Screens &amp; Sandstone Texture
             </h3>
-            <p className="font-sans text-sm text-[#241C20]/75 font-light leading-relaxed">
+            <p className="font-sans text-sm text-[#241C20]/80 font-light leading-relaxed">
               Every Pink Oaks residence integrates authentic Rajasthani architectural elements — carved stone lattice screens for natural breeze and shade, honed sandstone flooring, and custom brass hardware built to age gracefully across generations.
             </p>
           </div>
 
           <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <button
+            <Button
+              variant="primary"
               onClick={() => setActiveCategory("Craft Details")}
-              className="px-6 py-3 bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors shadow-xs"
             >
               Filter Craft Details
-            </button>
+            </Button>
           </div>
         </div>
 
       </div>
 
-      {/* Lightbox Modal with High Z-Index (z-[60]) to cover sticky header */}
+      {/* Lightbox Modal */}
       <AnimatePresence>
         {activeItem && (
-          <div className="fixed inset-0 z-[60] bg-[#241C20]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
+          <div
+            className="fixed inset-0 z-[60] bg-[#241C20]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeItem.title}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               className="relative max-w-5xl w-full bg-[#E8E1D3] rounded-2xl overflow-hidden shadow-2xl border border-[#C15F70]/30"
             >
-              {/* Close Button */}
               <button
                 onClick={() => setSelectedIndex(null)}
-                className="absolute top-4 right-4 z-20 p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none shadow-md transition-colors"
+                className="absolute top-4 right-4 z-20 min-h-[44px] min-w-[44px] p-2.5 bg-[#E8E1D3]/90 text-[#241C20] hover:text-[#C15F70] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] shadow-md transition-colors cursor-pointer"
                 aria-label="Close lightbox"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
 
-              {/* Prev Button */}
               <button
                 onClick={handlePrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-[#241C20]/75 hover:bg-[#C15F70] text-[#E8E1D3] rounded-full transition-colors shadow-lg"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 min-h-[44px] min-w-[44px] p-3 bg-[#241C20]/75 hover:bg-[#C15F70] text-[#E8E1D3] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] transition-colors shadow-lg cursor-pointer"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-6 h-6" aria-hidden="true" />
               </button>
 
-              {/* Next Button */}
               <button
                 onClick={handleNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-[#241C20]/75 hover:bg-[#C15F70] text-[#E8E1D3] rounded-full transition-colors shadow-lg"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 min-h-[44px] min-w-[44px] p-3 bg-[#241C20]/75 hover:bg-[#C15F70] text-[#E8E1D3] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] transition-colors shadow-lg cursor-pointer"
                 aria-label="Next image"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-6 h-6" aria-hidden="true" />
               </button>
 
-              {/* Image View */}
               <div className="relative aspect-[16/10] w-full bg-[#241C20]">
                 <Image
                   src={activeItem.src}
@@ -363,7 +358,6 @@ export default function Gallery() {
                 />
               </div>
 
-              {/* Lightbox Info Bar */}
               <div className="p-6 bg-[#E8E1D3] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-[#C15F70]/20">
                 <div>
                   <div className="flex items-center space-x-3 mb-1">
@@ -378,12 +372,12 @@ export default function Gallery() {
                   <h3 className="font-serif text-2xl font-semibold text-[#241C20]">
                     {activeItem.title}
                   </h3>
-                  <p className="font-sans text-sm text-[#241C20]/75 font-light mt-0.5">
+                  <p className="font-sans text-sm text-[#241C20]/80 font-light mt-0.5">
                     {activeItem.subtitle}
                   </p>
                 </div>
 
-                <div className="text-xs font-sans font-medium text-[#241C20]/60 shrink-0">
+                <div className="text-xs font-sans font-medium text-[#241C20]/70 shrink-0">
                   Image {selectedIndex! + 1} of {filteredItems.length}
                 </div>
               </div>
@@ -394,3 +388,4 @@ export default function Gallery() {
     </section>
   );
 }
+

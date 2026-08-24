@@ -3,6 +3,7 @@
 import SectionDivider from "./ui/SectionDivider";
 import ScrollReveal from "./ui/ScrollReveal";
 import PinkBlossomIcon from "./PinkBlossomIcon";
+import Button from "./ui/Button";
 import { Check, ArrowRight } from "lucide-react";
 
 interface PricingProps {
@@ -48,12 +49,12 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#241C20]">
             Transparent Pricing Structure
           </h2>
-          <p className="font-sans text-base text-[#241C20]/75 font-light mt-2 max-w-xl">
+          <p className="font-sans text-base text-[#241C20]/80 font-light mt-2 max-w-xl">
             Possession targeted for June 2026. Schedule a site visit to view complete payment schedules.
           </p>
         </ScrollReveal>
 
-        {/* Comparison Table / Cards Grid with Featured Elevation */}
+        {/* Comparison Table / Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {priceTiers.map((tier, idx) => (
             <ScrollReveal key={tier.type} delay={idx * 0.15} className="h-full">
@@ -61,7 +62,7 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
                 className={`relative rounded-2xl p-8 sm:p-10 border transition-all duration-300 flex flex-col justify-between h-full ${
                   tier.featured
                     ? "bg-[#F5EEE6] border-[#C15F70] shadow-md ring-1 ring-[#C15F70]/50"
-                    : "bg-[#E8E1D3] border-[#C15F70]/25 shadow-xs hover:border-[#C15F70]/40"
+                    : "bg-[#E8E1D3] border-[#C15F70]/25 shadow-xs hover:border-[#C15F70]/50"
                 }`}
               >
                 {/* Signature Corner Flower Accent */}
@@ -88,7 +89,7 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
                         {tier.period}
                       </span>
                     </div>
-                    <span className="font-sans text-xs text-[#241C20]/60 font-medium block mt-1">
+                    <span className="font-sans text-xs text-[#241C20]/75 font-medium block mt-1">
                       {tier.size}
                     </span>
                   </div>
@@ -97,9 +98,9 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
 
                   <ul className="space-y-3">
                     {tier.highlights.map((item) => (
-                      <li key={item} className="flex items-start space-x-3 font-sans text-xs text-[#241C20]/80 font-light">
+                      <li key={item} className="flex items-start space-x-3 font-sans text-xs text-[#241C20]/90 font-light">
                         <div className="p-1 rounded-full bg-[#C15F70]/15 text-[#C15F70] shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 stroke-[2.5]" />
+                          <Check className="w-3 h-3 stroke-[2.5]" aria-hidden="true" />
                         </div>
                         <span className="leading-snug">{item}</span>
                       </li>
@@ -107,17 +108,14 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
                   </ul>
                 </div>
 
-                <button
+                <Button
+                  variant={tier.featured ? "primary" : "secondary"}
                   onClick={() => onOpenEnquire(`Pricing Enquiry - ${tier.type}`)}
-                  className={`w-full py-3.5 font-sans text-xs font-medium uppercase tracking-widest rounded-lg transition-colors mt-8 flex items-center justify-center space-x-2 ${
-                    tier.featured
-                      ? "bg-[#C15F70] hover:bg-[#A34A5A] text-[#E8E1D3] shadow-xs"
-                      : "border border-[#C15F70] text-[#C15F70] hover:bg-[#F5EEE6]"
-                  }`}
+                  className="w-full mt-8"
                 >
                   <span>Request Cost Sheet</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                  <ArrowRight className="w-3.5 h-3.5 ml-2 inline-block" aria-hidden="true" />
+                </Button>
               </div>
             </ScrollReveal>
           ))}
@@ -125,7 +123,7 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
 
         {/* Disclaimer */}
         <div className="mt-8 text-center">
-          <p className="font-sans text-xs text-[#241C20]/60 font-light italic">
+          <p className="font-sans text-xs text-[#241C20]/70 font-light italic">
             GST, AMC, IFMS &amp; other charges additional*
           </p>
         </div>
@@ -134,3 +132,4 @@ export default function Pricing({ onOpenEnquire }: PricingProps) {
     </section>
   );
 }
+

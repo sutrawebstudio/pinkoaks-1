@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface ScrollRevealProps {
@@ -14,26 +14,32 @@ interface ScrollRevealProps {
 export default function ScrollReveal({
   children,
   delay = 0,
-  duration = 0.7,
+  duration = 0.35,
   variant = "fade-up",
   className = "",
 }: ScrollRevealProps) {
-  // Motion variant presets (Round 5: Paced, visible entrance without bounce)
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setIsReducedMotion(mediaQuery.matches);
+  }, []);
+
   const variants = {
     "fade-up": {
-      hidden: { opacity: 0, y: 28 },
+      hidden: { opacity: 0, y: isReducedMotion ? 0 : 16 },
       visible: { opacity: 1, y: 0 },
     },
     "slide-left": {
-      hidden: { opacity: 0, x: -36 },
+      hidden: { opacity: 0, x: isReducedMotion ? 0 : -20 },
       visible: { opacity: 1, x: 0 },
     },
     "slide-right": {
-      hidden: { opacity: 0, x: 36 },
+      hidden: { opacity: 0, x: isReducedMotion ? 0 : 20 },
       visible: { opacity: 1, x: 0 },
     },
     "scale-up": {
-      hidden: { opacity: 0, scale: 0.96 },
+      hidden: { opacity: 0, scale: isReducedMotion ? 1 : 0.97 },
       visible: { opacity: 1, scale: 1 },
     },
   };
@@ -42,12 +48,12 @@ export default function ScrollReveal({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       variants={variants[variant]}
       transition={{
-        duration,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1.0], // Smooth, stately ease-out
+        duration: isReducedMotion ? 0 : duration,
+        delay: isReducedMotion ? 0 : delay,
+        ease: [0.16, 1, 0.3, 1], // Vercel-style snappy cubic-bezier
       }}
       className={className}
     >
@@ -55,3 +61,4 @@ export default function ScrollReveal({
     </motion.div>
   );
 }
+

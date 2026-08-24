@@ -32,9 +32,7 @@ export default function Amenities() {
 
   const categories = ["All", "Wellness & Leisure", "Infrastructure & Tech", "Safety & Finishes"];
 
-  // Exact 19-item priority tier sequence per user specification
   const amenitiesList = [
-    // TIER 1 (Positions 1–8: Functional / Infrastructure & Tech / Safety)
     { name: "Water Softener Plant", category: "Infrastructure & Tech", icon: Droplets, theme: "misty" },
     { name: "Pressure Pump System", category: "Infrastructure & Tech", icon: Activity, theme: "misty" },
     { name: "Anti-Termite Treatment", category: "Safety & Finishes", icon: ShieldCheck, theme: "forest" },
@@ -43,12 +41,8 @@ export default function Amenities() {
     { name: "Storage for Flats", category: "Safety & Finishes", icon: Archive, theme: "forest" },
     { name: "Telephone & Intercom", category: "Safety & Finishes", icon: PhoneCall, theme: "forest" },
     { name: "Smart Washroom Lights", category: "Infrastructure & Tech", icon: Lightbulb, theme: "misty" },
-
-    // TIER 2 (Positions 9–10: Comfort & Daily Living)
     { name: "Well Ventilated & Lighted", category: "Wellness & Leisure", icon: Sun, theme: "sage" },
     { name: "Big Balconies", category: "Wellness & Leisure", icon: Maximize2, theme: "taborosa" },
-
-    // TIER 3 (Positions 11–18: Lifestyle & Leisure)
     { name: "Kid's Play Area", category: "Wellness & Leisure", icon: Smile, theme: "sage" },
     { name: "Indoor Games", category: "Wellness & Leisure", icon: Gamepad2, theme: "misty" },
     { name: "Home Theatre", category: "Wellness & Leisure", icon: Film, theme: "misty" },
@@ -57,8 +51,6 @@ export default function Amenities() {
     { name: "Music Room", category: "Wellness & Leisure", icon: Music, theme: "taborosa" },
     { name: "Temple Space", category: "Wellness & Leisure", icon: Landmark, theme: "sage" },
     { name: "Billiards Table", category: "Wellness & Leisure", icon: CircleDot, theme: "misty" },
-
-    // CLOSING CARD (Position 19: Standalone Highlighted Summary)
     { name: "20+ World-Class Amenities", category: "Wellness & Leisure", icon: Sparkles, theme: "taborosa" },
   ];
 
@@ -72,7 +64,6 @@ export default function Amenities() {
     <section id="amenities" className="py-20 lg:py-32 bg-[#F5EEE6] border-y border-[#C15F70]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hand-set Section Number & Divider */}
         <SectionDivider number="04" title="Thoughtful Amenities & Landscaping" icon="flower" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
@@ -82,7 +73,7 @@ export default function Amenities() {
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1} className="lg:col-span-6">
-            <p className="font-sans text-base text-[#241C20]/75 font-light leading-relaxed">
+            <p className="font-sans text-base text-[#241C20]/80 font-light leading-relaxed">
               Harmonizing indoor sanctuaries with outdoor sage green walkways, water features, and sustainable living infrastructure.
             </p>
           </ScrollReveal>
@@ -90,16 +81,17 @@ export default function Amenities() {
 
         {/* Filter Controls & Search */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-          {/* Category Tabs */}
-          <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0">
+          <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0" role="tablist" aria-label="Amenities categories">
             {categories.map((tab) => (
               <button
                 key={tab}
+                role="tab"
+                aria-selected={activeTab === tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap ${
+                className={`min-h-[44px] px-4 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] cursor-pointer ${
                   activeTab === tab
                     ? "bg-[#C15F70] text-[#E8E1D3] shadow-xs"
-                    : "bg-[#E8E1D3] text-[#241C20]/75 hover:bg-[#E8E1D3]/80 border border-[#C15F70]/20"
+                    : "bg-[#E8E1D3] text-[#241C20]/80 hover:bg-[#E8E1D3]/80 border border-[#C15F70]/20"
                 }`}
               >
                 {tab}
@@ -107,15 +99,14 @@ export default function Amenities() {
             ))}
           </div>
 
-          {/* Search Input */}
           <div className="relative w-full sm:w-64">
-            <Search className="w-4 h-4 text-[#241C20]/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#241C20]/50 absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
             <input
               type="text"
               placeholder="Search amenity..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-[#E8E1D3] border border-[#C15F70]/25 rounded-full font-sans text-xs text-[#241C20] placeholder-[#241C20]/50 focus:outline-none focus:border-[#C15F70]"
+              className="w-full pl-9 pr-4 py-2.5 bg-[#E8E1D3] border border-[#C15F70]/25 rounded-full font-sans text-base sm:text-xs text-[#241C20] placeholder-[#241C20]/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] transition-all"
             />
           </div>
         </div>
@@ -136,7 +127,6 @@ export default function Amenities() {
                     ? "text-[#33422F] bg-[#33422F]/10 border-[#33422F]/20"
                     : "text-[#C15F70] bg-[#C15F70]/15 border-[#C15F70]/25";
 
-                // Position 19 Standalone Highlight Summary Treatment
                 if (item.name === "20+ World-Class Amenities") {
                   return (
                     <div
@@ -145,7 +135,7 @@ export default function Amenities() {
                     >
                       <div className="flex items-center space-x-3.5">
                         <div className="p-3 rounded-lg border bg-[#C15F70] text-[#E8E1D3] border-[#C15F70] shrink-0 shadow-xs">
-                          <IconComponent className="w-5 h-5 stroke-[1.5]" />
+                          <IconComponent className="w-5 h-5 stroke-[1.5]" aria-hidden="true" />
                         </div>
                         <div>
                           <span className="font-serif text-sm sm:text-base font-semibold text-[#241C20] block">
@@ -170,7 +160,7 @@ export default function Amenities() {
                   >
                     <div className="flex items-center space-x-3.5">
                       <div className={`p-2.5 rounded-lg border ${iconColor} shrink-0`}>
-                        <IconComponent className="w-4 h-4 stroke-[1.5]" />
+                        <IconComponent className="w-4 h-4 stroke-[1.5]" aria-hidden="true" />
                       </div>
                       <div>
                         <span className="font-sans text-xs font-semibold text-[#241C20] block">
@@ -195,3 +185,4 @@ export default function Amenities() {
     </section>
   );
 }
+
