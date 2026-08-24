@@ -17,7 +17,6 @@ import {
   Grid,
   Activity,
   Droplets,
-  Flame,
   BatteryCharging,
   Lightbulb,
   PhoneCall,
@@ -33,26 +32,33 @@ export default function Amenities() {
 
   const categories = ["All", "Wellness & Leisure", "Infrastructure & Tech", "Safety & Finishes"];
 
+  // Exact 19-item priority tier sequence per user specification
   const amenitiesList = [
-    { name: "Anti-Termite Treatment", category: "Infrastructure & Tech", icon: ShieldCheck, theme: "forest" },
+    // TIER 1 (Positions 1–8: Functional / Infrastructure & Tech / Safety)
+    { name: "Water Softener Plant", category: "Infrastructure & Tech", icon: Droplets, theme: "misty" },
+    { name: "Pressure Pump System", category: "Infrastructure & Tech", icon: Activity, theme: "misty" },
+    { name: "Anti-Termite Treatment", category: "Safety & Finishes", icon: ShieldCheck, theme: "forest" },
+    { name: "Anti-Skid Tiles", category: "Safety & Finishes", icon: Grid, theme: "forest" },
+    { name: "EV Charging Provision", category: "Infrastructure & Tech", icon: BatteryCharging, theme: "sage" },
+    { name: "Storage for Flats", category: "Safety & Finishes", icon: Archive, theme: "forest" },
+    { name: "Telephone & Intercom", category: "Safety & Finishes", icon: PhoneCall, theme: "forest" },
+    { name: "Smart Washroom Lights", category: "Infrastructure & Tech", icon: Lightbulb, theme: "misty" },
+
+    // TIER 2 (Positions 9–10: Comfort & Daily Living)
     { name: "Well Ventilated & Lighted", category: "Wellness & Leisure", icon: Sun, theme: "sage" },
     { name: "Big Balconies", category: "Wellness & Leisure", icon: Maximize2, theme: "taborosa" },
-    { name: "Yoga Studio", category: "Wellness & Leisure", icon: Heart, theme: "taborosa" },
-    { name: "Home Theatre", category: "Wellness & Leisure", icon: Film, theme: "misty" },
-    { name: "Billiards Table", category: "Wellness & Leisure", icon: CircleDot, theme: "misty" },
-    { name: "Library", category: "Wellness & Leisure", icon: BookOpen, theme: "forest" },
+
+    // TIER 3 (Positions 11–18: Lifestyle & Leisure)
     { name: "Kid's Play Area", category: "Wellness & Leisure", icon: Smile, theme: "sage" },
+    { name: "Indoor Games", category: "Wellness & Leisure", icon: Gamepad2, theme: "misty" },
+    { name: "Home Theatre", category: "Wellness & Leisure", icon: Film, theme: "misty" },
+    { name: "Yoga Studio", category: "Wellness & Leisure", icon: Heart, theme: "taborosa" },
+    { name: "Library", category: "Wellness & Leisure", icon: BookOpen, theme: "forest" },
     { name: "Music Room", category: "Wellness & Leisure", icon: Music, theme: "taborosa" },
     { name: "Temple Space", category: "Wellness & Leisure", icon: Landmark, theme: "sage" },
-    { name: "Indoor Games", category: "Wellness & Leisure", icon: Gamepad2, theme: "misty" },
-    { name: "Storage for Flats", category: "Safety & Finishes", icon: Archive, theme: "forest" },
-    { name: "Anti-Skid Tiles", category: "Safety & Finishes", icon: Grid, theme: "forest" },
-    { name: "Pressure Pump System", category: "Infrastructure & Tech", icon: Activity, theme: "misty" },
-    { name: "Water Softener Plant", category: "Infrastructure & Tech", icon: Droplets, theme: "misty" },
-    { name: "Pipeline Piped Gas", category: "Infrastructure & Tech", icon: Flame, theme: "taborosa" },
-    { name: "EV Charging Provision", category: "Infrastructure & Tech", icon: BatteryCharging, theme: "sage" },
-    { name: "Smart Washroom Lights", category: "Infrastructure & Tech", icon: Lightbulb, theme: "misty" },
-    { name: "Telephone & Intercom", category: "Safety & Finishes", icon: PhoneCall, theme: "forest" },
+    { name: "Billiards Table", category: "Wellness & Leisure", icon: CircleDot, theme: "misty" },
+
+    // CLOSING CARD (Position 19: Standalone Highlighted Summary)
     { name: "20+ World-Class Amenities", category: "Wellness & Leisure", icon: Sparkles, theme: "taborosa" },
   ];
 
@@ -117,7 +123,7 @@ export default function Amenities() {
         {/* Architectural Spec Matrix List */}
         <ScrollReveal>
           <div className="bg-[#E8E1D3] border border-[#C15F70]/25 rounded-2xl overflow-hidden shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 lg:divide-x divide-[#C15F70]/15">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 divide-[#C15F70]/15">
               {filteredAmenities.map((item) => {
                 const IconComponent = item.icon;
                 
@@ -129,6 +135,33 @@ export default function Amenities() {
                     : item.theme === "forest"
                     ? "text-[#33422F] bg-[#33422F]/10 border-[#33422F]/20"
                     : "text-[#C15F70] bg-[#C15F70]/15 border-[#C15F70]/25";
+
+                // Position 19 Standalone Highlight Summary Treatment
+                if (item.name === "20+ World-Class Amenities") {
+                  return (
+                    <div
+                      key={item.name}
+                      className="col-span-1 md:col-span-2 lg:col-span-3 p-5 bg-[#C15F70]/10 border-t-2 border-[#C15F70] flex flex-wrap items-center justify-between gap-4"
+                    >
+                      <div className="flex items-center space-x-3.5">
+                        <div className="p-3 rounded-lg border bg-[#C15F70] text-[#E8E1D3] border-[#C15F70] shrink-0 shadow-xs">
+                          <IconComponent className="w-5 h-5 stroke-[1.5]" />
+                        </div>
+                        <div>
+                          <span className="font-serif text-sm sm:text-base font-semibold text-[#241C20] block">
+                            {item.name}
+                          </span>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-[#B78D4A] font-medium block">
+                            Complete Luxury &amp; Essential Living Package Included
+                          </span>
+                        </div>
+                      </div>
+                      <span className="font-serif text-xs font-semibold text-[#E8E1D3] bg-[#C15F70] px-4 py-1.5 rounded-full uppercase tracking-wider shadow-xs">
+                        Included
+                      </span>
+                    </div>
+                  );
+                }
 
                 return (
                   <div

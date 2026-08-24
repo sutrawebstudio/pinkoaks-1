@@ -174,7 +174,7 @@ export default function Hero3D({
       </div>
 
       {/* Hero Content Overlay */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 text-center flex flex-col items-center justify-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-[104px] lg:pt-[132px] pb-20 text-center flex flex-col items-center justify-center">
         {/* Warm Micro-copy Pill */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

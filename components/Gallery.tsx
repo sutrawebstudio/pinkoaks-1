@@ -13,9 +13,9 @@ export default function Gallery() {
 
   const categories = ["All", "Family Living", "Architecture", "Craft Details", "Amenities"];
 
-  // Gallery items organized into explicit rhythmically aligned row tiers (50/50 pairs, 33/33/33 triplets, and panorama feature banners)
+  // Strictly grouped by size tier & row pairings for architectural rhythm
   const galleryItems = [
-    // ROW GROUP 1: Landscape Pair 1 (Dusk Facade + Terrace)
+    // ROW TYPE A1: 2 Landscape Cards (6/6 split)
     {
       title: "Dusk Exterior Facade",
       subtitle: "Stately 11-floor residence lit in warm evening twilight",
@@ -35,7 +35,7 @@ export default function Gallery() {
       gridSpan: "lg:col-span-6",
     },
 
-    // ROW GROUP 2: Landscape Pair 2 (Courtyard + Living Room)
+    // ROW TYPE A2: 2 Landscape Cards (6/6 split)
     {
       title: "Kids Playing in Courtyard",
       subtitle: "Secure green courtyard with child-safe landscaped play zones",
@@ -55,7 +55,7 @@ export default function Gallery() {
       gridSpan: "lg:col-span-6",
     },
 
-    // ROW GROUP 3: Landscape Pair 3 (Jaali Screens + Private Arrival Lobby)
+    // ROW TYPE D1: Landscape Pair (6/6 split, Jaali cropped to 16/10 landscape)
     {
       title: "Carved Stone Jaali Screens",
       subtitle: "Hand-pierced lattice screens providing natural climate control",
@@ -75,14 +75,14 @@ export default function Gallery() {
       gridSpan: "lg:col-span-6",
     },
 
-    // ROW GROUP 4: 3 Equal Small Cards (Materiality + Water + Brass, 4+4+4 split)
+    // ROW TYPE C: 3 Equal Square Cards (4/4/4 split)
     {
       title: "Natural Stone Flooring Texture",
       subtitle: "Honed Jaipur sandstone with hand-set brass inlay details",
       src: "/images/PLACEHOLDER_craft_stone_flooring.jpg",
       tag: "Materiality",
       category: "Craft Details",
-      aspect: "aspect-[4/3]",
+      aspect: "aspect-square",
       gridSpan: "lg:col-span-4",
     },
     {
@@ -91,7 +91,7 @@ export default function Gallery() {
       src: "/images/detail-water.jpg",
       tag: "Water Feature",
       category: "Amenities",
-      aspect: "aspect-[4/3]",
+      aspect: "aspect-square",
       gridSpan: "lg:col-span-4",
     },
     {
@@ -100,11 +100,11 @@ export default function Gallery() {
       src: "/images/PLACEHOLDER_craft_brass_fixtures.jpg",
       tag: "Bespoke Finishes",
       category: "Craft Details",
-      aspect: "aspect-[4/3]",
+      aspect: "aspect-square",
       gridSpan: "lg:col-span-4",
     },
 
-    // ROW GROUP 5: Large Feature Banner (Dining Pavilion)
+    // ROW TYPE B: 1 Large Feature Card (Full 12-col width)
     {
       title: "Extended Family Dining Pavilion",
       subtitle: "Expansive dining space accommodating three generations comfortably",
@@ -115,7 +115,7 @@ export default function Gallery() {
       gridSpan: "lg:col-span-12",
     },
 
-    // ROW GROUP 6: Landscape Pair 4 (Master Bedroom + Teak Doors)
+    // ROW TYPE A3: 2 Landscape Cards (6/6 split)
     {
       title: "Master Bedroom Suite",
       subtitle: "Walk-in wardrobe, wooden flooring, and sunlit private balcony",
@@ -135,7 +135,7 @@ export default function Gallery() {
       gridSpan: "lg:col-span-6",
     },
 
-    // ROW GROUP 7: Landscape Pair 5 (Rooftop Yoga + Sanctuary Retreat)
+    // ROW TYPE A4: 2 Landscape Cards (6/6 split)
     {
       title: "Rooftop Yoga & Wellness Deck",
       subtitle: "Open-air zen lounge overlooking the Bani Park skyline",
@@ -155,7 +155,7 @@ export default function Gallery() {
       gridSpan: "lg:col-span-6",
     },
 
-    // ROW GROUP 8: Full Skyline Banner (Balcony Vistas)
+    // ROW TYPE B2: Full Width Landmark Panoramic Feature (12-col width)
     {
       title: "Balcony Panoramic Skyline View",
       subtitle: "Unobstructed views over Bani Park's low-density greenery",
@@ -240,19 +240,19 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Asymmetric Mixed-Grid Gallery Layout with 20px (gap-5/gap-6) row and column spacing */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+        {/* Architecturally Grouped Row Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {filteredItems.map((item, index) => (
             <ScrollReveal
               key={item.title}
-              delay={index * 0.04}
+              delay={index * 0.03}
               className={`${item.gridSpan}`}
             >
               <div
                 onClick={() => setSelectedIndex(index)}
-                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 hover:shadow-md transition-all duration-300 flex flex-col"
+                className="group cursor-pointer bg-[#F5EEE6] rounded-2xl overflow-hidden border border-[#C15F70]/20 shadow-xs hover:border-[#C15F70]/50 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between"
               >
-                {/* Image Container: Matched per-image aspect ratio, edge-to-edge fill */}
+                {/* Image Container: Paired aspect ratio per row tier, edge-to-edge fill */}
                 <div className={`relative w-full ${item.aspect} overflow-hidden bg-[#E8E1D3] shrink-0`}>
                   <Image
                     src={item.src}
@@ -270,8 +270,8 @@ export default function Gallery() {
                   </div>
                 </div>
 
-                {/* Caption Block: Flush against image bottom border */}
-                <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15 space-y-2">
+                {/* Caption Block: Directly flush underneath image */}
+                <div className="p-5 bg-[#F5EEE6] border-t border-[#C15F70]/15 space-y-2 flex-1 flex flex-col justify-between">
                   <div className="flex items-center justify-between">
                     <h3 className="font-serif text-lg font-semibold text-[#241C20] group-hover:text-[#C15F70] transition-colors">
                       {item.title}
@@ -316,10 +316,10 @@ export default function Gallery() {
 
       </div>
 
-      {/* Lightbox Modal with Prev/Next Navigation (z-[100] above fixed site header) */}
+      {/* Lightbox Modal with High Z-Index (z-[60]) to cover sticky header */}
       <AnimatePresence>
         {activeItem && (
-          <div className="fixed inset-0 z-[100] bg-[#241C20]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
+          <div className="fixed inset-0 z-[60] bg-[#241C20]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

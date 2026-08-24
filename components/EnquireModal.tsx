@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import EnquireForm from "./EnquireForm";
+import { X } from "lucide-react";
 
 interface EnquireModalProps {
   isOpen: boolean;
@@ -14,24 +16,49 @@ export default function EnquireModal({
   onClose,
   title = "Enquire Now",
 }: EnquireModalProps) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-[#241C20]/80 backdrop-blur-xs flex items-center justify-center p-4">
+        <div
+          className="fixed inset-0 z-50 bg-[#241C20]/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) onClose();
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
+        >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="relative max-w-lg w-full bg-[#FBF8F4] rounded-2xl shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="relative max-w-lg w-full bg-[#FBF8F4] rounded-2xl shadow-2xl overflow-hidden my-auto border border-[#C15F70]/30"
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 text-[#241C20]/60 hover:text-[#C74B66] focus:outline-none"
+              className="absolute top-4 right-4 z-10 min-h-[44px] min-w-[44px] p-2.5 inline-flex items-center justify-center text-[#241C20]/70 hover:text-[#C15F70] hover:bg-[#C15F70]/10 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C15F70] touch-manipulation cursor-pointer"
+              aria-label="Close dialog"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <X className="w-5 h-5 stroke-[2]" aria-hidden="true" />
             </button>
 
             <div className="p-2 sm:p-4">
@@ -43,3 +70,4 @@ export default function EnquireModal({
     </AnimatePresence>
   );
 }
+
